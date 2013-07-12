@@ -1,0 +1,46 @@
+﻿body {
+	font-family: 'Source Sans Pro', sans-serif, ariel;
+	color: $primary-font-colour;
+	background-color: $main-background-colour;
+}
+
+.layoutWrapper {
+	height: inherit;
+	box-sizing: border-box;
+}
+
+	.layoutWrapper > #leftColumn {
+		background-color: $sidebar-background-colour;
+	}
+	.layoutWrapper > .layoutFixLeftSection {
+		position: absolute;
+		top: 165px;
+		bottom: 90px;
+		left: 0;
+		width: 280px;
+		height: auto;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		box-sizing: content-box;
+	}
+		.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 165px;
+			width: 280px;
+			padding-top: 40px;
+			background-colour: $sidebar-background-colour;
+		}
+
+	.layoutWrapper > .layoutFluidRightSection {
+		position: absolute;
+		bottom: 90px;
+		top: 0;
+		left: 280px;
+		right: 0;
+		width: auto;
+		height: auto;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
