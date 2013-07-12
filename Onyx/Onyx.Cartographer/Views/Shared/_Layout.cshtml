@@ -1,36 +1,53 @@
 ﻿<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@ViewBag.Title - Editor</title>		
-		@Styles.Render("~/Content/reset.css")
-		@Styles.Render("~/Content/application.css")
-		@Scripts.Render("~/Scripts/angular.js")
-		@Scripts.Render("~/bundles/modernizr")
-	</head>
+<html lang="en" ng-app="cartographer">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Editor</title>
+	@Styles.Render("~/Content/reset.css")
+	@Styles.Render("~/Content/application.css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
 
-	<body ng-app>
-		<div id="wrapper" class="layoutWrapper">
-			<div id="leftColumn" class="layoutFixLeftSection">
-				<div class="layoutFixTopLeftSection">
-					<span class="title">onyx</span>
-				</div>
-				<div id="navigation">
-					<ul class="navigationList navigationMenu">
-						<li>
-							<a href="#Featured" class="selected">Featured</a>
-							<div class="identicationTag"></div>
-						</li>
-					</ul>
-				</div>
+<body>
+	<div id="wrapper" class="layoutWrapper">
+		<div id="leftColumn" class="layoutFixLeftSection">
+			<div class="layoutFixTopLeftSection">
+				<span class="title">onyx</span>
 			</div>
-			<div id="scrollableContentContainer" class="layoutFluidRightSection">
-				@RenderBody()
+			<div id="navigation">
+				<ul class="navigationList navigationMenu">
+					<li>
+						<a href="#Featured" class="selected">Featured</a>
+						<div class="identicationTag"></div>
+					</li>
+					<li>
+						<a href="#Create">Create</a>
+						<div class="identicationTag"></div>
+					</li>
+				</ul>
+			</div>
+
+			<div id="info">
+				<div>Onyx Version: v<span app-version></span></div>
 			</div>
 		</div>
+		<div id="scrollableContentContainer" class="layoutFluidRightSection" ng-view>
+			@RenderBody()
+			</div>
+	</div>
+	<!-- jquerty -->
+	@Scripts.Render("~/bundles/jquery")
+	@RenderSection("scripts", required: false)
 
-		@Scripts.Render("~/bundles/jquery")
-		@RenderSection("scripts", required: false)
-	</body>
+	<!-- Add Angular -->
+	@Scripts.Render("~/Scripts/angular.js")
+
+	<!-- Onyx Application Logic -->
+	@Scripts.Render("~/Scripts/app/app.js")
+	@Scripts.Render("~/Scripts/app/services.js")
+	@Scripts.Render("~/Scripts/app/controllers.js")
+	@Scripts.Render("~/Scripts/app/filters.js")
+	@Scripts.Render("~/Scripts/app/directives.js")
+</body>
 </html>

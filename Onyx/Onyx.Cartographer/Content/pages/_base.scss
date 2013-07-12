@@ -4,16 +4,3 @@
 	background-color: $main-background-colour;
 	-webkit-font-smoothing: antialiased;
 }
-
-.layoutWrapper > .layoutFluidRightSection {
-	position: absolute;
-	/* bottom: 90px; */
-	bottom: 0px;
-	top: 0;
-	left: 280px;
-	right: 0;
-	width: auto;
-	height: auto;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}

@@ -1,4 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+/* Backgrounds */
+/* Font Colour */
+/* Active Colours */
 hr {
   border: 0;
   border-top: 1px solid #3a3a3a;
@@ -26,19 +29,6 @@ body {
   color: #333333;
   background-color: white;
   -webkit-font-smoothing: antialiased;
-}
-
-.layoutWrapper > .layoutFluidRightSection {
-  position: absolute;
-  /* bottom: 90px; */
-  bottom: 0px;
-  top: 0;
-  left: 280px;
-  right: 0;
-  width: auto;
-  height: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .layoutWrapper {
@@ -99,7 +89,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  color: white;
+  color: #333333;
   text-decoration: none;
 }
 .layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a :hover,
@@ -116,4 +106,18 @@ body {
   height: 30px;
   line-height: 30px;
   text-align: center;
+  background-position: center;
+}
+
+.layoutWrapper > .layoutFluidRightSection {
+  position: absolute;
+  /* bottom: 90px; */
+  bottom: 0px;
+  top: 25px;
+  left: 315px;
+  right: 0;
+  width: auto;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
