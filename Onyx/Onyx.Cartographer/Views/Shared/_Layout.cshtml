@@ -41,8 +41,10 @@
 				<div>Onyx Version: <span app-version></span></div>
 			</div>
 		</div>
-		<div id="scrollableContentContainer" class="layoutFluidRightSection" ng-view>
-			@RenderBody()
+		<div id="scrollableContentContainer" class="layoutFluidRightSection">
+			<div class="mainPageContent" ng-view>			
+				@RenderBody()
+			</div>
 		</div>
 	</div>	
 
@@ -61,5 +63,14 @@
 	@Scripts.Render("~/Scripts/app/controllers.js")
 	@Scripts.Render("~/Scripts/app/filters.js")
 	@Scripts.Render("~/Scripts/app/directives.js")
+
+    <!-- Xbox Data Manager -->
+    @Scripts.Render("~/Scripts/libs/xdm.js")
+
+    <!-- Xbox Internals (woo, STFS!) -->
+    @Scripts.Render("~/Scripts/libs/XboxInternals.js")
+
+	<!-- Modal Manager -->
+	@Scripts.Render("~/Scripts/libs/modal_manager.js")
 </body>
 </html>
