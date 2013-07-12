@@ -7,38 +7,50 @@
 	@Styles.Render("~/Content/reset.css")
 	@Styles.Render("~/Content/application.css")
 	@Scripts.Render("~/bundles/modernizr")
+	
+	<!-- jquerty -->
+	@Scripts.Render("~/bundles/jquery")
+	@RenderSection("scripts", required: false)
 </head>
 
 <body>
 	<div id="wrapper" class="layoutWrapper">
 		<div id="leftColumn" class="layoutFixLeftSection">
 			<div class="layoutFixTopLeftSection">
-				<span class="title">onyx</span>
+				<a id="logo" href="/#Features">
+					<div id="logo-img"></div>
+				</a>
 			</div>
+
+			<hr class="position-relative" />			
+
 			<div id="navigation">
 				<ul class="navigationList navigationMenu">
 					<li>
-						<a href="#Featured" class="selected">Featured</a>
+						<a id="nav-feat" href="#Featured" class="selected">Featured</a>
 						<div class="identicationTag"></div>
 					</li>
 					<li>
-						<a href="#Create">Create</a>
+						<a id="nav-create" href="#Create">Create</a>
 						<div class="identicationTag"></div>
 					</li>
 				</ul>
 			</div>
 
-			<div id="info">
-				<div>Onyx Version: v<span app-version></span></div>
+			<div id="app-info">
+				<div>Onyx Version: <span app-version></span></div>
 			</div>
 		</div>
 		<div id="scrollableContentContainer" class="layoutFluidRightSection" ng-view>
 			@RenderBody()
-			</div>
-	</div>
-	<!-- jquerty -->
-	@Scripts.Render("~/bundles/jquery")
-	@RenderSection("scripts", required: false)
+		</div>
+	</div>	
+
+	<script>
+		
+	</script>
+	<!-- Random Shit -->	
+	@Scripts.Render("~/Scripts/util/misc.js")
 
 	<!-- Add Angular -->
 	@Scripts.Render("~/Scripts/angular.js")

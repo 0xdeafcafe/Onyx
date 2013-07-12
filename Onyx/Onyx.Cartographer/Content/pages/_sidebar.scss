@@ -33,51 +33,68 @@
 				margin-left: 40px;
 			}
 
-			.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #navigation {
-				width: 280px;
+			.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #logo > #logo-img {
+				margin-left: 20px;
+				width: 171px;
+				height: 49px;
+				background: url(/img/logos/sidebar-logo.png);
+				background-image: -webkit-image-set(url(/img/logos/sidebar-logo.png) 1x, url(/img/logos/sidebar-logo@2x.png) 2x);
 			}
 
-			.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList {
-				list-style-type: none;
-				padding: 0;
-				margin: 0;
-				overflow: hidden;
+		.layoutWrapper > .layoutFixLeftSection > #navigation {
+			width: 280px;
+		}
 
-				li {
-					a.selected {
-						background-color: $primary-active-colour;
-					}
+		.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
 
-					a {
-						padding: 12px 60px 12px 40px;
-						display: block;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						overflow: hidden;
-						position: relative;
+			li {
+				a.selected {
+					background-color: $primary-active-colour;
+				}
 
-						color: $primary-font-colour;
-						text-decoration: none;
+				a {
+					padding: 12px 60px 12px 40px;
+					display: block;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+					position: relative;
 
-						:hover, 
-						:focus {
-							color: $primary-invert-font-colour;
-							cursor: pointer;
-						}
-					}
+					color: $primary-invert-font-colour;
+					text-decoration: none;
 
-					.identicationTag {
-						position: absolute;
-						top: 6px;
-						right: 20px;
-
-						background-color: $secondary-active-colour;
-						width: 30px;
-						height: 30px;
-						line-height: 30px;
-						text-align: center;
-
-						background-position: center;
+					:hover, 
+					:focus {
+						color: $primary-invert-font-colour;
+						cursor: pointer;
 					}
 				}
+
+				.identicationTag {
+					position: relative;
+					float: right;
+					right: 20px;
+					margin-top: -37px;
+
+					background-color: $secondary-active-colour;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+
+					background-position: center;
+				}
 			}
+		}
+
+		.layoutWrapper > .layoutFixLeftSection > #app-info {
+			position: absolute;
+			bottom: 0;
+			margin-bottom: 20px;
+			margin-left: 40px;
+			color: $primary-invert-font-colour;
+		}

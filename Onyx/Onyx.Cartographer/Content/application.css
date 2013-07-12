@@ -24,10 +24,14 @@ a:focus {
   cursor: pointer;
 }
 
+.position-relative {
+  position: relative;
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif, ariel;
-  color: #333333;
-  background-color: white;
+  color: #161616;
+  background-color: gainsboro;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -37,7 +41,7 @@ body {
 }
 
 .layoutWrapper > #leftColumn {
-  background-color: #d8d8d8;
+  background-color: #161616;
 }
 
 .layoutWrapper > .layoutFixLeftSection {
@@ -60,7 +64,7 @@ body {
   height: 165px;
   width: 280px;
   padding-top: 40px;
-  background-color: #d8d8d8;
+  background-color: #161616;
 }
 
 .layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > .title {
@@ -69,7 +73,15 @@ body {
   margin-left: 40px;
 }
 
-.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #navigation {
+.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #logo > #logo-img {
+  margin-left: 20px;
+  width: 171px;
+  height: 49px;
+  background: url(/img/logos/sidebar-logo.png);
+  background-image: -webkit-image-set(url(/img/logos/sidebar-logo.png) 1x, url(/img/logos/sidebar-logo@2x.png) 2x);
+}
+
+.layoutWrapper > .layoutFixLeftSection > #navigation {
   width: 280px;
 }
 
@@ -80,7 +92,7 @@ body {
   overflow: hidden;
 }
 .layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a.selected {
-  background-color: #009ff2;
+  background-color: #1298de;
 }
 .layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a {
   padding: 12px 60px 12px 40px;
@@ -89,7 +101,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  color: #333333;
+  color: white;
   text-decoration: none;
 }
 .layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a :hover,
@@ -98,15 +110,24 @@ body {
   cursor: pointer;
 }
 .layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li .identicationTag {
-  position: absolute;
-  top: 6px;
+  position: relative;
+  float: right;
   right: 20px;
-  background-color: #21b3ff;
+  margin-top: -37px;
+  background-color: #22b3ff;
   width: 30px;
   height: 30px;
   line-height: 30px;
   text-align: center;
   background-position: center;
+}
+
+.layoutWrapper > .layoutFixLeftSection > #app-info {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  color: white;
 }
 
 .layoutWrapper > .layoutFluidRightSection {
