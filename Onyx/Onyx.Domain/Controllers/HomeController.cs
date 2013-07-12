@@ -10,6 +10,7 @@ namespace Onyx.Domain.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Onyx Domain";
             return View();
         }
     }

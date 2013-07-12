@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onyx.Domain", "Onyx.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onyx.Domain.Tests", "Onyx.Domain.Tests\Onyx.Domain.Tests.csproj", "{2AB039A6-D837-4986-86BD-16F1E5ADB481}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onyx.Cartographer", "Onyx.Cartographer\Onyx.Cartographer.csproj", "{1F4D3FA0-61D7-488B-A51B-A8EAEB153F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onyx.Cartographer.Tests", "Onyx.Cartographer.Tests\Onyx.Cartographer.Tests.csproj", "{F4310A38-3B32-4EFA-B2BC-7613F739CF15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2AB039A6-D837-4986-86BD-16F1E5ADB481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AB039A6-D837-4986-86BD-16F1E5ADB481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AB039A6-D837-4986-86BD-16F1E5ADB481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4D3FA0-61D7-488B-A51B-A8EAEB153F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4D3FA0-61D7-488B-A51B-A8EAEB153F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4D3FA0-61D7-488B-A51B-A8EAEB153F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4D3FA0-61D7-488B-A51B-A8EAEB153F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4310A38-3B32-4EFA-B2BC-7613F739CF15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4310A38-3B32-4EFA-B2BC-7613F739CF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4310A38-3B32-4EFA-B2BC-7613F739CF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4310A38-3B32-4EFA-B2BC-7613F739CF15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
