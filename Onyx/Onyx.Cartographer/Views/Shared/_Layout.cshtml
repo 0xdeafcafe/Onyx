@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@ViewBag.Title - Editor</title>
-		@Styles.Render("~/Content/css")		
-		@Scripts.Render("~/bundles/angular.js")
+		<title>@ViewBag.Title - Editor</title>		
+		@Styles.Render("~/Content/reset.css")
+		@Styles.Render("~/Content/application.css")
+		@Scripts.Render("~/Scripts/angular.js")
 		@Scripts.Render("~/bundles/modernizr")
 	</head>
 
@@ -13,16 +14,23 @@
 		<div id="wrapper" class="layoutWrapper">
 			<div id="leftColumn" class="layoutFixLeftSection">
 				<div class="layoutFixTopLeftSection">
-
+					<span class="title">onyx</span>
+				</div>
+				<div id="navigation">
+					<ul class="navigationList navigationMenu">
+						<li>
+							<a href="#Featured" class="selected">Featured</a>
+							<div class="identicationTag"></div>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div id="scrollableContentContainer" class="layoutFluidRightSection">
 				@RenderBody()
-				</div>
 			</div>
+		</div>
 
 		@Scripts.Render("~/bundles/jquery")
-		@Scripts.Render("~/bundles/bootstrap")
 		@RenderSection("scripts", required: false)
 	</body>
 </html>

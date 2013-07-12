@@ -1,1 +1,119 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+hr {
+  border: 0;
+  border-top: 1px solid #3a3a3a;
+  margin: 20px 40px;
+  display: block;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+  -webkit-margin-start: 0.5em;
+  -webkit-margin-end: 0.5em;
+}
+
+a {
+  color: #7B4;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #2B9646;
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif, ariel;
+  color: #333333;
+  background-color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layoutWrapper > .layoutFluidRightSection {
+  position: absolute;
+  /* bottom: 90px; */
+  bottom: 0px;
+  top: 0;
+  left: 280px;
+  right: 0;
+  width: auto;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.layoutWrapper {
+  height: inherit;
+  box-sizing: border-box;
+}
+
+.layoutWrapper > #leftColumn {
+  background-color: #d8d8d8;
+}
+
+.layoutWrapper > .layoutFixLeftSection {
+  position: absolute;
+  top: 165px;
+  /* bottom: 90px; */
+  bottom: 0px;
+  left: 0;
+  width: 280px;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: content-box;
+}
+
+.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 165px;
+  width: 280px;
+  padding-top: 40px;
+  background-color: #d8d8d8;
+}
+
+.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > .title {
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-left: 40px;
+}
+
+.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #navigation {
+  width: 280px;
+}
+
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a.selected {
+  background-color: #009ff2;
+}
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a {
+  padding: 12px 60px 12px 40px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a :hover,
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li a :focus {
+  color: white;
+  cursor: pointer;
+}
+.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList li .identicationTag {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+  background-color: #21b3ff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}

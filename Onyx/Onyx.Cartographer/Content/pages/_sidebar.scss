@@ -1,0 +1,81 @@
+﻿.layoutWrapper {
+	height: inherit;
+	box-sizing: border-box;
+}
+
+	.layoutWrapper > #leftColumn {
+		background-color: $sidebar-background-colour;
+	}
+	.layoutWrapper > .layoutFixLeftSection {
+		position: absolute;
+		top: 165px;
+		/* bottom: 90px; */
+		bottom: 0px;
+		left: 0;
+		width: 280px;
+		height: auto;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		box-sizing: content-box;
+	}
+		.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 165px;
+			width: 280px;
+			padding-top: 40px;
+			background-color: $sidebar-background-colour;
+		}
+			.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > .title {
+				font-size: 2.5em;
+				font-weight: 300;
+				margin-left: 40px;
+			}
+
+			.layoutWrapper > .layoutFixLeftSection > .layoutFixTopLeftSection > #navigation {
+				width: 280px;
+			}
+
+			.layoutWrapper > .layoutFixLeftSection > #navigation > .navigationList {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+
+				li {
+					a.selected {
+						background-color: $primary-active-colour;
+					}
+
+					a {
+						padding: 12px 60px 12px 40px;
+						display: block;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						position: relative;
+
+						color: $primary-invert-font-colour;
+						text-decoration: none;
+
+						:hover, 
+						:focus {
+							color: $primary-invert-font-colour;
+							cursor: pointer;
+						}
+					}
+
+					.identicationTag {
+						position: absolute;
+						top: 6px;
+						right: 20px;
+
+						background-color: $secondary-active-colour;
+						width: 30px;
+						height: 30px;
+						line-height: 30px;
+						text-align: center;
+					}
+				}
+			}
