@@ -1,6 +1,7 @@
 ﻿///<reference path="XboxInternals.d.ts" />
 ///<reference path="../jquery-1.8.2.d.ts" />
 ///<reference path="../util/modal_manager.ts" />
+///<reference path="../cartographer/cartographer.ts" />
 
 window.onload = () => {
     window.addEventListener("dragenter", (evt) => {
@@ -34,12 +35,11 @@ function handleFile(file: File) {
     XboxInternals.IO.FileIO.LoadFromFile(file, (io) => {
         try {
             var stfs = new XboxInternals.Stfs.StfsPackage(io, 0);
-            console.log(stfs);
-            console.log(stfs.metaData.displayName);
-            console.log(stfs.metaData.displayName.length);
         }
         catch (e) {
             showModal(ModalTypes.ErrorModal, 'Invalid STFS Package', 'The selected file was not a valid STFS Package. Raw error is: <br /><br /> ' + e);
         }
+
+        cartographer = new Onyx.Cartographer(stfs);
     });
 }

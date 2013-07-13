@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="cartographer">
+<html lang="en" ng-app="onyx">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,13 @@
 	<!-- jquerty -->
 	@Scripts.Render("~/bundles/jquery")
 	@RenderSection("scripts", required: false)
+
+	<!-- IDE -->	
+	@Styles.Render("~/Content/ide/codemirror.css")	
+	@Scripts.Render("~/Scripts/ide/codemirror.js")
+	@Scripts.Render("~/Scripts/ide/mode/wumboscript.js")
+	@Styles.Render("~/Content/ide/theme/xq-light.css")
+
 </head>
 
 <body>
@@ -61,14 +68,17 @@
 				<input type="button" value="Close" />
 			</div>
 		</div>
-	</div>	
-
-	<!-- Utilities -->	
-	@Scripts.Render("~/Scripts/util/misc.js")
-	@Scripts.Render("~/Scripts/util/modal_manager.js")
-
+	</div>
 	<!-- Add Angular -->
 	@Scripts.Render("~/Scripts/angular.js")
+
+	<!-- Cartographer -->	
+	@Scripts.Render("~/Scripts/cartographer/cartographer.js")
+
+	<!-- Utilities -->	
+	@Scripts.Render("~/Scripts/util/functions.js")	
+	@Scripts.Render("~/Scripts/util/misc.js")
+	@Scripts.Render("~/Scripts/util/modal_manager.js")
 
 	<!-- Onyx Application Logic -->
 	@Scripts.Render("~/Scripts/app/app.js")
@@ -82,5 +92,9 @@
 
     <!-- Xbox Internals (woo, STFS!) -->
     @Scripts.Render("~/Scripts/libs/XboxInternals.js")
+
+	<script>
+		var cartographer;
+	</script>
 </body>
 </html>

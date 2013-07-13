@@ -2,7 +2,7 @@
 
 /* Filters */
 
-angular.module('cartographer.filters', []).
+angular.module('onyx.filters', []).
   filter('interpolate', ['version', function (version) {
   	return function (text) {
   		return String(text).replace(/\%VERSION\%/mg, version);

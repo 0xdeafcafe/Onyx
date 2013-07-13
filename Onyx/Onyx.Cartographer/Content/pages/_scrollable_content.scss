@@ -2,13 +2,13 @@
 	position: absolute;
 	/* bottom: 90px; */
 	bottom: 0px;
-	top: 25px;
+	top: 50px;
 	left: 315px;
 	right: 0;
 	width: auto;
 	height: auto;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow: hidden;
+	overflow-x: visible;
 
 	background: url(/img/logos/logo-base.png);
 	background-image: -webkit-image-set(url(/img/logos/logo-base.png) 1x, url(/img/logos/logo-base@2x.png) 2x);

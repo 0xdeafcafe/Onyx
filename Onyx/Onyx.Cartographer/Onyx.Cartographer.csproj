@@ -116,8 +116,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularViews\Create\modify.html" />
     <Content Include="Content\application.css" />
     <Content Include="Content\pages\_sidebar.scss" />
+    <Content Include="Content\pages\create\_index.scss" />
+    <Content Include="Content\pages\create\_modify.scss" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
@@ -153,6 +156,29 @@
     <Content Include="Scripts\app\directives.js" />
     <Content Include="Scripts\app\filters.js" />
     <Content Include="Scripts\app\services.js" />
+    <Content Include="Scripts\cartographer\cartographer.ts" />
+    <Content Include="Content\ide\codemirror.css" />
+    <Content Include="Scripts\ide\codemirror.js" />
+    <Content Include="Scripts\ide\codemirror.d.ts" />
+    <Content Include="Scripts\ide\mode\javascript.js" />
+    <Content Include="Content\ide\theme\ambiance-mobile.css" />
+    <Content Include="Content\ide\theme\ambiance.css" />
+    <Content Include="Content\ide\theme\blackboard.css" />
+    <Content Include="Content\ide\theme\cobalt.css" />
+    <Content Include="Content\ide\theme\eclipse.css" />
+    <Content Include="Content\ide\theme\elegant.css" />
+    <Content Include="Content\ide\theme\erlang-dark.css" />
+    <Content Include="Content\ide\theme\lesser-dark.css" />
+    <Content Include="Content\ide\theme\midnight.css" />
+    <Content Include="Content\ide\theme\monokai.css" />
+    <Content Include="Content\ide\theme\neat.css" />
+    <Content Include="Content\ide\theme\night.css" />
+    <Content Include="Content\ide\theme\rubyblue.css" />
+    <Content Include="Content\ide\theme\solarized.css" />
+    <Content Include="Content\ide\theme\twilight.css" />
+    <Content Include="Content\ide\theme\vibrant-ink.css" />
+    <Content Include="Content\ide\theme\xq-dark.css" />
+    <Content Include="Content\ide\theme\xq-light.css" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.8.2.d.ts" />
@@ -160,6 +186,7 @@
     <Content Include="Scripts\libs\XboxInternals.d.ts" />
     <Content Include="Scripts\libs\XboxInternals.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\util\functions.js" />
     <Content Include="Scripts\util\misc.js" />
     <Content Include="Scripts\util\modal_manager.ts" />
     <Content Include="Scripts\_references.js" />

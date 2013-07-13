@@ -8,15 +8,10 @@ $(window).on('hashchange', function () {
 	$('#nav-create').removeClass('selected');
 	$('#nav-about').removeClass('selected');
 
-	switch (windowHash) {
-		case 'create':
-			$('#nav-create').addClass('selected');
-			break;
-		case 'featured':
-			$('#nav-feat').addClass('selected');
-			break;
-		case 'about':
-			$('#nav-about').addClass('selected');
-			break;
-	}
+	if (windowHash.startsWith('create'))
+		$('#nav-create').addClass('selected');
+	else if (windowHash.startsWith('featured'))
+		$('#nav-feat').addClass('selected');
+	else if (windowHash.startsWith('about'))
+		$('#nav-about').addClass('selected');
 });

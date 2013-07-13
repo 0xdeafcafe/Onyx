@@ -53,6 +53,8 @@ function closeModal() {
     // close modal
     $('#modal').fadeOut(200);
     $('#modal').removeClass();
+
+    // hide opacity mask
     $('#opacityMask').css('display', 'none');
 
     modalCount--;

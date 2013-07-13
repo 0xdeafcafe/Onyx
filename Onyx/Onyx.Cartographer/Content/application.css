@@ -1,9 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500);
 /* Backgrounds */
 /* Font Colour */
 /* Active Colours */
 /* Modals */
 /* Inputs */
+/* Border */
 hr {
   border: 0;
   border-top: 1px solid #3a3a3a;
@@ -160,13 +162,13 @@ body {
   position: absolute;
   /* bottom: 90px; */
   bottom: 0px;
-  top: 25px;
+  top: 50px;
   left: 315px;
   right: 0;
   width: auto;
   height: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
+  overflow-x: visible;
   background: url(/img/logos/logo-base.png);
   background-image: -webkit-image-set(url(/img/logos/logo-base.png) 1x, url(/img/logos/logo-base@2x.png) 2x);
   background-position: center;
@@ -263,4 +265,22 @@ body {
   background-image: -webkit-image-set(url(/img/modal-icons/warning.png) 1x, url(/img/modal-icons/warning@2x.png) 2x);
   background-position: 10px center;
   background-repeat: no-repeat;
+}
+
+.dropGametypeHint {
+  height: 120px;
+  width: 600px;
+  text-align: center;
+  line-height: 120px;
+  margin: 0 auto;
+}
+.dropGametypeHint span {
+  font-size: 40px;
+  font-weight: 200;
+  color: #7c7c7c;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
 }
