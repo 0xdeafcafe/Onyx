@@ -1,0 +1,89 @@
+﻿.layoutWrapper > #modal {
+	display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+	margin: -220px 0 0 -220px;
+
+	width: 460px;
+	min-height: 100px;
+
+	background: white;
+	box-shadow: 0px 0px 40px $modal-box-shadow;
+
+	h1 {
+		padding: 15px;
+		padding-left: 45px;
+		color: white;
+		font-size: 18px;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-family: 'Source Sans Pro', sans-serif, arial;
+	}
+	p {
+		margin: 15px;
+		font-weight: 500;
+		font-size: 0.9em;
+		color: $secondary-font-colour;
+		line-heght: 20px;
+		font-family: 'Source Sans Pro', sans-serif, arial;
+	}
+
+	.actions {
+		overflow: hidden;
+		padding: 0 15px 15px 15px;
+
+		input {
+			float: right;
+		}
+	}
+}
+
+.layoutWrapper > #modal.error {
+	border-bottom: 3px solid $modal-ident-error;
+
+	h1 {
+		background: $modal-ident-error;
+		background-image: url(/img/modal-icons/error.png);
+		background-image: -webkit-image-set(url(/img/modal-icons/error.png) 1x, url(/img/modal-icons/error@2x.png) 2x);
+		background-position: 10px center;
+		background-repeat: no-repeat;
+	}
+}
+
+.layoutWrapper > #modal.alert {
+	border-bottom: 3px solid $modal-ident-alert;
+
+	h1 {
+		background: $modal-ident-alert;
+		background-image: url(/img/modal-icons/alert.png);
+		background-image: -webkit-image-set(url(/img/modal-icons/alert.png) 1x, url(/img/modal-icons/alert@2x.png) 2x);
+		background-position: 10px center;
+		background-repeat: no-repeat;
+	}
+}
+
+.layoutWrapper > #modal.info {
+	border-bottom: 3px solid $modal-ident-info;
+
+	h1 {
+		background: $modal-ident-info;
+		background-image: url(/img/modal-icons/info.png);
+		background-image: -webkit-image-set(url(/img/modal-icons/info.png) 1x, url(/img/modal-icons/info@2x.png) 2x);
+		background-position: 10px center;
+		background-repeat: no-repeat;
+	}
+}
+
+.layoutWrapper > #modal.warning {
+	border-bottom: 3px solid $modal-ident-warning;
+
+	h1 {
+		background: $modal-ident-warning;
+		background-image: url(/img/modal-icons/warning.png);
+		background-image: -webkit-image-set(url(/img/modal-icons/warning.png) 1x, url(/img/modal-icons/warning@2x.png) 2x);
+		background-position: 10px center;
+		background-repeat: no-repeat;
+	}
+}

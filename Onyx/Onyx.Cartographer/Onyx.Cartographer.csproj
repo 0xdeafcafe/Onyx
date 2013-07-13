@@ -121,8 +121,10 @@
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
+    <Content Include="Content\pages\_modals.scss" />
     <None Include="Content\shared\_fonts.scss" />
     <None Include="Content\pages\_base.scss" />
+    <Content Include="Content\shared\_inputs.scss" />
     <None Include="Content\shared\_tags.scss" />
     <Content Include="Content\reset.css" />
     <Content Include="favicon.ico" />
@@ -133,8 +135,14 @@
     <Content Include="img\logos\logo-base.png" />
     <Content Include="img\logos\sidebar-logo%402x.png" />
     <Content Include="img\logos\sidebar-logo.png" />
-    <Content Include="partials\partial1.html" />
-    <Content Include="partials\partial2.html" />
+    <Content Include="img\modal-icons\alert%402x.png" />
+    <Content Include="img\modal-icons\alert.png" />
+    <Content Include="img\modal-icons\error%402x.png" />
+    <Content Include="img\modal-icons\error.png" />
+    <Content Include="img\modal-icons\info%402x.png" />
+    <Content Include="img\modal-icons\info.png" />
+    <Content Include="img\modal-icons\warning%402x.png" />
+    <Content Include="img\modal-icons\warning.png" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
@@ -155,6 +163,11 @@
     <Content Include="Scripts\util\misc.js" />
     <Content Include="Scripts\util\modal_manager.ts" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="AngularViews\About\index.html" />
+    <Content Include="AngularViews\Create\index.html" />
+    <Content Include="AngularViews\Featured\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

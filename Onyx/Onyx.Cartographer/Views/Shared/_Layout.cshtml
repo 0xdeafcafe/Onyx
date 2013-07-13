@@ -34,6 +34,10 @@
 						<a id="nav-create" href="#Create">Create</a>
 						<div class="identicationTag"></div>
 					</li>
+					<li>
+						<a id="nav-about" href="#About">About</a>
+						<div class="identicationTag"></div>
+					</li>
 				</ul>
 			</div>
 
@@ -46,13 +50,22 @@
 				@RenderBody()
 			</div>
 		</div>
+
+		<div id="opacityMask"></div>
+		<div id="modal" class="error">
+			<h1>Modal Example</h1>	
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+			</p>
+			<div class="actions">
+				<input type="button" value="Close" />
+			</div>
+		</div>
 	</div>	
 
-	<script>
-		
-	</script>
-	<!-- Random Shit -->	
+	<!-- Utilities -->	
 	@Scripts.Render("~/Scripts/util/misc.js")
+	@Scripts.Render("~/Scripts/util/modal_manager.js")
 
 	<!-- Add Angular -->
 	@Scripts.Render("~/Scripts/angular.js")
@@ -69,8 +82,5 @@
 
     <!-- Xbox Internals (woo, STFS!) -->
     @Scripts.Render("~/Scripts/libs/XboxInternals.js")
-
-	<!-- Modal Manager -->
-	@Scripts.Render("~/Scripts/libs/modal_manager.js")
 </body>
 </html>

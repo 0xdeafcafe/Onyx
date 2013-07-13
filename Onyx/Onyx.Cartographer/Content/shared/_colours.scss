@@ -1,11 +1,23 @@
 ﻿/* Backgrounds */ 
 $main-background-colour: #dcdcdc;
 $sidebar-background-colour: #161616;
+$mask-background-colour: #6c6c6c;
 
 /* Font Colour */ 
 $primary-font-colour: #161616;
+$secondary-font-colour: #747474;
 $primary-invert-font-colour: white;
 
 /* Active Colours */ 
 $primary-active-colour: #1298de;
 $secondary-active-colour: #22b3ff;
+
+/* Modals */
+$modal-box-shadow: #1b1b1b;
+$modal-ident-error: #B00;
+$modal-ident-alert: #92c83e;
+$modal-ident-warning: #f9c33d;
+$modal-ident-info: #306b9a;
+
+/* Inputs */
+$primary-button-background: #3b3b3b;

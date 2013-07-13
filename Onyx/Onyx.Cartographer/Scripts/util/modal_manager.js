@@ -1,11 +1,12 @@
-﻿///<reference path="../jquery-1.8.2.d.ts" />
+///<reference path="../jquery-1.8.2.d.ts" />
+var ModalTypes;
+(function (ModalTypes) {
+    ModalTypes[ModalTypes["WarningModal"] = 0] = "WarningModal";
+    ModalTypes[ModalTypes["ErrorModal"] = 1] = "ErrorModal";
+    ModalTypes[ModalTypes["InfoModal"] = 2] = "InfoModal";
 
-enum ModalTypes {
-	WarningModal,
-	ErrorModal,
-    InfoModal,
-    AlertModal
-}
+    ModalTypes[ModalTypes["AlertModal"] = 3] = "AlertModal";
+})(ModalTypes || (ModalTypes = {}));
 
 $('document').keypress(function (e) {
     if (e.keyCode == 27)
@@ -18,15 +19,14 @@ $('#modal > .actions > input').click(function () {
     closeModal();
 });
 
-var modalCount: number = 1;
-function showModal(modalType: ModalTypes, title: string, description: string) {
+var modalCount = 1;
+function showModal(modalType, title, description) {
     if (modalCount == 0) {
         // add background mask
         $('#opacityMask').fadeTo(200, 0.7);
     }
     modalCount++;
 
-    // load modal
     switch (modalType) {
         case ModalTypes.AlertModal:
             $('#modal').addClass('alert');
@@ -62,3 +62,4 @@ function closeModal() {
         $('#opacityMask').css('display', 'none');
     }
 }
+//@ sourceMappingURL=modal_manager.js.map

@@ -2,8 +2,10 @@
 @import "shared/fonts";
 @import "shared/tags";
 @import "shared/css_fixes";
+@import "shared/inputs";
 
 @import "pages/base";
 @import "pages/sidebar";
 @import "pages/scrollable_content";
 @import "pages/home";
+@import "pages/modals";

@@ -1,5 +1,6 @@
 ﻿///<reference path="XboxInternals.d.ts" />
 ///<reference path="../jquery-1.8.2.d.ts" />
+///<reference path="../util/modal_manager.ts" />
 
 window.onload = () => {
     window.addEventListener("dragenter", (evt) => {
@@ -22,8 +23,8 @@ window.onload = () => {
         var count = files.length;
 
         if (count > 1)
-            console.log('too many files dropped');
-        else if (count > 0)
+            showModal(ModalTypes.WarningModal, 'Woah Cowboy!', 'You can only drop 1 file at a time into Onyx.');
+        else if (count == 1)
             handleFile(files[0]);
 
     }, false);
@@ -38,7 +39,7 @@ function handleFile(file: File) {
             console.log(stfs.metaData.displayName.length);
         }
         catch (e) {
-            console.log(e);
+            showModal(ModalTypes.ErrorModal, 'Invalid STFS Package', 'The selected file was not a valid STFS Package. Raw error is: <br /><br /> ' + e);
         }
     });
 }

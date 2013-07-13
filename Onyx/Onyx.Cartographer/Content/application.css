@@ -2,15 +2,14 @@
 /* Backgrounds */
 /* Font Colour */
 /* Active Colours */
+/* Modals */
+/* Inputs */
 hr {
   border: 0;
   border-top: 1px solid #3a3a3a;
-  margin: 20px 40px;
+  padding: 5px 5px;
+  margin: 10px 0;
   display: block;
-  -webkit-margin-before: 0.5em;
-  -webkit-margin-after: 0.5em;
-  -webkit-margin-start: 0.5em;
-  -webkit-margin-end: 0.5em;
 }
 
 a {
@@ -28,8 +27,35 @@ a:focus {
   position: relative;
 }
 
+input[type="button"],
+input[type="submit"],
+button {
+  border: 0;
+  border-left: 3px solid #22b3ff;
+  padding: 8px 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  -o-transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  line-height: normal;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  background-color: #3b3b3b;
+  color: white;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+  background: #22b3ff;
+}
+
 body {
-  font-family: 'Source Sans Pro', sans-serif, ariel;
+  font-family: 'Source Sans Pro', sans-serif, arial;
   color: #161616;
   background-color: gainsboro;
   -webkit-font-smoothing: antialiased;
@@ -145,5 +171,96 @@ body {
   background-image: -webkit-image-set(url(/img/logos/logo-base.png) 1x, url(/img/logos/logo-base@2x.png) 2x);
   background-position: center;
   background-attach: none;
+  background-repeat: no-repeat;
+}
+
+.layoutWrapper > #opacityMask {
+  position: absolute;
+  display: none;
+  opacity: 0.7;
+  background-color: #6c6c6c;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.layoutWrapper > #modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -220px 0 0 -220px;
+  width: 460px;
+  min-height: 100px;
+  background: white;
+  box-shadow: 0px 0px 40px #1b1b1b;
+}
+.layoutWrapper > #modal h1 {
+  padding: 15px;
+  padding-left: 45px;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Source Sans Pro', sans-serif, arial;
+}
+.layoutWrapper > #modal p {
+  margin: 15px;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #747474;
+  line-heght: 20px;
+  font-family: 'Source Sans Pro', sans-serif, arial;
+}
+.layoutWrapper > #modal .actions {
+  overflow: hidden;
+  padding: 0 15px 15px 15px;
+}
+.layoutWrapper > #modal .actions input {
+  float: right;
+}
+
+.layoutWrapper > #modal.error {
+  border-bottom: 3px solid #bb0000;
+}
+.layoutWrapper > #modal.error h1 {
+  background: #bb0000;
+  background-image: url(/img/modal-icons/error.png);
+  background-image: -webkit-image-set(url(/img/modal-icons/error.png) 1x, url(/img/modal-icons/error@2x.png) 2x);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.layoutWrapper > #modal.alert {
+  border-bottom: 3px solid #92c83e;
+}
+.layoutWrapper > #modal.alert h1 {
+  background: #92c83e;
+  background-image: url(/img/modal-icons/alert.png);
+  background-image: -webkit-image-set(url(/img/modal-icons/alert.png) 1x, url(/img/modal-icons/alert@2x.png) 2x);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.layoutWrapper > #modal.info {
+  border-bottom: 3px solid #306b9a;
+}
+.layoutWrapper > #modal.info h1 {
+  background: #306b9a;
+  background-image: url(/img/modal-icons/info.png);
+  background-image: -webkit-image-set(url(/img/modal-icons/info.png) 1x, url(/img/modal-icons/info@2x.png) 2x);
+  background-position: 10px center;
+  background-repeat: no-repeat;
+}
+
+.layoutWrapper > #modal.warning {
+  border-bottom: 3px solid #f9c33d;
+}
+.layoutWrapper > #modal.warning h1 {
+  background: #f9c33d;
+  background-image: url(/img/modal-icons/warning.png);
+  background-image: -webkit-image-set(url(/img/modal-icons/warning.png) 1x, url(/img/modal-icons/warning@2x.png) 2x);
+  background-position: 10px center;
   background-repeat: no-repeat;
 }

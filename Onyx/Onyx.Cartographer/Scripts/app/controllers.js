@@ -2,10 +2,13 @@
 
 /* Controllers */
 
-angular.module('cartographer.controllers', []).
-  controller('FeaturedController', [function () {
+angular.module('cartographer.controllers', [])
+  .controller('FeaturedController', [function ($scope, $routeParams) {
 
   }])
-  .controller('CreateController', [function () {
+  .controller('CreateController', [function ($scope, $routeParams) {
+
+  }])
+  .controller('AboutController', [function ($scope, $routeParams) {
 
   }]);

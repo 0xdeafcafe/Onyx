@@ -6,6 +6,7 @@ $(window).on('hashchange', function () {
 	var windowHash = window.location.hash.substring(2).toLowerCase();
 	$('#nav-feat').removeClass('selected');
 	$('#nav-create').removeClass('selected');
+	$('#nav-about').removeClass('selected');
 
 	switch (windowHash) {
 		case 'create':
@@ -13,6 +14,9 @@ $(window).on('hashchange', function () {
 			break;
 		case 'featured':
 			$('#nav-feat').addClass('selected');
+			break;
+		case 'about':
+			$('#nav-about').addClass('selected');
 			break;
 	}
 });
