@@ -1,7 +1,7 @@
 ﻿.layoutWrapper > #modalMask {
 	position: absolute;
 	display: none;
-	opacity: 0.7;
+	opacity: 1.0;
 	background-color: $mask-background-colour;
 
 	top: 0;
@@ -13,7 +13,7 @@
 .layoutWrapper > #pendingMask {
 	position: absolute;
 	display: none;
-	opacity: 0.7;
+	opacity: 1.0;
 
 	background-color: $mask-background-colour;
 	background-image: url(../img/animated/loading-white.gif);
