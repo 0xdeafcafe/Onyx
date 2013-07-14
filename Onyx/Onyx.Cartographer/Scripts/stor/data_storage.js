@@ -3,7 +3,7 @@ var Onyx;
     var DataStorage = (function () {
         function DataStorage() {
         }
-        DataStorage.Domain = 'http://domain.onyx.xboxchaos.com/';
+        DataStorage.Domain = 'http://localhost:1337/';
         return DataStorage;
     })();
     Onyx.DataStorage = DataStorage;

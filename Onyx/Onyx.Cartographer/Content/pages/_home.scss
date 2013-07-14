@@ -26,7 +26,7 @@
 	right: 0;
 }
 
-.layoutWrapper > #userNeedsJavascriptMessage {
+.layoutWrapper > .alertPage {
 	position: absolute;
 
 	background-color: $sidebar-background-colour;
@@ -66,19 +66,19 @@
 			background-image: -webkit-image-set(url(/img/logos/sidebar-logo.png) 1x, url(/img/logos/sidebar-logo@2x.png) 2x);
 		}
 
-		.njsWrapper {
+		.wrapper {
 			position: relative;
-			width: 950px;
+			width: 700px;
 			height: calc(100% - 249px);
 			margin: 0 auto;
 
-			.njsContent {
+			.content {
 				position: absolute;
 				bottom: 120px;
 				z-index: 1;
 				width: 100%;
 
-				.njsPrimaryContent {
+				.primaryContent {
 					width: 100%;
 					position: relative;
 
@@ -88,17 +88,27 @@
 						line-height: 1.26em;
 
 						display: block;
-						width: 80%;
 						margin: 0;
 
 						white-space: normal;
 						color: #ebebeb;
+
+						strong {
+						font-size: 70px;
+						}
+
+						hr {
+							border-top: 2px solid white;
+							height: 2px;
+							margin: 0 0 5px 0;
+							padding: 0;
+						}
 					}
 				}
 			}
 		}
 
-		.njsFooter {
+		.footer {
 			position: relative;
 			background-color: $sidebar-background-colour;
 			width: 100%;
@@ -125,7 +135,7 @@
 
 					li {
 						display: inline;
-						margin: 0 8px;
+						margin: 0 4px;
 						line-height: 40px;
 
 						a { color: inherit; }
