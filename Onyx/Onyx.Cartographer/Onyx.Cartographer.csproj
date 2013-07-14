@@ -225,6 +225,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StaticPages\Soon\index.html" />
+    <Content Include="StaticPages\Soon\sidebar-logo%402x.png" />
+    <Content Include="StaticPages\Soon\sidebar-logo.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
