@@ -23,21 +23,6 @@
 	</div>
 </div>
 
-<script>
-	$(document).ready(function () {
-		updateWindow();
-	});
-
-	window.onresize = function () {
-		updateWindow();
-	}
-
-	function updateWindow() {
-		console.log($(window).outerHeight());
-		$(".CodeMirror").css("height", ($(window).outerHeight() - $(".nav-tabs").outerHeight() - $("#gamesaveModify > h1").outerHeight() - 130));
-	}
-</script>
-
 <style>
 	.nav-tabs {
 		cursor: pointer;

@@ -4,6 +4,7 @@
 ///<reference path="../util/mask_manager.ts" />
 ///<reference path="../ide/codemirror.d.ts" />
 ///<reference path="../stor/data_storage.ts" />
+///<reference path="../util/events.ts" />
 
 module Onyx {
     export class Cartographer {
@@ -65,10 +66,11 @@ module Onyx {
 						theme: 'onyx',
 						value: data,
 						tabindex: 0,
-						placeholder: ''
+						placeholder: '',
+						autofocus: true
 					});
-					$(".CodeMirror").css("height", ($(window).outerHeight() - $(".nav-tabs").outerHeight() - $("#gamesaveModify > h1").outerHeight() - 130));
 					hidePendingMask();
+					reDrawCodeIde();
                 }
             });
         }

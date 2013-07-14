@@ -189,6 +189,8 @@
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.8.2.d.ts" />
+    <Content Include="Scripts\util\events.js" />
+    <Content Include="Scripts\util\events.ts" />
     <Content Include="Scripts\libs\xdm.js" />
     <Content Include="Scripts\libs\xdm.ts" />
     <Content Include="Scripts\libs\XboxInternals.d.ts" />
