@@ -3503,11 +3503,12 @@ window.CodeMirror = (function() {
   // FROMTEXTAREA
 
   CodeMirror.fromTextArea = function(textarea, options) {
-    if (!options) options = {};
-    options.value = textarea.value;
-    if (!options.tabindex && textarea.tabindex)
+  	if (!options) options = {};
+	if (options.value == null)
+		options.value = textarea.value;
+	if (options.tabindex == null)
       options.tabindex = textarea.tabindex;
-    if (!options.placeholder && textarea.placeholder)
+	if (options.placeholder == null)
       options.placeholder = textarea.placeholder;
     // Set autofocus to true if this textarea is focused, or if it has
     // autofocus and no other element is focused.

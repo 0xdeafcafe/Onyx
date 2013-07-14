@@ -56,7 +56,6 @@ module Onyx {
                 },
                 processData: false,
 				success: function (data) {
-					hidePendingMask();
                     window.location.hash = 'Create/Modify';
 					$('.scriptData > #scriptmod').val(data);
 
@@ -64,9 +63,12 @@ module Onyx {
 						lineNumbers: true,
 						styleActiveLine: true,
 						theme: 'onyx',
-						value: data
+						value: data,
+						tabindex: 0,
+						placeholder: ''
 					});
 					$(".CodeMirror").css("height", ($(window).outerHeight() - $(".nav-tabs").outerHeight() - $("#gamesaveModify > h1").outerHeight() - 130));
+					hidePendingMask();
                 }
             });
         }
