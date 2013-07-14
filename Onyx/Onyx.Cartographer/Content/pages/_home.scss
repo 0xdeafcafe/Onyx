@@ -25,3 +25,115 @@
 	left: 0;
 	right: 0;
 }
+
+.layoutWrapper > #userNeedsJavascriptMessage {
+	position: absolute;
+
+	background-color: $sidebar-background-colour;
+	background-image: url('http://i.imgur.com/jYbs6eE.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+
+	.innerWrapper {
+		position: absolute;
+
+		background: rgb(255,255,255); /* Old browsers */
+		background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 0%, rgba(38,38,38,1.0) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(38,38,38,1.0))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0%,rgba(38,38,38,1.0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0%,rgba(38,38,38,1.0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0%,rgba(38,38,38,1.0) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0%,rgba(38,38,38,1.0) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#262626',GradientType=0 ); /* IE6-9 */
+		
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		.title {
+			margin-left: 60px;
+			margin-top: 60px;
+			width: 171px;
+			height: 49px;
+			background: url(/img/logos/sidebar-logo.png);
+			background-image: -webkit-image-set(url(/img/logos/sidebar-logo.png) 1x, url(/img/logos/sidebar-logo@2x.png) 2x);
+		}
+
+		.njsWrapper {
+			position: relative;
+			width: 950px;
+			height: calc(100% - 249px);
+			margin: 0 auto;
+
+			.njsContent {
+				position: absolute;
+				bottom: 120px;
+				z-index: 1;
+				width: 100%;
+
+				.njsPrimaryContent {
+					width: 100%;
+					position: relative;
+
+					.header {
+						font-size: 45px;
+						font-weight: 100;
+						line-height: 1.26em;
+
+						display: block;
+						width: 80%;
+						margin: 0;
+
+						white-space: normal;
+						color: #ebebeb;
+					}
+				}
+			}
+		}
+
+		.njsFooter {
+			position: relative;
+			background-color: $sidebar-background-colour;
+			width: 100%;
+			height: 140px;
+			font-size: 1.857em;
+
+			.sitemap {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				height: 40px;
+				background-color: $njs-footer-colour;
+				color: $secondary-invert-font-colour;
+				text-align: center;
+
+				font-size: 14px;
+
+				ul {
+					margin: 0;
+					padding: 0;
+					list-style-type: none;
+					text-align: center;
+
+					li {
+						display: inline;
+						margin: 0 8px;
+						line-height: 40px;
+
+						a { color: inherit; }
+
+						a:hover { text-decoration: underline; }
+					}
+				}
+			}
+		}
+	}
+}
