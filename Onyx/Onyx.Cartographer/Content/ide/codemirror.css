@@ -2,11 +2,8 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: 'Ubuntu', '', "Helvetica",Helvetica,Arial,sans-serif;
-  font-family: Consolas,'Bitstream Vera Sans Mono','Courier New',Courier,monospace;
-  font-family: Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace !important;
+  font-family: Menlo, Monaco, "Andale Mono","lucida console","Courier New",monospace !important;
   font-size: 0.9em;
-  margin-right: 35px;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
