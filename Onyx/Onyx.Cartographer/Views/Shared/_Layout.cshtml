@@ -10,18 +10,6 @@
 	
 	<!-- jquerty -->
 	@Scripts.Render("~/bundles/jquery")
-
-	<!-- Data Storage -->
-	@Scripts.Render("~/Scripts/stor/data_storage.js")
-
-	<!-- IDE -->	
-	@Styles.Render("~/Content/ide/codemirror.css")	
-	@Scripts.Render("~/Scripts/ide/codemirror.js")
-	@Scripts.Render("~/Scripts/ide/mode/wumboscript.js")
-	@Scripts.Render("~/Scripts/ide/addons/active-line.js")
-	@Styles.Render("~/Content/ide/theme/onyx.css")	
-	@RenderSection("scripts", required: false)
-
 </head>
 
 <body>
@@ -116,6 +104,18 @@
 			</div>
 		</noscript>
 	</div>
+
+
+	<!-- Data Storage -->
+	@Scripts.Render("~/Scripts/stor/data_storage.js")
+
+	<!-- IDE -->
+	@Styles.Render("~/Content/ide/codemirror.css")
+	@Scripts.Render("~/Scripts/ide/codemirror.js")
+	@Scripts.Render("~/Scripts/ide/mode/wumboscript.js")
+	@Scripts.Render("~/Scripts/ide/addons/active-line.js")
+	@Styles.Render("~/Content/ide/theme/onyx.css")
+
 	<!-- Add Angular -->
 	@Scripts.Render("~/Scripts/angular.js")
 
@@ -140,7 +140,8 @@
     @Scripts.Render("~/Scripts/libs/xdm.js")
 
     <!-- Xbox Internals (woo, STFS!) -->
-    @Scripts.Render("~/Scripts/libs/XboxInternals.js")
+    @Scripts.Render("~/Scripts/libs/XboxInternals.js")	
+	@RenderSection("scripts", required: false)
 
 	<script>
 		var cartographer;
