@@ -3,6 +3,7 @@
 ///<reference path="../util/modal_manager.ts" />
 ///<reference path="../util/mask_manager.ts" />
 ///<reference path="../ide/codemirror.d.ts" />
+///<reference path="../stor/data_storage.ts" />
 
 module Onyx {
     export class Cartographer {
@@ -47,8 +48,8 @@ module Onyx {
 		private UploadVariant(variant: XboxInternals.IO.FileIO) {
 			showPendingMask();
             $.ajax({
-                type: 'POST',
-                url: 'http://localhost:1337/api/variant/',
+				type: 'POST',
+                url: Onyx.DataStorage.Domain + 'api/variant/',
                 data: variant.buffer,
                 headers: {
                     'Content-Type': 'application/json'

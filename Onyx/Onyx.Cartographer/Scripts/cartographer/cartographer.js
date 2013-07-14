@@ -3,6 +3,7 @@
 ///<reference path="../util/modal_manager.ts" />
 ///<reference path="../util/mask_manager.ts" />
 ///<reference path="../ide/codemirror.d.ts" />
+///<reference path="../stor/data_storage.ts" />
 var Onyx;
 (function (Onyx) {
     var Cartographer = (function () {
@@ -41,7 +42,7 @@ var Onyx;
             showPendingMask();
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:1337/api/variant/',
+                url: Onyx.DataStorage.Domain + 'api/variant/',
                 data: variant.buffer,
                 headers: {
                     'Content-Type': 'application/json'
