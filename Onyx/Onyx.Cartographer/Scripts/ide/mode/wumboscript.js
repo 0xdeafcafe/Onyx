@@ -93,13 +93,13 @@ CodeMirror.defineMode("javascript", function (config, parserConfig) {
 			stream.match(/^\d*(?:\.\d*)?(?:[eE][+\-]?\d+)?/);
 			return ret("number", "number");
 		}
+		else if (ch == "-" && stream.eat('-')) {
+			stream.skipToEnd();
+			return ret("comment", "comment");
+		}
 		else if (ch == "/") {
 			if (stream.eat("*")) {
 				return chain(stream, state, jsTokenComment);
-			}
-			else if (stream.eat("/")) {
-				stream.skipToEnd();
-				return ret("comment", "comment");
 			}
 			else if (state.lastType == "operator" || state.lastType == "keyword c" ||
 					 /^[\[{}\(,;:]$/.test(state.lastType)) {

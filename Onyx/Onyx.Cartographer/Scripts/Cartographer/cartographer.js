@@ -1,6 +1,7 @@
 ///<reference path="../libs/XboxInternals.d.ts" />
 ///<reference path="../jquery-1.8.2.d.ts" />
 ///<reference path="../util/modal_manager.ts" />
+///<reference path="../util/mask_manager.ts" />
 ///<reference path="../ide/codemirror.d.ts" />
 var Onyx;
 (function (Onyx) {
@@ -37,6 +38,7 @@ var Onyx;
         };
 
         Cartographer.prototype.UploadVariant = function (variant) {
+            showPendingMask();
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:1337/api/variant/',
@@ -46,14 +48,15 @@ var Onyx;
                 },
                 processData: false,
                 success: function (data) {
+                    hidePendingMask();
                     window.location.hash = 'Create/Modify';
                     $('.scriptData > #scriptmod').val(data);
 
-                    var woah = document.getElementById("scriptmod");
-
                     var editor = CodeMirror.fromTextArea(document.getElementById("scriptmod"), {
                         lineNumbers: true,
-                        theme: 'xq-light'
+                        styleActiveLine: true,
+                        theme: 'onyx',
+                        value: data
                     });
                     $(".CodeMirror").css("height", ($(window).outerHeight() - $(".nav-tabs").outerHeight() - $("#gamesaveModify > h1").outerHeight() - 130));
                 }

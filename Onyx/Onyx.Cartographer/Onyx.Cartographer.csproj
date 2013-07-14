@@ -118,6 +118,7 @@
   <ItemGroup>
     <Content Include="AngularViews\Create\modify.html" />
     <Content Include="Content\application.css" />
+    <Content Include="Content\ide\theme\onyx.css" />
     <Content Include="Content\pages\_sidebar.scss" />
     <Content Include="Content\pages\create\_index.scss" />
     <Content Include="Content\pages\create\_modify.scss" />
@@ -132,6 +133,8 @@
     <Content Include="Content\reset.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\animated\loading-dark.gif" />
+    <Content Include="img\animated\loading-white.gif" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="img\logos\logo-base%402x.png" />
@@ -158,6 +161,7 @@
     <Content Include="Scripts\app\services.js" />
     <Content Include="Scripts\cartographer\cartographer.ts" />
     <Content Include="Content\ide\codemirror.css" />
+    <Content Include="Scripts\ide\addons\active-line.js" />
     <Content Include="Scripts\ide\codemirror.js" />
     <Content Include="Scripts\ide\codemirror.d.ts" />
     <Content Include="Scripts\ide\mode\javascript.js" />
@@ -179,6 +183,7 @@
     <Content Include="Content\ide\theme\vibrant-ink.css" />
     <Content Include="Content\ide\theme\xq-dark.css" />
     <Content Include="Content\ide\theme\xq-light.css" />
+    <Content Include="Scripts\ide\mode\wumboscript.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.8.2.d.ts" />
@@ -187,6 +192,7 @@
     <Content Include="Scripts\libs\XboxInternals.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\util\functions.js" />
+    <Content Include="Scripts\util\mask_manager.ts" />
     <Content Include="Scripts\util\misc.js" />
     <Content Include="Scripts\util\modal_manager.ts" />
     <Content Include="Scripts\_references.js" />

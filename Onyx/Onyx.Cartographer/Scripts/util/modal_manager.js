@@ -1,4 +1,5 @@
 ///<reference path="../jquery-1.8.2.d.ts" />
+///<reference path="mask_manager.ts" />
 var ModalTypes;
 (function (ModalTypes) {
     ModalTypes[ModalTypes["WarningModal"] = 0] = "WarningModal";
@@ -19,12 +20,10 @@ $('#modal > .actions > input').click(function () {
     closeModal();
 });
 
-var modalCount = 1;
+var modalCount = 0;
 function showModal(modalType, title, description) {
-    if (modalCount == 0) {
-        // add background mask
-        $('#opacityMask').fadeTo(200, 0.7);
-    }
+    if (modalCount == 0)
+        showModalMask();
     modalCount++;
 
     switch (modalType) {
@@ -54,14 +53,8 @@ function closeModal() {
     $('#modal').fadeOut(200);
     $('#modal').removeClass();
 
-    // hide opacity mask
-    $('#opacityMask').css('display', 'none');
-
     modalCount--;
-    if (modalCount == 0) {
-        // remove background mask
-        $('#opacityMask').fadeTo(200, 0.0);
-        $('#opacityMask').css('display', 'none');
-    }
+    if (modalCount == 0)
+        hideModalMask();
 }
 //@ sourceMappingURL=modal_manager.js.map

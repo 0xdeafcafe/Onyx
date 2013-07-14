@@ -16,7 +16,8 @@
 	@Styles.Render("~/Content/ide/codemirror.css")	
 	@Scripts.Render("~/Scripts/ide/codemirror.js")
 	@Scripts.Render("~/Scripts/ide/mode/wumboscript.js")
-	@Styles.Render("~/Content/ide/theme/xq-light.css")
+	@Scripts.Render("~/Scripts/ide/addons/active-line.js")
+	@Styles.Render("~/Content/ide/theme/onyx.css")
 
 </head>
 
@@ -58,7 +59,8 @@
 			</div>
 		</div>
 
-		<div id="opacityMask"></div>
+		<div id="modalMask"></div>
+		<div id="pendingMask"></div>
 		<div id="modal" class="error">
 			<h1>Modal Example</h1>	
 			<p>
@@ -78,6 +80,7 @@
 	<!-- Utilities -->	
 	@Scripts.Render("~/Scripts/util/functions.js")	
 	@Scripts.Render("~/Scripts/util/misc.js")
+	@Scripts.Render("~/Scripts/util/mask_manager.js")
 	@Scripts.Render("~/Scripts/util/modal_manager.js")
 
 	<!-- Onyx Application Logic -->
