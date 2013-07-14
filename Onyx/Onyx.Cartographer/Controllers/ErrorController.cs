@@ -14,8 +14,8 @@ namespace Onyx.Cartographer.Controllers
 		// GET: /Error/
 		public ActionResult Index(int statusCode, Exception exception)
 		{
-			var model = new ErrorModel { HttpStatusCode = statusCode, Exception = exception, HttpStatusMessage = GetMessageFromCode(statusCode).DevComment };
-			Response.StatusCode = 404;
+			var model = new ErrorModel { HttpStatusCode = statusCode, Exception = exception, HttpStatusMessage = GetMessageFromCode(statusCode).DevComment, HttpStatusMessageHeh = GetMessageFromCode(statusCode).NorComment };
+			Response.StatusCode = statusCode;
 			Response.ContentType = "text/html";
 			return View(model);
 		}
@@ -205,7 +205,7 @@ namespace Onyx.Cartographer.Controllers
             foreach (var format in ErrorLists)
                 if (format.ErrorCode == code)
                     return format;
-            return new ErrorStatusFormat { DevComment = "Something bad happened. I don't know what to say."};
+            return new ErrorStatusFormat { DevComment = "Something bad happened. I don't know what to say.", NorComment = "" };
         }
 	}
 }

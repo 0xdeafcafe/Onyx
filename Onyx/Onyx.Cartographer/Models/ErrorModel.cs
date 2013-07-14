@@ -10,6 +10,7 @@ namespace Onyx.Cartographer.Models
 		public int HttpStatusCode { get; set; }
 		public Exception Exception { get; set; }
 		public string HttpStatusMessage { get; set; }
+		public string HttpStatusMessageHeh { get; set; }
 	}
 
 	public class ErrorStatusFormat
