@@ -132,6 +132,7 @@
   <ItemGroup>
     <Content Include="AngularViews\Create\modify.html" />
     <Content Include="Content\application.css" />
+    <Content Include="Content\ide\dialog.css" />
     <Content Include="Content\ide\theme\onyx.css" />
     <Content Include="Content\pages\_sidebar.scss" />
     <Content Include="Content\pages\create\_index.scss" />
@@ -178,6 +179,9 @@
     <Content Include="Scripts\cartographer\cartographer.ts" />
     <Content Include="Content\ide\codemirror.css" />
     <Content Include="Scripts\ide\addons\active-line.js" />
+    <Content Include="Scripts\ide\addons\dialog.js" />
+    <Content Include="Scripts\ide\addons\search.js" />
+    <Content Include="Scripts\ide\addons\searchcursor.js" />
     <Content Include="Scripts\ide\codemirror.js" />
     <Content Include="Scripts\ide\codemirror.d.ts" />
     <Content Include="Scripts\ide\mode\javascript.js" />
