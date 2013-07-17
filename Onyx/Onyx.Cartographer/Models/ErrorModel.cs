@@ -11,13 +11,13 @@ namespace Onyx.Cartographer.Models
 		public Exception Exception { get; set; }
 		public string HttpStatusMessage { get; set; }
 		public string HttpStatusMessageHeh { get; set; }
+		public string HttpStatusMessagePpl { get; set; }
 	}
 
 	public class ErrorStatusFormat
 	{
-		public int ErrorCode { get; set; }
-
 		public string DevComment { get; set; }
 		public string NorComment { get; set; }
+		public string PeopleComment { get; set; }
 	}
 }

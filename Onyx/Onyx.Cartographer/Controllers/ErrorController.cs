@@ -14,198 +14,50 @@ namespace Onyx.Cartographer.Controllers
 		// GET: /Error/
 		public ActionResult Index(int statusCode, Exception exception)
 		{
-			var model = new ErrorModel { HttpStatusCode = statusCode, Exception = exception, HttpStatusMessage = GetMessageFromCode(statusCode).DevComment, HttpStatusMessageHeh = GetMessageFromCode(statusCode).NorComment };
+			var error = ErrorDefinitions.ElementAtOrDefault(statusCode).Value ?? new ErrorStatusFormat();
+
+			var model = new ErrorModel
+			{
+				HttpStatusCode = statusCode, 
+				Exception = exception,
+				HttpStatusMessagePpl = error.PeopleComment ?? "Something bad happened. I don't know what to say.",
+				HttpStatusMessage = string.Format("HTTP/1.1 {0} {1}.", statusCode, error.DevComment ?? ""),
+				HttpStatusMessageHeh = error.NorComment ?? ""
+			};
+
 			Response.StatusCode = statusCode;
 			Response.ContentType = "text/html";
 			return View(model);
 		}
 
 		#region error_codes
-		public static IList<ErrorStatusFormat> ErrorLists = new List<ErrorStatusFormat>()
+
+		public readonly static IDictionary<uint, ErrorStatusFormat> ErrorDefinitions = new Dictionary<uint, ErrorStatusFormat>
         {
-            // Error 400
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 400,
-                DevComment = "HTTP request failed! HTTP/1.1 400 Bad Request.",
-                NorComment = "It's not what you said, it's how you said it"
-            },
-
-            // Error 401
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 401,
-                DevComment = "HTTP request failed! HTTP/1.1 401 Unauthorized.",
-                NorComment = "I didn't say you could put it there!"
-            },
-
-            // Error 403
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 403,
-                DevComment = "HTTP request failed! HTTP/1.1 403 Forbidden.",
-                NorComment = "Not tonight, I have a headache!"
-            },
-
-            // Error 404
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 404,
-                DevComment = "HTTP request failed! HTTP/1.1 404 Not Found.",
-                NorComment = "She's left you bro."
-            },
-
-            // Error 407
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 407,
-                DevComment = "HTTP request failed! HTTP/1.1 407 Proxy Authentication Required.",
-                NorComment = "Not without protection!"
-            },
-
-            // Error 408
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 408,
-                DevComment = "HTTP request failed! HTTP/1.1 408 Request Timeout.",
-                NorComment = "I want you to meet my mum!"
-            },
-
-            // Error 409
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 409,
-                DevComment = "HTTP request failed! HTTP/1.1 409 Conflict.",
-                NorComment = "I CAN'T BELIEVE YOU JUST SAID THAT!"
-            },
-
-            // Error 429
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 429,
-                DevComment = "HTTP request failed! HTTP/1.1 429 Too Many Requests.",
-                NorComment = "Stop asking me out!"
-            },
-
-            // Error 444
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 444,
-                DevComment = "HTTP request failed! HTTP/1.1 444 No Response.",
-                NorComment = "Does this make me look fat?"
-            },
-
-            // Error 451
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 451,
-                DevComment = "HTTP request failed! HTTP/1.1 451 Unavailable For Legal Reasons.",
-                NorComment = "She said she was 18! I swear!"
-            },
-
-            // Error 500
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 500,
-                DevComment = "HTTP request failed! HTTP/1.1 500 Internal Server Error.",
-                NorComment = "No sex, I'm on my period."
-            },
-
-            // Error 501
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 501,
-                DevComment = "HTTP request failed! HTTP/1.1 501 Not Implemented.",
-                NorComment = "Im not on birth control"
-            },
-
-            // Error 502
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 502,
-                DevComment = "HTTP request failed! HTTP/1.1 502 Bad Gateway.",
-                NorComment = "NO NO, WRONG HOLE!"
-            },
-
-            // Error 503
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 503,
-                DevComment = "HTTP request failed! HTTP/1.1 503 Service Unavailable.",
-                NorComment = "Lets be friends"
-            },
-
-            // Error 504
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 504,
-                DevComment = "HTTP request failed! HTTP/1.1 504 Gateway Timeout.",
-                NorComment = "I'm too sex for drunk tonight"
-            },
-
-            // Error 505
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 505,
-                DevComment = "HTTP request failed! HTTP/1.1 505 HTTP Version Not Supported.",
-                NorComment = "I think i'm a lesbian"
-            },
-
-            // Error 506
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 506,
-                DevComment = "HTTP request failed! HTTP/1.1 506 HTTP Variant Also Negotiates.",
-                NorComment = "I'm bi-sexual, do you have any cute female friends?"
-            },
-
-            // Error 507
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 507,
-                DevComment = "HTTP request failed! HTTP/1.1 507 Insufficient Storage.",
-                NorComment = "What do you mean my tits are too small?"
-            },
-
-            // Error 508
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 508,
-                DevComment = "HTTP request failed! HTTP/1.1 508 Loop Detected.",
-                NorComment = "It’s up to you. Swings and roundabouts baby."
-            },
-
-            // Error 509
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 509,
-                DevComment = "HTTP request failed! HTTP/1.1 509 HTTP Bandwidth Limit Exceeded.",
-                NorComment = "What? You want to do it AGAIN?"
-            },
-
-            // Error 510
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 510,
-                DevComment = "HTTP request failed! HTTP/1.1 510 Not Extended.",
-                NorComment = "Why is it not hard yet?"
-            },
-
-            // Error 511
-            new ErrorStatusFormat()
-            {
-                ErrorCode = 511,
-                DevComment = "HTTP request failed! HTTP/1.1 511 HTTP Network Authentication Required.",
-                NorComment = "So, let me get this right, you want to go out with the lads?"
-            }
+            { 400, new ErrorStatusFormat { DevComment = "Bad Request", NorComment = "It's not what you said, it's how you said it" } },
+			{ 401, new ErrorStatusFormat { DevComment = "Unauthorized", NorComment = "I didn't say you could put it there!" } },
+			{ 403, new ErrorStatusFormat { DevComment = "Forbidden", NorComment = "Not tonight, I have a headache!" } },
+			{ 404, new ErrorStatusFormat { PeopleComment = "This content sadly can't be found.", DevComment = "Not Found", NorComment = "She's left you man." } },
+			{ 407, new ErrorStatusFormat { DevComment = "Proxy Authentication Required", NorComment = "Not without protection!" } },
+			{ 408, new ErrorStatusFormat { DevComment = "Request Timeout", NorComment = "I want you to meet my mum." } },
+			{ 409, new ErrorStatusFormat { DevComment = "Conflict", NorComment = "I CAN'T BELIEVE YOU JUST SAID THAT!" } },
+			{ 429, new ErrorStatusFormat { DevComment = "Too Many Requests", NorComment = "Stop asking me out!" } },
+			{ 444, new ErrorStatusFormat { DevComment = "No Response", NorComment = "Does this make me look fat?" } },
+			{ 451, new ErrorStatusFormat { DevComment = "Unavailable For Legal Reasons", NorComment = "She said she was 18! I  r!" } },
+			{ 500, new ErrorStatusFormat { DevComment = "Internal Server Error", NorComment = "Nope, I'm on my period." } },
+			{ 501, new ErrorStatusFormat { DevComment = "Not Implemented", NorComment = "Im not on birth control" } },
+			{ 502, new ErrorStatusFormat { DevComment = "Bad Gateway", NorComment = "NO NO, WRONG HOLE!" } },
+			{ 503, new ErrorStatusFormat { DevComment = "Service Unavailable", NorComment = "Lets be friends" } },
+			{ 504, new ErrorStatusFormat { DevComment = "Gateway Timeout", NorComment = "I'm too sex for drunk tonight" } },
+			{ 505, new ErrorStatusFormat { DevComment = "HTTP Version Not Supported", NorComment = "I think i'm a lesbian" } },
+			{ 506, new ErrorStatusFormat { DevComment = "HTTP Variant Also Negotiates", NorComment = "I'm bi-sexual, do you any cute female friends?" } },
+			{ 507, new ErrorStatusFormat { DevComment = "Insufficient Storage", NorComment = "What do you mean my tits are too l?" } },
+			{ 508, new ErrorStatusFormat { DevComment = "Loop Detected", NorComment = "It’s up to you. Swings and roundabouts." } },
+			{ 509, new ErrorStatusFormat { DevComment = "HTTP Bandwidth Limit Exceeded", NorComment = "What? You want to do it N?" } },
+			{ 510, new ErrorStatusFormat { DevComment = "Not Extended", NorComment = "Why is it not hard yet?" } },
+			{ 511, new ErrorStatusFormat { DevComment = "HTTP Network Authentication Required", NorComment = "So, let me get right, you want to go out with the lads?" } }
         };
+
 		#endregion
-		public static ErrorStatusFormat GetMessageFromCode(int code)
-        {
-            foreach (var format in ErrorLists)
-                if (format.ErrorCode == code)
-                    return format;
-            return new ErrorStatusFormat { DevComment = "Something bad happened. I don't know what to say.", NorComment = "" };
-        }
 	}
 }
