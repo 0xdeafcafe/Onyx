@@ -134,14 +134,15 @@
                 if (typeof nullTerminiator === "undefined") { nullTerminiator = 0; }
                 if (typeof forceInclude0 === "undefined") { forceInclude0 = true; }
                 if (typeof maxLength === "undefined") { maxLength = 0x7FFFFFFF; }
-                var stringBytes = this.Clone(new Uint8Array(this.buffer, this._position, len));
+                var stringBytes = new Uint8Array(new Uint8Array(this.buffer, this._position, len));
                 var i = 0;
-                1;
-                for (; i < stringBytes.length; i++)
-                    if ((i + 1 < stringBytes.length && stringBytes[i + 1] == 0 && stringBytes[i] == 0) || (i + 1 >= stringBytes.length && stringBytes[i] == 0))
+                for (i = 0; i < stringBytes.length; i++)
+                    if (i + 1 < stringBytes.length && stringBytes[i + 1] == nullTerminiator) {
+                        i++;
                         break;
+                    }
 
-                var val = String.fromCharCode.apply(null, new Uint8Array(this.buffer, this._position, i));
+                var val = String.fromCharCode.apply(null, new Uint8Array(new Uint8Array(this.buffer, this._position, i)));
                 this.SetPosition(this.GetPosition() + len);
                 return val;
             };
@@ -567,6 +568,12 @@ var XboxInternals;
                 io.WriteString(cert.ownerConsolePartNumber, 0x11, false);
                 var temp = cert.consoleTypeFlags | cert.ownerConsoleType;
                 io.WriteDword(temp);
+
+                io.WriteString(cert.dataGeneration, 0x8, false);
+                io.WriteDword(cert.publicExponent);
+                io.WriteBytes(cert.publicModulus);
+                io.WriteBytes(cert.certificateSignature);
+                io.WriteBytes(cert.signature);
             };
 
             StfsDefinitions.prototype.LicenseTypeToString = function (type) {
@@ -623,7 +630,7 @@ var XboxInternals;
                 var dateGeneration = io.ReadString(0x8);
 
                 var publicExponent = io.ReadDword();
-                var publicModules = io.ReadBytes(0x80);
+                var publicModulus = io.ReadBytes(0x80);
                 var certificateSignature = io.ReadBytes(0x100);
                 var signature = io.ReadBytes(0x10);
 
@@ -635,7 +642,7 @@ var XboxInternals;
                     consoleTypeFlags: consoleTypeFlags,
                     dataGeneration: dateGeneration,
                     publicExponent: publicExponent,
-                    publicModules: publicModules,
+                    publicModulus: publicModulus,
                     certificateSignature: certificateSignature,
                     signature: signature
                 };
@@ -783,6 +790,112 @@ var XboxInternals;
     })(XboxInternals.AvatarAsset || (XboxInternals.AvatarAsset = {}));
     var AvatarAsset = XboxInternals.AvatarAsset;
 })(XboxInternals || (XboxInternals = {}));
+var sha1;
+(function (sha1) {
+    var POW_2_24 = Math.pow(2, 24);
+    var POW_2_32 = Math.pow(2, 32);
+
+    function lrot(n, bits) {
+        return ((n << bits) | (n >>> (32 - bits)));
+    }
+
+    var Uint32ArrayBigEndian = (function () {
+        function Uint32ArrayBigEndian(length) {
+            this.bytes = new Uint8Array(length << 2);
+        }
+        Uint32ArrayBigEndian.prototype.get = function (index) {
+            index <<= 2;
+            return (this.bytes[index] * POW_2_24) + ((this.bytes[index + 1] << 16) | (this.bytes[index + 2] << 8) | this.bytes[index + 3]);
+        };
+        Uint32ArrayBigEndian.prototype.set = function (index, value) {
+            var high = Math.floor(value / POW_2_24), rest = value - (high * POW_2_24);
+            index <<= 2;
+            this.bytes[index] = high;
+            this.bytes[index + 1] = rest >> 16;
+            this.bytes[index + 2] = (rest >> 8) & 0xFF;
+            this.bytes[index + 3] = rest & 0xFF;
+        };
+        return Uint32ArrayBigEndian;
+    })();
+
+    function string2ArrayBuffer(s) {
+        s = s.replace(/[\u0080-\u07ff]/g, function (c) {
+            var code = c.charCodeAt(0);
+            return String.fromCharCode(0xC0 | code >> 6, 0x80 | code & 0x3F);
+        });
+        s = s.replace(/[\u0080-\uffff]/g, function (c) {
+            var code = c.charCodeAt(0);
+            return String.fromCharCode(0xE0 | code >> 12, 0x80 | code >> 6 & 0x3F, 0x80 | code & 0x3F);
+        });
+        var n = s.length, array = new Uint8Array(n);
+        for (var i = 0; i < n; ++i) {
+            array[i] = s.charCodeAt(i);
+        }
+        return array.buffer;
+    }
+
+    function hash(sourceArray) {
+        var h0 = 0x67452301, h1 = 0xEFCDAB89, h2 = 0x98BADCFE, h3 = 0x10325476, h4 = 0xC3D2E1F0, i, sbytes = sourceArray.length, sbits = sbytes << 3, minbits = sbits + 65, bits = Math.ceil(minbits / 512) << 9, bytes = bits >>> 3, slen = bytes >>> 2, s = new Uint32ArrayBigEndian(slen), s8 = s.bytes, j, w = new Uint32Array(80);
+        for (i = 0; i < sbytes; ++i) {
+            s8[i] = sourceArray[i];
+        }
+        s8[sbytes] = 0x80;
+        s.set(slen - 2, Math.floor(sbits / POW_2_32));
+        s.set(slen - 1, sbits & 0xFFFFFFFF);
+        for (i = 0; i < slen; i += 16) {
+            for (j = 0; j < 16; ++j) {
+                w[j] = s.get(i + j);
+            }
+            for (; j < 80; ++j) {
+                w[j] = lrot(w[j - 3] ^ w[j - 8] ^ w[j - 14] ^ w[j - 16], 1);
+            }
+            var a = h0, b = h1, c = h2, d = h3, e = h4, f, k, temp;
+            for (j = 0; j < 80; ++j) {
+                if (j < 20) {
+                    f = (b & c) | ((~b) & d);
+                    k = 0x5A827999;
+                } else if (j < 40) {
+                    f = b ^ c ^ d;
+                    k = 0x6ED9EBA1;
+                } else if (j < 60) {
+                    f = (b & c) ^ (b & d) ^ (c & d);
+                    k = 0x8F1BBCDC;
+                } else {
+                    f = b ^ c ^ d;
+                    k = 0xCA62C1D6;
+                }
+
+                temp = (lrot(a, 5) + f + e + k + w[j]) & 0xFFFFFFFF;
+                e = d;
+                d = c;
+                c = lrot(b, 30);
+                b = a;
+                a = temp;
+            }
+            h0 = (h0 + a) & 0xFFFFFFFF;
+            h1 = (h1 + b) & 0xFFFFFFFF;
+            h2 = (h2 + c) & 0xFFFFFFFF;
+            h3 = (h3 + d) & 0xFFFFFFFF;
+            h4 = (h4 + e) & 0xFFFFFFFF;
+        }
+
+        var hashedBytes = new Uint8Array(0x14);
+        for (var i = 0; i < hashedBytes.length; i++) {
+            var currentNum;
+            if (i < 4)
+                currentNum = h0; else if (i < 8)
+                currentNum = h1; else if (i < 12)
+                currentNum = h2; else if (i < 16)
+                currentNum = h3; else
+                currentNum = h4;
+
+            hashedBytes[i] = (currentNum >>> ((3 - (i % 4)) * 8)) & 0xFF;
+        }
+
+        return hashedBytes;
+    }
+    sha1.hash = hash;
+})(sha1 || (sha1 = {}));
 var XboxInternals;
 (function (XboxInternals) {
     (function (Stfs) {
@@ -969,7 +1082,7 @@ var XboxInternals;
                     this.io.WriteDword(this.magic);
 
                     if (this.magic == Stfs.Magic.CON)
-                        ; else {
+                        this.WriteCertificate(); else {
                         throw "XContentHeader: Content signature type 0x" + this.magic + " is invalid.";
                     }
 
@@ -1051,7 +1164,7 @@ var XboxInternals;
                         return;
                 } else {
                     this.consoleID = this.certificate.ownerConsoleID;
-
+                    this.WriteCertificateEx(this.certificate, this.io, 0);
                     this.io.SetPosition(0x32C);
                     this.io.WriteBytes(this.headerHash);
 
@@ -1064,10 +1177,95 @@ var XboxInternals;
                 }
             };
 
+            XContentHeader.prototype.ResignHeader = function () {
+                var headerStart, size, hashLoc, toSignLoc, consoleIDLoc;
+
+                if (this.flags & XContentFlags.MetadataIsPEC) {
+                    headerStart = 0x23C;
+                    hashLoc = 0x228;
+                    size = 0xDC4;
+                    toSignLoc = 0x23C;
+                    consoleIDLoc = 0x275;
+                } else {
+                    headerStart = 0x344;
+                    hashLoc = 0x32C;
+                    size = 0x118;
+                    toSignLoc = 0x22C;
+                    consoleIDLoc = 0x36C;
+                }
+
+                var calculated = ((this.headerSize + 0xFFF) & 0xFFFFF000);
+                calculated = (this.io.buffer.byteLength < calculated) ? this.io.buffer.byteLength : calculated;
+                var realHeaderSize = calculated - headerStart;
+
+                this.io.SetPosition(consoleIDLoc);
+                this.io.WriteBytes(this.certificate.ownerConsoleID);
+
+                this.io.SetPosition(headerStart);
+                var buffer = this.io.ReadBytes(realHeaderSize);
+
+                this.headerHash = sha1.hash(buffer);
+
+                this.io.SetPosition(hashLoc);
+                this.io.WriteBytes(this.headerHash);
+
+                this.io.SetPosition(toSignLoc);
+
+                var sha1DataToSign = sha1.hash(this.io.ReadBytes(size));
+                var rsa = new RSAKey();
+                rsa.setPrivateEx("a31d6ce5fa95fde89021fad10c64192b86589b172b1005b8d1f84cef534cd54e5cae86ef927b90d1e062fd7c54559ee0e7befa3f9e156f6c384eaf070c61ab515e2353141888cb6fcbc5d630f406ed2423ef256d009177249be5a3c02790c297f7749d6f17837eb537de51e8d71ce156d956c8c3c3209d64c32f8c9192306fdb", "00010001", "51ec1f9d5626c2fc10a66764cb3a6d4da1e74ea842f0f4fdfa66efc78e102fe41ca31dd0ce392ec3192dd0587479ac08e790c1ac2dc6eb47e83dcf4c6dff5165d46ebd0f15793795c4af909e2b508a0a224ab341e5898073cdfa2102f5dd30dd072a6f340781977eb2fb72e9eac18839ac482ba84dfcd7ed9bf9dec245934c4c", "cce75dfe72b6fde71de31a0eac337ab921e88a849bda9f1e5834687ab11d7e1c1852657b978ea76a9dee5a77523b718f33d0495ec330397236bf1dd9f224e871", "cbca5874d403629306501f42f6aa5936a7a1f3975c9ac86a27cf85052a66416a7f2f84c81813c61d8dc7322f72193fa4ed71e761c0cf61ae8ba068a77d83230b", "4cca74e67435724858621114e8a24e5eed7f49d252da8701874af4d0ee69c026655313e752b04abbe13e3fb7322146f8c5114d3def66b650c085b579458f6171", "afdc46e7528a3547a11c054e392499e64354cbabe3db22761132d09cbb911084818b152fc32f5538edbf673c705eff8028f3b173b6fa7f562be1da4e274ec22f", "286abbd19395941a6eedd70ec0612bc2efe1863d3412886f94a4486ec9871e46004600528e9f47c08cabbc49ac5b13f2ec278d1b6e5106a6f1621aeb782e8848");
+                this.certificate.signature = XContentHeader.Uint8ArrayFromHex(rsa.signHashWithSHA1(this.Uint8ArrayToHexString(sha1DataToSign)));
+
+                this.certificate.publicKeyCertificateSize = 0x1A8;
+                this.certificate.ownerConsoleID = new Uint8Array([0x09, 0x12, 0xBA, 0x26, 0xE3]);
+                this.certificate.ownerConsolePartNumber = "X803395-001";
+                this.certificate.ownerConsoleType = XboxInternals.Stfs.ConsoleType.Retail;
+                this.certificate.dataGeneration = "09-18-06";
+                this.certificate.publicExponent = 0x00010001;
+                this.certificate.publicModulus = new Uint8Array([0xC3, 0x2F, 0x8C, 0x91, 0x92, 0x30, 0x6F, 0xDB, 0xD9, 0x56, 0xC8, 0xC3, 0xC3, 0x20, 0x9D, 0x64, 0x37, 0xDE, 0x51, 0xE8, 0xD7, 0x1C, 0xE1, 0x56, 0xF7, 0x74, 0x9D, 0x6F, 0x17, 0x83, 0x7E, 0xB5, 0x9B, 0xE5, 0xA3, 0xC0, 0x27, 0x90, 0xC2, 0x97, 0x23, 0xEF, 0x25, 0x6D, 0x00, 0x91, 0x77, 0x24, 0xCB, 0xC5, 0xD6, 0x30, 0xF4, 0x06, 0xED, 0x24, 0x5E, 0x23, 0x53, 0x14, 0x18, 0x88, 0xCB, 0x6F, 0x38, 0x4E, 0xAF, 0x07, 0x0C, 0x61, 0xAB, 0x51, 0xE7, 0xBE, 0xFA, 0x3F, 0x9E, 0x15, 0x6F, 0x6C, 0xE0, 0x62, 0xFD, 0x7C, 0x54, 0x55, 0x9E, 0xE0, 0x5C, 0xAE, 0x86, 0xEF, 0x92, 0x7B, 0x90, 0xD1, 0xD1, 0xF8, 0x4C, 0xEF, 0x53, 0x4C, 0xD5, 0x4E, 0x86, 0x58, 0x9B, 0x17, 0x2B, 0x10, 0x05, 0xB8, 0x90, 0x21, 0xFA, 0xD1, 0x0C, 0x64, 0x19, 0x2B, 0xA3, 0x1D, 0x6C, 0xE5, 0xFA, 0x95, 0xFD, 0xE8]);
+                this.certificate.certificateSignature = new Uint8Array([0xF9, 0x70, 0x0D, 0x2A, 0x89, 0x39, 0x9E, 0xD5, 0x4E, 0x65, 0x87, 0x44, 0xF9, 0x4F, 0x20, 0x90, 0x89, 0x41, 0x37, 0x50, 0x2E, 0xF8, 0x30, 0x08, 0xCC, 0x6E, 0xCD, 0xD1, 0x57, 0xE7, 0xC3, 0xB7, 0x96, 0xB0, 0x2A, 0x80, 0x59, 0xCB, 0x7E, 0x43, 0xFB, 0xDB, 0x7E, 0x0C, 0xEF, 0x6C, 0x5E, 0x00, 0x0B, 0x1E, 0x87, 0xE1, 0x02, 0x64, 0xA7, 0x08, 0x24, 0x32, 0xB9, 0x53, 0x15, 0x00, 0xE9, 0xE3, 0x53, 0x0C, 0x15, 0xE1, 0x5D, 0x59, 0xC6, 0x09, 0xAB, 0xD1, 0x73, 0xB5, 0xEE, 0xC5, 0xE7, 0x50, 0xBC, 0xC2, 0xB2, 0x25, 0x98, 0xBA, 0xA0, 0x0A, 0x84, 0xF4, 0xF8, 0x2D, 0x1A, 0xD2, 0xC9, 0x7F, 0xDC, 0xCF, 0x5D, 0x02, 0x21, 0x9A, 0x25, 0xE0, 0x69, 0x11, 0x6C, 0xFC, 0x88, 0x06, 0x01, 0x49, 0xF4, 0x74, 0x40, 0x8D, 0xD8, 0x91, 0xDB, 0x83, 0xC9, 0x60, 0xCE, 0x0D, 0x7F, 0x97, 0xAA, 0x2A, 0x36, 0xA5, 0xF0, 0x0C, 0x10, 0x63, 0xE9, 0xA9, 0x39, 0x4F, 0xBB, 0x47, 0x6C, 0x44, 0x22, 0xF1, 0xBE, 0x3A, 0x49, 0x01, 0xED, 0x5B, 0x47, 0x00, 0x43, 0x21, 0xBD, 0xFB, 0xB2, 0x95, 0x9A, 0x5F, 0xB4, 0x46, 0xF4, 0xA7, 0x12, 0x24, 0x4B, 0x0B, 0x7F, 0xB8, 0x8E, 0xBB, 0x52, 0x83, 0x22, 0x58, 0x1E, 0x06, 0xB7, 0xAD, 0x7A, 0x3A, 0x16, 0x7E, 0xC8, 0xD7, 0x37, 0x81, 0x9E, 0x8A, 0xF2, 0xC4, 0x66, 0x08, 0x88, 0xFE, 0xA7, 0x0E, 0x8F, 0x9D, 0x87, 0x5F, 0x0E, 0x7B, 0x48, 0x9A, 0x06, 0x62, 0xF7, 0x24, 0x25, 0xCD, 0xB0, 0x4F, 0x73, 0x68, 0x97, 0x0C, 0xE4, 0xAD, 0xE8, 0x55, 0x9A, 0xB4, 0xFA, 0x65, 0xB5, 0xA3, 0x58, 0xFE, 0x81, 0x40, 0x54, 0xAA, 0x1F, 0x00, 0x2A, 0xF1, 0xDD, 0x8A, 0x1F, 0x45, 0x4E, 0x9D, 0xFF, 0x82, 0x46, 0x5A, 0x5A, 0x90, 0x25, 0xA0, 0x58, 0x0F, 0xF2, 0x27]);
+
+                this.WriteCertificate();
+            };
+
+            XContentHeader.Uint8ArrayFromHex = function (str) {
+                var array = new Uint8Array(str.length / 2);
+
+                for (var i = 0; i < str.length - 1; i += 2) {
+                    array[i / 2] = parseInt(str.substr(i, 2), 16);
+                }
+
+                return array;
+            };
+
+            XContentHeader.BnQw_SwapDwQwLeBe = function (data) {
+                if (data.length % 8 != 0)
+                    throw "STFS: length is not divisible by 8.\n";
+
+                var temp = new Uint8Array(data.length);
+                for (var i = 0; i < data.length; i += 8) {
+                    var begin = (data.length - (i + 8));
+                    var end = (data.length - i);
+
+                    for (var x = 7; x >= 0; x--)
+                        temp.set(data.subarray(begin + x, begin + x + 1), i + (7 - x));
+                }
+                return temp;
+            };
+
             XContentHeader.prototype.WriteCertificate = function () {
                 if (this.magic != Stfs.Magic.CON && (this.flags & XContentFlags.MetadataIsPEC) == 0)
                     throw "XContentHeader: Error writing certificate. Package is strong signed and therefor doesn't have a certificate.";
                 this.WriteCertificateEx(this.certificate, this.io, (this.flags & XContentFlags.MetadataIsPEC) ? 0 : 4);
+            };
+
+            XContentHeader.prototype.Uint8ArrayToHexString = function (array) {
+                var hexString = "";
+
+                for (var i = 0; i < array.length; i++)
+                    hexString += ((array[i] > 0xF) ? "" : "0") + array[i].toString(16);
+
+                return hexString.toUpperCase();
             };
             return XContentHeader;
         })(Stfs.StfsDefinitions);
@@ -1075,112 +1273,6 @@ var XboxInternals;
     })(XboxInternals.Stfs || (XboxInternals.Stfs = {}));
     var Stfs = XboxInternals.Stfs;
 })(XboxInternals || (XboxInternals = {}));
-var sha1;
-(function (sha1) {
-    var POW_2_24 = Math.pow(2, 24);
-    var POW_2_32 = Math.pow(2, 32);
-
-    function lrot(n, bits) {
-        return ((n << bits) | (n >>> (32 - bits)));
-    }
-
-    var Uint32ArrayBigEndian = (function () {
-        function Uint32ArrayBigEndian(length) {
-            this.bytes = new Uint8Array(length << 2);
-        }
-        Uint32ArrayBigEndian.prototype.get = function (index) {
-            index <<= 2;
-            return (this.bytes[index] * POW_2_24) + ((this.bytes[index + 1] << 16) | (this.bytes[index + 2] << 8) | this.bytes[index + 3]);
-        };
-        Uint32ArrayBigEndian.prototype.set = function (index, value) {
-            var high = Math.floor(value / POW_2_24), rest = value - (high * POW_2_24);
-            index <<= 2;
-            this.bytes[index] = high;
-            this.bytes[index + 1] = rest >> 16;
-            this.bytes[index + 2] = (rest >> 8) & 0xFF;
-            this.bytes[index + 3] = rest & 0xFF;
-        };
-        return Uint32ArrayBigEndian;
-    })();
-
-    function string2ArrayBuffer(s) {
-        s = s.replace(/[\u0080-\u07ff]/g, function (c) {
-            var code = c.charCodeAt(0);
-            return String.fromCharCode(0xC0 | code >> 6, 0x80 | code & 0x3F);
-        });
-        s = s.replace(/[\u0080-\uffff]/g, function (c) {
-            var code = c.charCodeAt(0);
-            return String.fromCharCode(0xE0 | code >> 12, 0x80 | code >> 6 & 0x3F, 0x80 | code & 0x3F);
-        });
-        var n = s.length, array = new Uint8Array(n);
-        for (var i = 0; i < n; ++i) {
-            array[i] = s.charCodeAt(i);
-        }
-        return array.buffer;
-    }
-
-    function hash(sourceArray) {
-        var h0 = 0x67452301, h1 = 0xEFCDAB89, h2 = 0x98BADCFE, h3 = 0x10325476, h4 = 0xC3D2E1F0, i, sbytes = sourceArray.length, sbits = sbytes << 3, minbits = sbits + 65, bits = Math.ceil(minbits / 512) << 9, bytes = bits >>> 3, slen = bytes >>> 2, s = new Uint32ArrayBigEndian(slen), s8 = s.bytes, j, w = new Uint32Array(80);
-        for (i = 0; i < sbytes; ++i) {
-            s8[i] = sourceArray[i];
-        }
-        s8[sbytes] = 0x80;
-        s.set(slen - 2, Math.floor(sbits / POW_2_32));
-        s.set(slen - 1, sbits & 0xFFFFFFFF);
-        for (i = 0; i < slen; i += 16) {
-            for (j = 0; j < 16; ++j) {
-                w[j] = s.get(i + j);
-            }
-            for (; j < 80; ++j) {
-                w[j] = lrot(w[j - 3] ^ w[j - 8] ^ w[j - 14] ^ w[j - 16], 1);
-            }
-            var a = h0, b = h1, c = h2, d = h3, e = h4, f, k, temp;
-            for (j = 0; j < 80; ++j) {
-                if (j < 20) {
-                    f = (b & c) | ((~b) & d);
-                    k = 0x5A827999;
-                } else if (j < 40) {
-                    f = b ^ c ^ d;
-                    k = 0x6ED9EBA1;
-                } else if (j < 60) {
-                    f = (b & c) ^ (b & d) ^ (c & d);
-                    k = 0x8F1BBCDC;
-                } else {
-                    f = b ^ c ^ d;
-                    k = 0xCA62C1D6;
-                }
-
-                temp = (lrot(a, 5) + f + e + k + w[j]) & 0xFFFFFFFF;
-                e = d;
-                d = c;
-                c = lrot(b, 30);
-                b = a;
-                a = temp;
-            }
-            h0 = (h0 + a) & 0xFFFFFFFF;
-            h1 = (h1 + b) & 0xFFFFFFFF;
-            h2 = (h2 + c) & 0xFFFFFFFF;
-            h3 = (h3 + d) & 0xFFFFFFFF;
-            h4 = (h4 + e) & 0xFFFFFFFF;
-        }
-
-        var hashedBytes = new Uint8Array(0x14);
-        for (var i = 0; i < hashedBytes.length; i++) {
-            var currentNum;
-            if (i < 4)
-                currentNum = h0; else if (i < 8)
-                currentNum = h1; else if (i < 12)
-                currentNum = h2; else if (i < 16)
-                currentNum = h3; else
-                currentNum = h4;
-
-            hashedBytes[i] = (currentNum >>> ((3 - (i % 4)) * 8)) & 0xFF;
-        }
-
-        return hashedBytes;
-    }
-    sha1.hash = hash;
-})(sha1 || (sha1 = {}));
 var XboxInternals;
 (function (XboxInternals) {
     (function (Stfs) {
@@ -1326,6 +1418,10 @@ var XboxInternals;
 
             StfsPackage.prototype.IsPEC = function () {
                 return (this.flags & StfsPackageFlags.StfsPackagePEC) == 1;
+            };
+
+            StfsPackage.prototype.Resign = function () {
+                this.metaData.ResignHeader();
             };
 
             StfsPackage.prototype.ReadFileListing = function () {
@@ -1617,6 +1713,7 @@ var XboxInternals;
                 if (typeof onProgress === "undefined") { onProgress = null; }
                 if (entry.nameLen[0] == 0)
                     throw "STFS: file '" + entry.name + "' doesn't exist in the package.";
+                var start = new Date().getTime();
 
                 var fileSize = entry.fileSize;
 
@@ -1700,6 +1797,46 @@ var XboxInternals;
 
                     return fileIO;
                 }
+            };
+
+            StfsPackage.prototype.SetBlockStatus = function (blockNum, status) {
+                if (blockNum >= this.metaData.stfsVolumeDescriptor.allocatedBlockCount)
+                    throw "STFS: Reference to illegal block number.";
+
+                var statusAddress = this.GetHashAddressOfBlock(blockNum) + 0x14;
+                this.io.SetPosition(statusAddress);
+                this.io.WriteByte(new Uint8Array(status));
+            };
+
+            StfsPackage.prototype.RemoveFileFromPath = function (pathInPackage) {
+                this.RemoveFile(this.GetFileEntryFromPath(pathInPackage));
+            };
+
+            StfsPackage.prototype.RemoveFile = function (entry) {
+                var found = false;
+
+                var temp = this.GenerateRawFileListing(this.fileListing, [], []);
+                var files = temp.outFiles;
+                var folders = temp.outFolders;
+
+                for (var i = 0; i < files.length; i++) {
+                    if (files[i].name == entry.name && files[i].pathIndicator == entry.pathIndicator) {
+                        files.splice(i, 1);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    throw "STFS: File could not be deleted because it doesn't exist in the package.";
+
+                var blockToDeallocate = entry.startingBlockNum;
+                while (blockToDeallocate != 0xFFFFFF) {
+                    this.SetBlockStatus(blockToDeallocate, Stfs.BlockStatusLevelZero.Unallocated);
+                    blockToDeallocate = this.GetBlockHashEntry(blockToDeallocate).nextBlock;
+                }
+
+                this.WriteFileListing(true, files, folders);
             };
 
             StfsPackage.prototype.GetHashTableSkipSize = function (tableAddress) {
@@ -1818,7 +1955,6 @@ var XboxInternals;
                         this.topTable.entries[i].nextBlock = this.io.ReadInt24();
                     }
                 }
-
                 return entry;
             };
 
@@ -1830,6 +1966,9 @@ var XboxInternals;
                     var temp = this.GenerateRawFileListing(this.fileListing, [], []);
                     outFiles = temp.outFiles;
                     outFolders = temp.outFolders;
+                } else {
+                    outFiles = outFis;
+                    outFolders = outFos;
                 }
 
                 outFolders = outFolders.splice(1);

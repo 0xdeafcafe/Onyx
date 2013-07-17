@@ -184,7 +184,7 @@ declare module XboxInternals.Stfs {
         consoleTypeFlags: Stfs.ConsoleTypeFlags;
         dataGeneration: string;
         publicExponent: number;
-        publicModules: Uint8Array;
+        publicModulus: Uint8Array;
         certificateSignature: Uint8Array;
         signature: Uint8Array;
     }
@@ -376,6 +376,9 @@ declare module XboxInternals.AvatarAsset {
         dataAddress: number;
     }
 }
+declare module sha1 {
+    function hash(sourceArray: Uint8Array): Uint8Array;
+}
 declare module XboxInternals.Stfs {
     enum XContentFlags {
         MetadataIsPEC,
@@ -400,7 +403,11 @@ declare module XboxInternals.Stfs {
         private readMetadata();
         public WriteVolumeDescriptor(): void;
         public WriteMetaData(): void;
+        public ResignHeader(): void;
+        static Uint8ArrayFromHex(str: string): Uint8Array;
+        static BnQw_SwapDwQwLeBe(data: Uint8Array): Uint8Array;
         public WriteCertificate(): void;
+        private Uint8ArrayToHexString(array);
         private io;
         private flags;
         public magic: Stfs.Magic;
@@ -459,9 +466,6 @@ declare module XboxInternals.Stfs {
         public titleThumbnailImage: Uint8Array;
     }
 }
-declare module sha1 {
-    function hash(sourceArray: Uint8Array): Uint8Array;
-}
 declare module XboxInternals.Stfs {
     class StfsPackage {
         static INT24_MAX: number;
@@ -488,6 +492,7 @@ declare module XboxInternals.Stfs {
         public GetFileMagicFromPath(pathInPackage: string): number;
         public GetFileMagic(entry: StfsFileEntry): number;
         public IsPEC(): boolean;
+        public Resign(): void;
         private ReadFileListing();
         private AddToListing(fullListing, out);
         private CalculateTopLevel();
@@ -507,6 +512,9 @@ declare module XboxInternals.Stfs {
         private ExtractBlock(blockNum, length?);
         public ExtractFileFromPath(pathInPackage: string, onProgress?: (extractProgress: number) => any): XboxInternals.IO.FileIO;
         public ExtractFile(entry: StfsFileEntry, onProgress?: (extractProgress: number) => any): XboxInternals.IO.FileIO;
+        private SetBlockStatus(blockNum, status);
+        public RemoveFileFromPath(pathInPackage: string): void;
+        public RemoveFile(entry: StfsFileEntry): void;
         private GetHashTableSkipSize(tableAddress);
         public FileExists(pathInPackage: string): boolean;
         public InjectFile(input: XboxInternals.IO.FileIO, pathInPackage: string, onProgress?: (progress: number) => any): StfsFileEntry;
