@@ -67,7 +67,8 @@ module Onyx {
 						value: data,
 						tabindex: 0,
 						placeholder: '',
-						autofocus: true
+						autofocus: true,
+						highlightSelectionMatches: { showToken: /\w/ }
 					});
 					hidePendingMask();
 					reDrawCodeIde();

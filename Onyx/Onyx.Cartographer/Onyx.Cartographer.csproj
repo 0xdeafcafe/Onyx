@@ -180,6 +180,7 @@
     <Content Include="Content\ide\codemirror.css" />
     <Content Include="Scripts\ide\addons\active-line.js" />
     <Content Include="Scripts\ide\addons\dialog.js" />
+    <Content Include="Scripts\ide\addons\match-highlighter.js" />
     <Content Include="Scripts\ide\addons\search.js" />
     <Content Include="Scripts\ide\addons\searchcursor.js" />
     <Content Include="Scripts\ide\codemirror.js" />
