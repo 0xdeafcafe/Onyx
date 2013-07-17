@@ -3,8 +3,9 @@ var Onyx;
     var DataStorage = (function () {
         function DataStorage() {
         }
-        DataStorage.Domain = 'http://domain.onyx.xboxchaos.com/';
+        DataStorage.Domain = 'http://domain.onyx.sx/';
         return DataStorage;
     })();
     Onyx.DataStorage = DataStorage;
 })(Onyx || (Onyx = {}));
+//@ sourceMappingURL=data_storage.js.map
