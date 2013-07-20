@@ -1,0 +1,18 @@
+#aboutContainer {
+
+	.credits {
+		height: 400px;
+		margin: 20px;
+		.developersAndTesters {
+			float: left;
+
+			.testers {
+				margin-top: 20px;
+			}
+		}
+		.thanksTo {
+			margin-left: 100px;
+			float: left;
+		}
+	}
+}
