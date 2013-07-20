@@ -1,5 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500);
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900");
+@import url("http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500");
 /* Backgrounds */
 /* Font Colour */
 /* Active Colours */
@@ -415,4 +415,19 @@ body {
 h1 {
   font-size: 26px;
   font-weight: bold;
+}
+
+#aboutContainer .credits {
+  height: 400px;
+  margin: 20px;
+}
+#aboutContainer .credits .developersAndTesters {
+  float: left;
+}
+#aboutContainer .credits .developersAndTesters .testers {
+  margin-top: 20px;
+}
+#aboutContainer .credits .thanksTo {
+  margin-left: 100px;
+  float: left;
 }
