@@ -170,7 +170,6 @@
     <None Include="Content\shared\_colours.scss" />
     <None Include="Content\application.scss" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\app\controllers.js" />
     <Content Include="Scripts\app\directives.js" />
     <Content Include="Scripts\app\filters.js" />
@@ -205,9 +204,8 @@
     <Content Include="Content\ide\theme\xq-dark.css" />
     <Content Include="Content\ide\theme\xq-light.css" />
     <Content Include="Scripts\ide\mode\wumboscript.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-1.8.2.d.ts" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\util\events.js" />
     <Content Include="Scripts\util\events.ts" />
     <Content Include="Scripts\libs\xdm.js" />
