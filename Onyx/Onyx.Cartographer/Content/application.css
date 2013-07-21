@@ -56,6 +56,50 @@ button:hover,
   background: #22b3ff;
 }
 
+input[type="text"],
+input[type="password"] {
+  padding: 0.4em;
+  font-size: 20px;
+  border: 0px solid gainsboro;
+  border-left: 4px solid #1298de;
+}
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+  border-left: 4px solid red;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+  -webkit-transition: background-color 0.4s linear;
+  background: black;
+}
+
+.singinContainer .siginDetails {
+  float: left;
+  padding-right: 80px;
+}
+.singinContainer .siginDetails p .error {
+  color: red;
+}
+.singinContainer .signinValidations {
+  float: left;
+  text-align: left;
+  margin: 80px 0 0 80px;
+}
+.singinContainer .signinValidations .validation-summary-errors > ul {
+  color: red;
+  font-family: arial;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif, arial;
   color: #161616;
@@ -258,6 +302,16 @@ body {
 .layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent {
   width: 100%;
   position: relative;
+}
+.layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent form {
+  color: #ebebeb;
+}
+.layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent form p {
+  margin: 20px 0;
+}
+.layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent form p label {
+  font-size: 24px;
+  font-weight: 400;
 }
 .layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent .header {
   font-size: 45px;

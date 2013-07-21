@@ -82,6 +82,19 @@
 					width: 100%;
 					position: relative;
 
+					form {
+						color: #ebebeb;
+
+						p {
+							margin: 20px 0;
+
+							label {
+								font-size: 24px;
+								font-weight: 400;
+							}
+						}
+					}
+
 					.header {
 						font-size: 45px;
 						font-weight: 100;

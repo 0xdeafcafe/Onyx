@@ -25,3 +25,16 @@ button:hover,
 .button:hover {
     background: $secondary-active-colour;
 }
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.4em;
+	font-size: 20px;
+	border: 0px solid $main-background-colour;
+	border-left: 4px solid $primary-active-colour;
+}
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error {
+	border-left: 4px solid red;
+}

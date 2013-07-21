@@ -1,0 +1,40 @@
+﻿input[type="text"],
+input[type="password"] { 
+	background-color: rgba(0,0,0,0.8);
+	color: $primary-invert-font-colour;
+}
+input[type="text"]:hover,
+input[type="password"]:hover {
+	-webkit-transition:background-color 0.4s linear;   
+	background: rgba(0,0,0,1);
+}
+
+
+.singinContainer {
+	.siginDetails {
+		float: left;
+
+		padding-right: 80px;
+
+		p {
+			.error {
+				color: red;
+			}
+		}
+	}
+
+	.signinValidations {
+		float: left;
+		text-align: left;
+
+		margin: 80px 0 0 80px;
+
+		.validation-summary-errors > ul {
+			color: red;
+
+			font-family: arial;
+			font-size: 16px;
+			line-height: 1.5em;
+		}
+	}
+}
