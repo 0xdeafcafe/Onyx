@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Onyx.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace Onyx.Domain.Controllers
 {
     public class HomeController : Controller
     {
+		private readonly DatabaseContext db = new DatabaseContext();
+
         public ActionResult Index()
         {
             ViewBag.Title = "Onyx Domain";
