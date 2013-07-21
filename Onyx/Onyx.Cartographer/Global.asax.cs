@@ -25,6 +25,7 @@ namespace Onyx.Cartographer
 
 		protected void Application_Error(object sender, EventArgs e)
 		{
+#if !DEBUG
 			Exception lastError = Server.GetLastError();
 			Server.ClearError();
 
@@ -52,6 +53,7 @@ namespace Onyx.Cartographer
 			RequestContext requestContext = new RequestContext(new HttpContextWrapper(Context), routeData);
 
 			controller.Execute(requestContext);
+#endif
 		}
     }
 }
