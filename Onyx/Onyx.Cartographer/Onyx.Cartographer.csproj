@@ -124,10 +124,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +146,7 @@
     <Content Include="Content\pages\create\_index.scss" />
     <Content Include="Content\pages\create\_modify.scss" />
     <Content Include="Content\pages\about\_index.scss" />
+    <Content Include="Content\pages\signin\_index.scss" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
@@ -170,7 +173,6 @@
     <Content Include="img\modal-icons\warning%402x.png" />
     <Content Include="img\modal-icons\warning.png" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <None Include="Content\shared\_colours.scss" />
     <None Include="Content\application.scss" />
@@ -184,6 +186,8 @@
     <Content Include="Content\ide\codemirror.css" />
     <Content Include="Scripts\ide\addons\active-line.js" />
     <Content Include="Scripts\ide\addons\dialog.js" />
+    <Content Include="Scripts\ide\addons\foldcode.js" />
+    <Content Include="Scripts\ide\addons\indent-fold.js" />
     <Content Include="Scripts\ide\addons\match-highlighter.js" />
     <Content Include="Scripts\ide\addons\search.js" />
     <Content Include="Scripts\ide\addons\searchcursor.js" />
@@ -249,17 +253,20 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Shared\_ErrorLayout.cshtml" />
     <Content Include="Scripts\cartographer\cartographer.js.map" />
     <Content Include="Scripts\libs\xdm.js.map" />
     <Content Include="Scripts\stor\data_storage.js.map" />
     <Content Include="Scripts\util\events.js.map" />
     <Content Include="Scripts\util\mask_manager.js.map" />
     <Content Include="Scripts\util\modal_manager.js.map" />
+    <Content Include="Views\Shared\_AltLayout.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Signin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\lib\" />
+    <Folder Include="img\metro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
