@@ -1,11 +1,11 @@
 ﻿input[type="text"],
 input[type="password"] { 
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.4);
 	color: $primary-invert-font-colour;
 }
 input[type="text"]:hover,
 input[type="password"]:hover {
-	-webkit-transition:background-color 0.4s linear;   
+	-webkit-transition:background-color 0.2s linear;   
 	background: rgba(0,0,0,1);
 }
 
