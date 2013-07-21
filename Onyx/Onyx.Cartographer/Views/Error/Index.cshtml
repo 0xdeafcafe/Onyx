@@ -1,10 +1,11 @@
 ﻿@model Onyx.Cartographer.Models.ErrorModel
 @{
-	Layout = "~/Views/Shared/_ErrorLayout.cshtml";
-	ViewBag.Title = Model.HttpStatusCode.ToString();
+	Layout = "~/Views/Shared/_AltLayout.cshtml";
+	ViewBag.Title = "Onyx Error - " + Model.HttpStatusCode.ToString();
 }
-
-<strong>@Model.HttpStatusCode.ToString()</strong>
-<hr />
-@Model.HttpStatusMessagePpl
-<!-- @Model.HttpStatusMessageHeh -->
+<span class="header">
+	<strong>@Model.HttpStatusCode.ToString()</strong>
+	<hr />
+	@Model.HttpStatusMessagePpl
+	<!-- @Model.HttpStatusMessageHeh -->	
+</span>

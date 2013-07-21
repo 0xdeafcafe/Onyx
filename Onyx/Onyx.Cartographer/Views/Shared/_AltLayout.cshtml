@@ -3,12 +3,15 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Error - @ViewBag.Title</title>	
-	
+	<title>@ViewBag.Title</title>
+
 	@Styles.Render("~/Content/reset.css")
 	@Styles.Render("~/Content/application.css")
+	
+	<!-- jquerty -->
+	@Scripts.Render("~/bundles/jquery")
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 </head>
-
 <body>
 	<div id="wrapper" class="layoutWrapper">
 		<div class="epm alertPage">
@@ -18,9 +21,7 @@
 				<div class="epm wrapper">
 					<div class="epm content">
 						<div class="njs primaryContent">
-							<span class="header">
-								@RenderBody()
-							</span>
+							@RenderBody()
 						</div>
 					</div>
 				</div>
