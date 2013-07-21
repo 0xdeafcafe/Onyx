@@ -1,0 +1,40 @@
+﻿@model Onyx.Cartographer.Models.SigninModel
+@{
+	Layout = "~/Views/Shared/_AltLayout.cshtml";
+	ViewBag.Title = "Onyx - Sign In";
+}
+
+<span class="header">
+	<strong>Sign in</strong>
+
+	<hr />
+</span>
+@using (Html.BeginForm())
+{
+<div class="singinContainer">
+	<div class="siginDetails">
+		
+		<p>
+			@Html.LabelFor(m => m.Username)
+			<br />
+			<span class="error">@Html.ValidationMessageFor(m => m.Username)</span>
+			<br />
+			@Html.TextBoxFor(m => m.Username)
+		</p>
+
+		<p>
+			@Html.LabelFor(m => m.Password)
+			<br />
+			<span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
+			<br />
+			@Html.PasswordFor(m => m.Password)
+		</p>
+
+		<input type="submit" />
+	</div>
+
+	<div class="signinValidations">
+
+	</div>
+</div>
+}
