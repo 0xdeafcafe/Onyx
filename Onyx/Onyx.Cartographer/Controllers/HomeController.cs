@@ -12,5 +12,10 @@ namespace Onyx.Cartographer.Controllers
         {
             return View();
         }
+
+		public ActionResult Welcome()
+		{
+			return View();
+		}
     }
 }
