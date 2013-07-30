@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Onyx.Cartographer.Controllers
 {
-    public class HomeController : Controller
+    public class CreateController : Controller
     {
         //
-        // GET: /Home/
+        // GET: /Create/
         public ActionResult Index()
         {
             return View();

@@ -14,18 +14,6 @@ namespace Onyx.Domain.Controllers
 {
 	public class VariantController : ApiController
 	{
-		// GET api/variant
-		public IEnumerable<string> Get()
-		{
-			return new string[] { "value1", "value2" };
-		}
-
-		// GET api/variant/5
-		public string Get(int id)
-		{
-			return "value";
-		}
-
 		// POST api/variant
 		public string Post()
 		{
@@ -51,16 +39,6 @@ namespace Onyx.Domain.Controllers
 			}
 
 			return File.ReadAllText(outputPath);
-		}
-
-		// PUT api/variant/5
-		public void Put(int id, [FromBody]string value)
-		{
-		}
-
-		// DELETE api/variant/5
-		public void Delete(int id)
-		{
 		}
 	}
 }

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="onyx">
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,27 +25,31 @@
 
 			<div id="navigation">
 				<ul class="navigationList navigationMenu">
+                    <li>
+                        <a id="nav-feat" href="/" class="@((string)ViewBag.VM_Home ?? "")">Home</a>
+                        <div class="identicationTag"></div>
+                    </li>
 					<li>
-						<a id="nav-feat" href="#Featured" class="selected">Featured</a>
+						<a id="nav-feat" href="/Featured/" class="@((string)ViewBag.VM_Featured ?? "")">Featured</a>
 						<div class="identicationTag"></div>
 					</li>
 					<li>
-						<a id="nav-create" href="#Create">Create</a>
+                        <a id="nav-create" href="/Create/" class="@((string)ViewBag.VM_Create ?? "")">Create</a>
 						<div class="identicationTag"></div>
 					</li>
 					<li>
-						<a id="nav-about" href="#About">About</a>
+                        <a id="nav-about" href="/About/" class="@((string)ViewBag.VM_About ?? "")">About</a>
 						<div class="identicationTag"></div>
 					</li>
 				</ul>
 			</div>
 
 			<div id="app-info">
-				<div>Onyx Version: <span app-version></span></div>
+				<div>Onyx Version: <span>0.1 {pa}</span></div>
 			</div>
 		</div>
 		<div id="scrollableContentContainer" class="layoutFluidRightSection">
-			<div class="mainPageContent" ng-view>			
+			<div class="mainPageContent">			
 				@RenderBody()
 			</div>
 		</div>
@@ -124,9 +128,6 @@
 	@Scripts.Render("~/Scripts/ide/addons/match-highlighter.js")
 	@Styles.Render("~/Content/ide/theme/onyx.css")
 
-	<!-- Add Angular -->
-	@Scripts.Render("~/Scripts/angular.js")
-
 	<!-- Cartographer -->	
 	@Scripts.Render("~/Scripts/cartographer/cartographer.js")
 
@@ -136,13 +137,6 @@
 	@Scripts.Render("~/Scripts/util/misc.js")
 	@Scripts.Render("~/Scripts/util/mask_manager.js")
 	@Scripts.Render("~/Scripts/util/modal_manager.js")
-
-	<!-- Onyx Application Logic -->
-	@Scripts.Render("~/Scripts/app/app.js")
-	@Scripts.Render("~/Scripts/app/services.js")
-	@Scripts.Render("~/Scripts/app/controllers.js")
-	@Scripts.Render("~/Scripts/app/filters.js")
-	@Scripts.Render("~/Scripts/app/directives.js")
 
     <!-- Xbox Data Manager -->
     @Scripts.Render("~/Scripts/libs/xdm.js")

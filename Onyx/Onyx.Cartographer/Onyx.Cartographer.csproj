@@ -122,7 +122,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FeaturedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Global.asax.cs">
@@ -131,6 +134,7 @@
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\SigninModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\DomainConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularViews\Create\modify.html" />
@@ -172,15 +176,9 @@
     <Content Include="img\modal-icons\info.png" />
     <Content Include="img\modal-icons\warning%402x.png" />
     <Content Include="img\modal-icons\warning.png" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\app\app.js" />
     <None Include="Content\shared\_colours.scss" />
     <None Include="Content\application.scss" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
-    <Content Include="Scripts\app\controllers.js" />
-    <Content Include="Scripts\app\directives.js" />
-    <Content Include="Scripts\app\filters.js" />
-    <Content Include="Scripts\app\services.js" />
     <Content Include="Scripts\cartographer\cartographer.js" />
     <Content Include="Scripts\cartographer\cartographer.ts" />
     <Content Include="Content\ide\codemirror.css" />
@@ -231,11 +229,6 @@
     <Content Include="Scripts\util\modal_manager.js" />
     <Content Include="Scripts\util\modal_manager.ts" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="AngularViews\About\index.html" />
-    <Content Include="AngularViews\Create\index.html" />
-    <Content Include="AngularViews\Featured\index.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="StaticPages\Soon\index.html" />
     <Content Include="StaticPages\Soon\sidebar-logo%402x.png" />
     <Content Include="StaticPages\Soon\sidebar-logo.png" />
@@ -251,7 +244,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Featured\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Scripts\cartographer\cartographer.js.map" />
     <Content Include="Scripts\libs\xdm.js.map" />
@@ -262,6 +255,9 @@
     <Content Include="Views\Shared\_AltLayout.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Signin\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Create\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
