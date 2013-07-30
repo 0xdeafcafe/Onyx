@@ -1,7 +1,7 @@
-﻿///<reference path="XboxInternals.d.ts" />
-///<reference path="../jquery-1.8.2.d.ts" />
-///<reference path="../util/modal_manager.ts" />
-///<reference path="../cartographer/cartographer.ts" />
+﻿///<reference path="../xbox_internals/XboxInternals.d.ts" />
+///<reference path="../../jquery-1.8.2.d.ts" />
+///<reference path="../../util/modal_manager.ts" />
+///<reference path="../../cartographer/cartographer.ts" />
 
 window.onload = () => {
     window.addEventListener("dragenter", (evt) => {

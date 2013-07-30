@@ -1,4 +1,4 @@
-///<reference path="../libs/XboxInternals.d.ts" />
+///<reference path="../libs/xbox_internals/XboxInternals.d.ts" />
 ///<reference path="../jquery-1.8.2.d.ts" />
 ///<reference path="../util/modal_manager.ts" />
 ///<reference path="../util/mask_manager.ts" />

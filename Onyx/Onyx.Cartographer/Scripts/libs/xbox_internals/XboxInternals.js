@@ -275,6 +275,13 @@
                     return copy;
                 }
 
+                if (obj instanceof Uint8Array) {
+                    var copy = new Uint8Array(obj.length);
+                    for (var i = 0; i < copy.length; i++)
+                        copy[i] = obj[i];
+                    return copy;
+                }
+
                 if (obj instanceof Object) {
                     var copy = {};
                     for (var attr in obj) {
