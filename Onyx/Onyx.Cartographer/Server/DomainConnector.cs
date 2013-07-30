@@ -125,7 +125,7 @@ namespace Onyx.Cartographer.Server
 #if DEBUG
 		private const string DomainEndpoint = "http://localhost:1337/api/";
 #else
-		private const string DomainEndpoint = "http:/domain.onyx.sx/api/";
+		private const string DomainEndpoint = "http://domain.onyx.sx/api/";
 #endif
 	}
 }
