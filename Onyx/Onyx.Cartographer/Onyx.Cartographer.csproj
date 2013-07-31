@@ -50,6 +50,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Nitrogen">
+      <HintPath>..\..\..\GuiltySpark\Solution\Nitrogen\bin\WebApiDebug\Nitrogen.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -128,6 +131,7 @@
     <Compile Include="Controllers\FeaturedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
+    <Compile Include="Controllers\VariantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
