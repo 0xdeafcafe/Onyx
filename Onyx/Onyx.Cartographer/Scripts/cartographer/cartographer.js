@@ -50,9 +50,9 @@ var Onyx;
                 },
                 processData: false,
                 success: function (data) {
-                    window.location.hash = 'Create/Modify';
                     $('.scriptData > #scriptmod').val(data);
-
+                    $('.dropGametypeHint').css('display', 'none');
+                    $('#gamesaveModify').css('display', 'block');
                     var editor = CodeMirror.fromTextArea(document.getElementById("scriptmod"), {
                         lineNumbers: true,
                         styleActiveLine: true,
