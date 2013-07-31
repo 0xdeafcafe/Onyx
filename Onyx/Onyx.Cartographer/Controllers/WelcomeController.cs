@@ -1,13 +1,11 @@
 using System.Web.Mvc;
-using Onyx.Cartographer.Extensions.Attributes;
 
 namespace Onyx.Cartographer.Controllers
 {
-    [RequireAuthentication]
-    public class CreateController : Controller
+    public class WelcomeController : Controller
     {
         //
-        // GET: /Create/
+        // GET: /Welcome/
         public ActionResult Index()
         {
             return View();

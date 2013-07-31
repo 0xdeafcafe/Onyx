@@ -45,6 +45,9 @@
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -132,15 +135,27 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SigninController.cs" />
     <Compile Include="Controllers\VariantController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
+    <Compile Include="Extensions\Attributes\RequireAuthentication.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307312152322_CreatedUserModel.cs" />
+    <Compile Include="Migrations\201307312152322_CreatedUserModel.Designer.cs">
+      <DependentUpon>201307312152322_CreatedUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Models\SigninModel.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\DomainConnector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\onyx_development.mdf" />
+    <Content Include="App_Data\onyx_development_log.ldf">
+      <DependentUpon>onyx_development.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\application.css">
       <DependentUpon>application.scss</DependentUpon>
     </Content>
@@ -256,7 +271,7 @@
     <Content Include="Scripts\util\mask_manager.js.map" />
     <Content Include="Scripts\util\modal_manager.js.map" />
     <Content Include="Views\Shared\_AltLayout.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Welcome\Index.cshtml" />
     <Content Include="Views\Signin\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Create\Index.cshtml" />
@@ -264,12 +279,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AngularViews\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Content\lib\" />
     <Folder Include="img\metro\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201307312152322_CreatedUserModel.resx">
+      <DependentUpon>201307312152322_CreatedUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Onyx.Domain\Onyx.Domain.csproj">
+      <Project>{30432180-1B8B-4833-B25E-72368E2C63AF}</Project>
+      <Name>Onyx.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

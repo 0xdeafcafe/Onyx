@@ -1,15 +1,13 @@
 ﻿using Nitrogen.Content.UserGenerated.Halo4;
 using Nitrogen.Scripting.WumboScript.Decompiler;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using Onyx.Cartographer.Extensions.Attributes;
 
 namespace Onyx.Cartographer.Controllers
 {
+    [RequireAuthentication]
     public class VariantController : ApiController
     {
         // POST api/variant
@@ -20,7 +18,6 @@ namespace Onyx.Cartographer.Controllers
 
             var data = Request.Content as System.Net.Http.StreamContent;
 
-            var variant = Request.Content;
             var newData = data.ReadAsByteArrayAsync().Result;
             var gt = GameType.Load(newData);
             var decompiler = new WumboScriptDecompiler();

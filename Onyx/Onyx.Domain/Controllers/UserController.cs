@@ -1,18 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Onyx.Domain.Controllers
 {
     public class UserController : ApiController
     {
         // PUT api/user/xerax
-        public string[] Put(string username, [FromBody]string value)
+        public ActionResult Put(string username, [FromBody]string password)
         {
-			return new string[] { username, value };
+            if (username == "onyx" && password == "fuckyotits")
+            {
+                return new JsonResult();
+            }
+            else
+            {
+                return new JsonResult();
+            }
         }
     }
 }

@@ -1,10 +1,4 @@
-using Onyx.Cartographer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace Onyx.Cartographer.Controllers
 {
@@ -20,21 +14,9 @@ namespace Onyx.Cartographer.Controllers
 		//
 		// POST: /Signin/
 		[HttpPost]
-		public ActionResult Index(SigninModel model)
+		public ActionResult Index(string data)
 		{
-			if (ModelState.IsValid)
-			{
-				if (model.Username == "" && model.Password == "")
-				{
-					FormsAuthentication.SetAuthCookie(model.Username, false);
-					return RedirectToAction("Index", "Home");
-				}
-				else
-				{
-					ModelState.AddModelError("", "Invalid Username of Password.");
-				}
-			}
-
+			
 			return View();
 		}
 	}
