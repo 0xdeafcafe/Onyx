@@ -116,32 +116,10 @@
 	<!-- Data Storage -->
 	@Scripts.Render("~/Scripts/stor/data_storage.js")
 
-	<!-- IDE -->
-	@Styles.Render("~/Content/ide/codemirror.css")	
-	@Styles.Render("~/Content/ide/dialog.css")
-	@Scripts.Render("~/Scripts/ide/codemirror.js")
-	@Scripts.Render("~/Scripts/ide/mode/wumboscript.js")
-	@Scripts.Render("~/Scripts/ide/addons/active-line.js")	
-	@Scripts.Render("~/Scripts/ide/addons/dialog.js")
-	@Scripts.Render("~/Scripts/ide/addons/searchcursor.js")	
-	@Scripts.Render("~/Scripts/ide/addons/search.js")
-	@Scripts.Render("~/Scripts/ide/addons/match-highlighter.js")
-	@Styles.Render("~/Content/ide/theme/onyx.css")
-
-	<!-- Cartographer -->	
-	@Scripts.Render("~/Scripts/cartographer/cartographer.js")
-
-	<!-- Utilities -->	
-	@Scripts.Render("~/Scripts/util/events.js")
-	@Scripts.Render("~/Scripts/util/functions.js")
+	<!-- Utilities -->
 	@Scripts.Render("~/Scripts/util/mask_manager.js")
 	@Scripts.Render("~/Scripts/util/modal_manager.js")
 
-    <!-- Xbox Data Manager -->
-    @Scripts.Render("~/Scripts/libs/xdm/xdm.js")
-
-    <!-- Xbox Internals (woo, STFS!) -->
-    @Scripts.Render("~/Scripts/libs/xbox_internals/XboxInternals.js")	
 	@RenderSection("scripts", required: false)
 
 	<script>
