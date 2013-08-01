@@ -25,14 +25,14 @@
 
 			<div id="navigation">
 				<ul class="navigationList navigationMenu">
-                    <li>
-                        <a id="nav-feat" href="/Hub" class="@((string)ViewBag.VM_Hub ?? "")">Hub</a>
-                        <div class="identicationTag"></div>
-                    </li>
-					<li>
-						<a id="nav-feat" href="/Users/" class="@((string)ViewBag.VM_Users ?? "")">Users</a>
-						<div class="identicationTag"></div>
-					</li>
+				    <li>
+				        @Html.ActionLink("Hub", "Index", "Hub", new { }, new { @class = ((string)ViewBag.VM_Hub ?? ""), id = "nav-feat" })
+				        <div class="identicationTag"></div>
+				    </li>
+				    <li>
+				        @Html.ActionLink("User", "Index", "Users", new { }, new { @class = ((string)ViewBag.VM_User ?? ""), id = "nav-feat" })
+				        <div class="identicationTag"></div>
+				    </li>
 				</ul>
 			</div>
 
