@@ -324,6 +324,7 @@ body {
 }
 .layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent .header strong {
   font-size: 70px;
+  line-height: 1.4em;
 }
 .layoutWrapper > .alertPage .innerWrapper .wrapper .content .primaryContent .header .sub {
   font-size: 16px;
