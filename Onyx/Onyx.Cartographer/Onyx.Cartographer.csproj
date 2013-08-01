@@ -134,6 +134,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\AdminCP\AdminCPAreaRegistration.cs" />
+    <Compile Include="Areas\AdminCP\Controllers\HubController.cs" />
+    <Compile Include="Areas\AdminCP\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -195,6 +198,9 @@
     <Content Include="Content\pages\create\_modify.scss" />
     <Content Include="Content\pages\about\_index.scss" />
     <Content Include="Content\pages\signin\_index.scss" />
+    <Content Include="Areas\AdminCP\Views\Web.Config" />
+    <Content Include="Areas\AdminCP\Views\Hub\Index.cshtml" />
+    <Content Include="Areas\AdminCP\Views\Users\Index.cshtml" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
@@ -325,10 +331,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\AdminCP\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Properties\PublishProfiles\ProductionDeploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\AdminCP\Models\" />
     <Folder Include="Content\lib\" />
     <Folder Include="img\metro\" />
   </ItemGroup>
