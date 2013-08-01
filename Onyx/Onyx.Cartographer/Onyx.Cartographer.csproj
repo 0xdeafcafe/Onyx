@@ -185,6 +185,33 @@
     <None Include="Content\shared\_tags.scss" />
     <Content Include="Content\reset.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Games\Halo4\h4_actions_nontu.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_conditions_nontu.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_incidents.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_medals.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_object_types.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_scripting.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_sounds.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_stringids.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Games\Halo4\h4_wumboscript.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="img\animated\loading-dark.gif" />
     <Content Include="img\animated\loading-white.gif" />
@@ -284,7 +311,6 @@
     <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AngularViews\" />
     <Folder Include="Content\lib\" />
     <Folder Include="img\metro\" />
   </ItemGroup>
