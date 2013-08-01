@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ontx - Admin Control Panel - @ViewBag.Title</title>
+	@Styles.Render("~/Content/reset.css")
+	@Styles.Render("~/Content/application.css")
+	@Scripts.Render("~/bundles/modernizr")
+	
+	<!-- jquerty -->
+	@Scripts.Render("~/bundles/jquery")
+</head>
+
+<body>
+	<div id="wrapper" class="layoutWrapper">
+		<div id="leftColumn" class="layoutFixLeftSection">
+			<div class="layoutFixTopLeftSection">
+				<a id="logo" href="/#Features">
+					<div id="logo-img"></div>
+				</a>
+			</div>
+
+			<hr class="position-relative" />			
+
+			<div id="navigation">
+				<ul class="navigationList navigationMenu">
+                    <li>
+                        <a id="nav-feat" href="/Hub" class="@((string)ViewBag.VM_Hub ?? "")">Hub</a>
+                        <div class="identicationTag"></div>
+                    </li>
+					<li>
+						<a id="nav-feat" href="/Users/" class="@((string)ViewBag.VM_Users ?? "")">Users</a>
+						<div class="identicationTag"></div>
+					</li>
+				</ul>
+			</div>
+
+			<div id="app-info">
+				<div>Onyx Version: <span>0.1 {pa}</span></div>
+			</div>
+		</div>
+		<div id="scrollableContentContainer" class="layoutFluidRightSection">
+			<div class="mainPageContent">			
+				@RenderBody()
+			</div>
+		</div>
+
+		<div id="modalMask"></div>
+		<div id="pendingMask"></div>
+		<div id="modal" class="error">
+			<h1>Modal Example</h1>	
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce vel sapien elit in malesuada semper mi, id sollicitudin urna fermentum ut fusce varius nisl ac ipsum gravida vel pretium tellus tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+			</p>
+			<div class="actions">
+				<input type="button" value="Close" />
+			</div>
+		</div>
+		<noscript>
+			<div class="njs alertPage">
+				<div class="njs innerWrapper">
+					<div class="title"></div>
+
+					<div class="njs wrapper">
+						<div class="njs content">
+							<div class="njs primaryContent">
+								<span class="header">
+									I Need Javascript :(
+									<br />
+									Could you turn it on? ಠ_ಠ
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="njs footer">
+						<div class="sitemap">
+							<ul>
+								<li>
+									<a href="http://www.xboxchaos.com/">
+										XboxChaos
+									</a>
+								</li>
+								<li>•</li>
+								<li>
+									<a href="http://www.iBotModz.net/">
+										iBotModz
+									</a>
+								</li>
+								<li>•</li>
+								<li>
+									<a href="http://www.branchapp.co/">
+										BranchApp
+									</a>
+								</li>
+								<li>|</li>
+								<li>&copy; 2013 Project Onyx</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</noscript>
+	</div>
+
+
+	<!-- Data Storage -->
+	@Scripts.Render("~/Scripts/stor/data_storage.js")
+
+	<!-- Utilities -->
+	@Scripts.Render("~/Scripts/util/mask_manager.js")
+	@Scripts.Render("~/Scripts/util/modal_manager.js")
+
+	@RenderSection("scripts", required: false)
+
+	<script>
+		var cartographer;
+	</script>
+</body>
+</html>
