@@ -133,16 +133,22 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FeaturedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SigninController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\VariantController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
+    <Compile Include="Extensions\Attributes\AuthenticatedRedirect.cs" />
     <Compile Include="Extensions\Attributes\RequireAuthentication.cs" />
+    <Compile Include="Extensions\Cryptography\Sha1Crypto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201307312152322_CreatedUserModel.cs" />
     <Compile Include="Migrations\201307312152322_CreatedUserModel.Designer.cs">
       <DependentUpon>201307312152322_CreatedUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs" />
+    <Compile Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.Designer.cs">
+      <DependentUpon>201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
@@ -272,7 +278,7 @@
     <Content Include="Scripts\util\modal_manager.js.map" />
     <Content Include="Views\Shared\_AltLayout.cshtml" />
     <Content Include="Views\Welcome\Index.cshtml" />
-    <Content Include="Views\Signin\Index.cshtml" />
+    <Content Include="Views\Account\Signin.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
@@ -289,12 +295,9 @@
     <EmbeddedResource Include="Migrations\201307312152322_CreatedUserModel.resx">
       <DependentUpon>201307312152322_CreatedUserModel.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Onyx.Domain\Onyx.Domain.csproj">
-      <Project>{30432180-1B8B-4833-B25E-72368E2C63AF}</Project>
-      <Name>Onyx.Domain</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.resx">
+      <DependentUpon>201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -478,6 +478,9 @@ h1 {
 #aboutContainer .credits .developersAndTesters {
   float: left;
 }
+#aboutContainer .credits .developersAndTesters .researchers {
+  margin-top: 20px;
+}
 #aboutContainer .credits .developersAndTesters .testers {
   margin-top: 20px;
 }

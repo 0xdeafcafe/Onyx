@@ -16,7 +16,7 @@ namespace Onyx.Cartographer
 
             routes.MapRoute(
                 "WelcomeRoute",
-                "Welcome/");
+                "Welcome");
         }
     }
 }

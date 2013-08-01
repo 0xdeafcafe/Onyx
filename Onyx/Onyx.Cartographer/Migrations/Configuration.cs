@@ -1,3 +1,4 @@
+using System.Linq;
 using Onyx.Cartographer.Models;
 
 namespace Onyx.Cartographer.Migrations
@@ -13,20 +14,9 @@ namespace Onyx.Cartographer.Migrations
 
         protected override void Seed(DatabaseContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-
-            context.Users.Add(new User { Username = "OnyxTest", Password = "ff1e70f9aa4f028dbacbd84c9ed1259345561314", Email = "xerax@xboxchaos.com" });
+            // Add test account
+            if (context.Users.SingleOrDefault(u => u.Username == "OnyxTest") == null)
+                context.Users.Add(new User { Username = "OnyxTest", Password = "fddeca1244a9e26cc1724cb98fdab6556a5d168c", Email = "xerax@xboxchaos.com" });
         }
     }
 }
