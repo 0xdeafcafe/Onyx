@@ -69,6 +69,10 @@ input[type="password"].input-validation-error {
   border-left: 4px solid red;
 }
 
+.table {
+  max-width: 100%;
+}
+
 input[type="text"],
 input[type="password"] {
   background-color: rgba(0, 0, 0, 0.4);
