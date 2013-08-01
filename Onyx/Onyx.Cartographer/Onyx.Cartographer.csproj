@@ -203,6 +203,7 @@
     <Content Include="Areas\AdminCP\Views\Hub\Index.cshtml" />
     <Content Include="Areas\AdminCP\Views\Users\Index.cshtml" />
     <Content Include="Areas\AdminCP\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\AdminCP\Views\Users\Edit.cshtml" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
@@ -212,6 +213,7 @@
     <Content Include="Content\shared\_inputs.scss" />
     <None Include="Content\shared\_tags.scss" />
     <Content Include="Content\reset.css" />
+    <None Include="Content\shared\_tables.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Games\Halo4\h4_actions_nontu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
