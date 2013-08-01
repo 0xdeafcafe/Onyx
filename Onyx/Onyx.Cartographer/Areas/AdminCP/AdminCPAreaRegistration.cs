@@ -17,7 +17,13 @@ namespace Onyx.Cartographer.Areas.AdminCP
             context.MapRoute(
                 "AdminCP",
                 "AdminCP/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Hub", action = "Index", id = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
+                "AdminCP_Pages",
+                "AdminCP/{controller}/{action}/{page}",
+                new { controller = "Hub", action = "Index", page = UrlParameter.Optional }
             );
         }
     }
