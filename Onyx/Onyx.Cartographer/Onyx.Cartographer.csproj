@@ -137,6 +137,7 @@
     <Compile Include="Controllers\VariantController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Extensions\Attributes\AuthenticatedRedirect.cs" />
+    <Compile Include="Extensions\Attributes\RequireAdminAuthentication.cs" />
     <Compile Include="Extensions\Attributes\RequireAuthentication.cs" />
     <Compile Include="Extensions\Cryptography\Sha1Crypto.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +150,22 @@
     <Compile Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs" />
     <Compile Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.Designer.cs">
       <DependentUpon>201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308011348586_UpdatedUsersWithAdminField.cs" />
+    <Compile Include="Migrations\201308011348586_UpdatedUsersWithAdminField.Designer.cs">
+      <DependentUpon>201308011348586_UpdatedUsersWithAdminField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308011352537_RemovedRequireAttributeOnEmail.cs" />
+    <Compile Include="Migrations\201308011352537_RemovedRequireAttributeOnEmail.Designer.cs">
+      <DependentUpon>201308011352537_RemovedRequireAttributeOnEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308011531355_AddedUserRegistrationTime.cs" />
+    <Compile Include="Migrations\201308011531355_AddedUserRegistrationTime.Designer.cs">
+      <DependentUpon>201308011531355_AddedUserRegistrationTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308011541380_AddedUserLastSigninDate.cs" />
+    <Compile Include="Migrations\201308011541380_AddedUserLastSigninDate.Designer.cs">
+      <DependentUpon>201308011541380_AddedUserLastSigninDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
@@ -167,9 +184,6 @@
     </Content>
     <Content Include="Content\ide\dialog.css" />
     <Content Include="Content\ide\theme\onyx.css" />
-    <Content Include="Content\pages\about\index.css">
-      <DependentUpon>_index.scss</DependentUpon>
-    </Content>
     <Content Include="Content\pages\_sidebar.scss" />
     <Content Include="Content\pages\create\_index.scss" />
     <Content Include="Content\pages\create\_modify.scss" />
@@ -229,7 +243,6 @@
     <Content Include="img\modal-icons\warning.png" />
     <None Include="Content\shared\_colours.scss" />
     <None Include="Content\application.scss" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Scripts\cartographer\cartographer.js" />
     <Content Include="Scripts\cartographer\cartographer.ts" />
     <Content Include="Content\ide\codemirror.css" />
@@ -306,6 +319,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Create\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <None Include="Properties\PublishProfiles\ProductionDeploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\lib\" />
@@ -320,6 +335,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307312348131_UpdatedUserModelRequiredUsernameAndPassword.resx">
       <DependentUpon>201307312348131_UpdatedUserModelRequiredUsernameAndPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011348586_UpdatedUsersWithAdminField.resx">
+      <DependentUpon>201308011348586_UpdatedUsersWithAdminField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011352537_RemovedRequireAttributeOnEmail.resx">
+      <DependentUpon>201308011352537_RemovedRequireAttributeOnEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011531355_AddedUserRegistrationTime.resx">
+      <DependentUpon>201308011531355_AddedUserRegistrationTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308011541380_AddedUserLastSigninDate.resx">
+      <DependentUpon>201308011541380_AddedUserLastSigninDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

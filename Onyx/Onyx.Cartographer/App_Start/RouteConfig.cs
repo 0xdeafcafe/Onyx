@@ -12,7 +12,8 @@ namespace Onyx.Cartographer
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "Onyx.Cartographer.Controllers" });
 
             routes.MapRoute(
                 "WelcomeRoute",
