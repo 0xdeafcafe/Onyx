@@ -7,7 +7,7 @@
 
 <h2>View All Users</h2>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <td>
@@ -35,7 +35,7 @@
                     @user.RegisterDate
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", "Users", new { user.Id } )
+                    @Html.ActionLink("Edit", "Edit", "Users", new { user.Id }, new { } )
                 </td>
             </tr>
         }

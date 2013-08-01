@@ -20,9 +20,26 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
 
         //
         // GET: /AdminCP/Users/Edit/1
-        public ActionResult Edit(int userId)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+                return HttpNotFound();
+
+            var user = _dbContext.Users.Find(id);
+
+            if (user == null)
+                return HttpNotFound();
+
+            return View(user);
+        }
+
+        //
+        // POST: /AdminCP/Users/Edit/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(User userModel)
+        {
+            return View(userModel);
         }
 	}
 }

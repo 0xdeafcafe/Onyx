@@ -6,3 +6,35 @@
 }
 
 <h2>Edit User - @Model.Username</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <p>
+        @Html.LabelFor(m => m.Username)
+        <br />
+        @Html.TextBoxFor(m => m.Username)
+        <span class="error">@Html.ValidationMessageFor(m => m.Username)</span>
+    </p>
+    
+    <p>
+        @Html.LabelFor(m => m.Email)
+        <br />
+        @Html.TextBoxFor(m => m.Email)
+        <span class="error">@Html.ValidationMessageFor(m => m.Email)</span>
+    </p>
+    
+    <p>
+        @Html.LabelFor(m => m.IsAdmin)
+        <br />
+        @Html.CheckBoxFor(m => m.IsAdmin)
+        <span class="error">@Html.ValidationMessageFor(m => m.IsAdmin)</span>
+    </p>
+
+    <input type="submit" />
+
+    <div class="signinValidations">
+        @Html.ValidationSummary(true)
+    </div>
+}
