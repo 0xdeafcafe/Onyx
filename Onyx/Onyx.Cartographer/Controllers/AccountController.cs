@@ -51,7 +51,7 @@ namespace Onyx.Cartographer.Controllers
         [RequireAuthentication]
         public ActionResult Signout()
         {
-            Session["UserId"] = null;
+            Session.Remove("UserId");
             return RedirectToAction("Index", "Welcome");
         }
 	}
