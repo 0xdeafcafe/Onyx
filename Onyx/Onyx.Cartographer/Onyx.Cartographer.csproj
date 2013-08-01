@@ -56,6 +56,12 @@
     <Reference Include="Nitrogen">
       <HintPath>..\..\..\GuiltySpark\Solution\Nitrogen\bin\WebApiDebug\Nitrogen.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\Dll Assets\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\Dll Assets\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
