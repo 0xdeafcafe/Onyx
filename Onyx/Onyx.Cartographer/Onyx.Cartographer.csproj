@@ -201,6 +201,7 @@
     <Content Include="Areas\AdminCP\Views\Web.Config" />
     <Content Include="Areas\AdminCP\Views\Hub\Index.cshtml" />
     <Content Include="Areas\AdminCP\Views\Users\Index.cshtml" />
+    <Content Include="Areas\AdminCP\Views\_ViewStart.cshtml" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
