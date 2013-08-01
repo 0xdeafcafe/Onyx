@@ -15,8 +15,8 @@ namespace Onyx.Cartographer.Migrations
         protected override void Seed(DatabaseContext context)
         {
             // Add test account
-            if (context.Users.SingleOrDefault(u => u.Username == "OnyxTest") == null)
-                context.Users.Add(new User { Username = "OnyxTest", Password = "fddeca1244a9e26cc1724cb98fdab6556a5d168c", Email = "xerax@xboxchaos.com" });
+            if (context.Users.Any())
+                context.Users.Add(new User { Username = "OnyxTest", Password = "fddeca1244a9e26cc1724cb98fdab6556a5d168c", Email = "xerax@xboxchaos.com", IsAdmin = true });
         }
     }
 }
