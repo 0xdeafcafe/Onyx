@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Onyx.Cartographer.Extensions.Attributes;
 using Onyx.Cartographer.Extensions.Cryptography;
 using Onyx.Cartographer.Models;
+using Onyx.Cartographer.ViewModels.User;
 
 namespace Onyx.Cartographer.Controllers
 {
@@ -24,7 +25,7 @@ namespace Onyx.Cartographer.Controllers
         [AuthenticatedRedirect]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Signin(User userModel)
+        public ActionResult Signin(SignIn userModel)
 		{
             if (!ModelState.IsValid) return View();
 
