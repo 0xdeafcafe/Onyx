@@ -280,9 +280,6 @@
     <Content Include="Scripts\util\modal_manager.js" />
     <Content Include="Scripts\util\modal_manager.ts" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="StaticPages\Soon\index.html" />
-    <Content Include="StaticPages\Soon\sidebar-logo%402x.png" />
-    <Content Include="StaticPages\Soon\sidebar-logo.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
