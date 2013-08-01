@@ -1,0 +1,43 @@
+@model IEnumerable<Onyx.Cartographer.Models.User>
+
+@{
+    ViewBag.Title = "View Users";
+    ViewBag.VM_User = "selected";
+}
+
+<h2>View All Users</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                Username
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Registered Date
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Username
+                </td>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    @user.RegisterDate
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Users", new { user.Id } )
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
