@@ -45,5 +45,14 @@ namespace Onyx.Cartographer.Controllers
             }
             return View();
 		}
+
+        //
+        // GET: /Account/Signout/
+        [RequireAuthentication]
+        public ActionResult Signout()
+        {
+            Session["UserId"] = null;
+            return RedirectToAction("Index", "Welcome");
+        }
 	}
 }
