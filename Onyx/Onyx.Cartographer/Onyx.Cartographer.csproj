@@ -153,6 +153,7 @@
     <Compile Include="Extensions\Cryptography\Pbkdf2Crypto.cs" />
     <Compile Include="Extensions\Cryptography\Sha1Crypto.cs" />
     <Compile Include="Extensions\Helpers\ActionLinkButtonHelper .cs" />
+    <Compile Include="Extensions\Helpers.cs" />
     <Compile Include="Extensions\VariousFunctions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
