@@ -518,6 +518,7 @@ body {
   height: 80px;
   width: 100%;
   background: white;
+  border-bottom: 1px solid #ADADAD;
 }
 #scrollableContentContainer .header-block h2 {
   line-height: 80px;
