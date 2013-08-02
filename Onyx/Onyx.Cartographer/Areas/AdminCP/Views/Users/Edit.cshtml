@@ -1,4 +1,7 @@
-﻿@model Onyx.Cartographer.Models.User
+﻿@using System.Collections
+@using System.Globalization
+@using Onyx.Cartographer.Models
+@model Onyx.Cartographer.ViewModels.User.UserAdminEdit
 
 @{
     ViewBag.Title = "Edit User - " + Model.Username;
@@ -26,10 +29,38 @@
     </p>
     
     <p>
-        @Html.LabelFor(m => m.IsAdmin)
+        @Html.LabelFor(m => m.Password)
         <br />
-        @Html.CheckBoxFor(m => m.IsAdmin)
-        <span class="error">@Html.ValidationMessageFor(m => m.IsAdmin)</span>
+        @Html.TextBoxFor(m => m.Password)
+        <span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
+    </p>
+    
+    <p>
+        @Html.LabelFor(m => m.RegisterDate)
+        <br />
+        @Html.TextBoxFor(m => m.RegisterDate)
+        <span class="error">@Html.ValidationMessageFor(m => m.RegisterDate)</span>
+    </p>
+    
+    <p>
+        @Html.LabelFor(m => m.LastSigninDate)
+        <br />
+        @Html.TextBoxFor(m => m.LastSigninDate)
+        <span class="error">@Html.ValidationMessageFor(m => m.LastSigninDate)</span>
+    </p>
+    
+    <p>
+        @Html.Label("Role")
+        <br />
+        @{
+            var roles = (from role in (IEnumerable<Role>) ViewData["roles"]
+                select new SelectListItem
+                {
+                    Selected = (role.Id == Model.RoleId), Text = role.Name, Value = role.Id.ToString(CultureInfo.InvariantCulture)
+                }).ToList();
+        }
+        @Html.DropDownListFor(m => m.RoleId, roles)
+        <span class="error">@Html.ValidationMessageFor(m => m.RoleId)</span>
     </p>
 
     <input type="submit" />
