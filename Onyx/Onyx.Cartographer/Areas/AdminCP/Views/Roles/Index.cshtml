@@ -1,0 +1,45 @@
+@model IEnumerable<Onyx.Cartographer.Models.Role>
+
+@{
+    ViewBag.Title = "View Roles";
+    ViewBag.VM_Role = "selected";
+}
+
+<h2>View All Roles</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Description
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>
+                    @role.Id
+                </td>
+                <td>
+                    @role.RoleName
+                </td>
+                <td>
+                    @role.RoleDescription
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Roles", new { role.Id }, new { })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLinkButton("Add", "Add", "Roles"))
