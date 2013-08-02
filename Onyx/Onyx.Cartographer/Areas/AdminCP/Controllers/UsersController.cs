@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -26,7 +27,7 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
         public ActionResult Add()
         {
             ViewData["Roles"] = _dbContext.Roles;
-            return View();
+            return View(new UserAdminEdit { LastSigninDate = DateTime.UtcNow, RegisterDate = DateTime.UtcNow } );
         }
 
         //
