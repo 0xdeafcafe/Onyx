@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Onyx.Cartographer.Extensions.Attributes;
 using Onyx.Cartographer.Models;
 using PagedList;
+using Onyx.Cartographer.ViewModels.User;
 
 namespace Onyx.Cartographer.Areas.AdminCP.Controllers
 {
@@ -19,7 +20,7 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
             return View(_dbContext.Users.ToPagedList(_dbContext.Users.Count(), page ?? 1, 25));
         }
 
-        //
+        // 
         // GET: /AdminCP/Users/Delete
         public ActionResult Delete(int? id)
         {
@@ -37,24 +38,27 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
         // GET: /AdminCP/Users/Edit/1
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-                return HttpNotFound();
-
+            if (id == null) return HttpNotFound();
             var user = _dbContext.Users.Find(id);
+            if (user == null) return HttpNotFound();
 
-            if (user == null)
-                return HttpNotFound();
+            ViewData["Roles"] = _dbContext.Roles;
 
-            return View(user);
+            return View(new UserAdminEdit(user));
         }
 
         //
         // POST: /AdminCP/Users/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(User userModel)
+        public ActionResult Edit(UserAdminEdit userModel)
         {
-            return View(userModel);
+            if (!ModelState.IsValid)
+                return View(userModel);
+
+            var user = _dbContext.Users.Find(userModel.Id);
+
+            return RedirectToAction("Index", "Users");
         }
 	}
 }
