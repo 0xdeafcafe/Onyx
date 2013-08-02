@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using Onyx.Cartographer.Models;
 using System.Web.Mvc;
 
 namespace Onyx.Cartographer.Extensions.Attributes
@@ -10,15 +9,7 @@ namespace Onyx.Cartographer.Extensions.Attributes
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            var dbContext = new DatabaseContext();
-
-            // Get Session GUID
-            var sessionGuid = HttpContext.Current.Request.Cookies["SessionGuid"];
-            if (sessionGuid == null)
-                return;
-
-            var session = dbContext.Sessions.Find(Guid.Parse(sessionGuid.Value));
-            if (session != null && session.Expires > DateTime.UtcNow)
+            if (Helpers.GetAuthenticatedUser() != null)
                 HttpContext.Current.Response.Redirect(_url);
         }
 
