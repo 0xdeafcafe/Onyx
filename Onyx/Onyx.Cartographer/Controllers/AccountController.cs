@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Onyx.Cartographer.Extensions.Attributes;
 using Onyx.Cartographer.Extensions.Cryptography;
@@ -38,7 +40,27 @@ namespace Onyx.Cartographer.Controllers
                 var hashedPassword = Sha1Crypto.ComputeHashToString(userModel.Password);
                 if (String.Equals(user.Password, hashedPassword, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    Session["UserId"] = user.Id;
+                    // Create Session
+                    var session = new Session { UserId = user.Id };
+
+                    // Cookies
+                    var cookie = new HttpCookie("SessionGuid", session.SessionId.ToString())
+                    {
+                        Expires = DateTime.UtcNow.AddDays(2)
+                    };
+
+                    // are we crying? ;_;
+                    if (userModel.RememberMe)
+                        cookie.Expires = session.Expires =
+                            DateTime.UtcNow.AddYears(69);
+
+                    // Set dat cookie
+                    Response.SetCookie(cookie);
+
+                    // Database Stuff
+                    _dbContext.Sessions.Add(session);
+                    _dbContext.SaveChanges();
+
                     return RedirectToAction("Index", "Home");
                 }
 

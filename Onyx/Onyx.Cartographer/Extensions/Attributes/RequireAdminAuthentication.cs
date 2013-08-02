@@ -11,10 +11,23 @@ namespace Onyx.Cartographer.Extensions.Attributes
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             var dbContext = new DatabaseContext();
-            var userId = (int)(HttpContext.Current.Session["UserId"] ?? -1);
-            var user = dbContext.Users.Find(userId);
 
-            if (user == null || !user.IsAdmin)
+            // Get Session GUID
+            var sessionGuid = HttpContext.Current.Request.Cookies["SessionGuid"];
+            if (sessionGuid == null)
+            {
+                HttpContext.Current.Response.Redirect(_url);
+                return;
+            }
+
+            var session = dbContext.Sessions.Find(Guid.Parse(sessionGuid.Value));
+            if (session == null || session.Expires < DateTime.UtcNow)
+            {
+                HttpContext.Current.Response.Redirect(_url);
+                return;
+            }
+
+            if (session.User.Role.Identifier != Models.Roles.Administrator)
                 HttpContext.Current.Response.Redirect(_url);
         }
 

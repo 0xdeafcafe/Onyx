@@ -5,6 +5,12 @@ namespace Onyx.Cartographer.Models
 {
     public class User
     {
+        public User()
+        {
+            RegisterDate = DateTime.UtcNow;
+            LastSigninDate = DateTime.UtcNow;
+        }
+
         /// <summary>
         /// The User's Id (Primary Key)
         /// </summary>
@@ -30,10 +36,11 @@ namespace Onyx.Cartographer.Models
         public string Email { get; set; }
 
         /// <summary>
-        /// Boolean indicating if the User is an Administrator or not
+        /// Id indicating the role of the user
         /// </summary>
         [Required]
-        public bool IsAdmin { get; set; }
+        public int RoleId { get; set; }
+        public virtual Role Role { get; set; }
 
         /// <summary>
         /// The time the user registered
@@ -46,12 +53,5 @@ namespace Onyx.Cartographer.Models
         /// </summary>
         [Required]
         public DateTime LastSigninDate { get; set; }
-
-        public User()
-        {
-            IsAdmin = false;
-            RegisterDate = DateTime.UtcNow;
-            LastSigninDate = DateTime.UtcNow;
-        }
     }
 }

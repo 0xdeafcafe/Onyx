@@ -190,6 +190,18 @@
     <Compile Include="Migrations\201308021127191_RenamedRoleFields.Designer.cs">
       <DependentUpon>201308021127191_RenamedRoleFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308021312315_UsersNowUseRoles.cs" />
+    <Compile Include="Migrations\201308021312315_UsersNowUseRoles.Designer.cs">
+      <DependentUpon>201308021312315_UsersNowUseRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308021334216_AddedSessionModel.cs" />
+    <Compile Include="Migrations\201308021334216_AddedSessionModel.Designer.cs">
+      <DependentUpon>201308021334216_AddedSessionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308021630576_ChangedHowRolesAreSavedInUsers.cs" />
+    <Compile Include="Migrations\201308021630576_ChangedHowRolesAreSavedInUsers.Designer.cs">
+      <DependentUpon>201308021630576_ChangedHowRolesAreSavedInUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
@@ -392,6 +404,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308021127191_RenamedRoleFields.resx">
       <DependentUpon>201308021127191_RenamedRoleFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021312315_UsersNowUseRoles.resx">
+      <DependentUpon>201308021312315_UsersNowUseRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021334216_AddedSessionModel.resx">
+      <DependentUpon>201308021334216_AddedSessionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021630576_ChangedHowRolesAreSavedInUsers.resx">
+      <DependentUpon>201308021630576_ChangedHowRolesAreSavedInUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
