@@ -13,16 +13,24 @@
 		h2 {
 			line-height: 80px;
 			margin-left: 20px;
+			font-size: 20px;
 		}
 	}
 
-	.admin-content {
-		margin: 15px 15px;
-		box-shadow: 0 0 4px #AAA;
-		border-radius: 1px;
 
-		background: #ebebeb;
+	.main-content {
+		margin: 15px;
 
-		padding: 20px 20px 30px 20px;
+
+		.admin-content {
+			box-shadow: 0 0 4px #AAA;
+			border-radius: 1px;
+
+			background: #ebebeb;
+
+			padding: 20px 20px 30px 20px;
+
+			margin-bottom: 30px;
+		}
 	}
 }

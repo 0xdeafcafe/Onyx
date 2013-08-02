@@ -125,6 +125,26 @@ input[type="password"].input-validation-error {
   margin-right: 10px;
 }
 
+/* Styles for Blank Tables
+-----------------------------------------------------------*/
+.table-blank {
+  background-color: transparent;
+  border: 0;
+}
+
+.table-blank td {
+  width: 33%;
+}
+
+.table-blank thead th,
+.table-blank tbody td {
+  border: 0;
+}
+
+.table-blank tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
 input[type="text"],
 input[type="password"] {
   background-color: rgba(0, 0, 0, 0.4);
@@ -523,13 +543,17 @@ body {
 #scrollableContentContainer .header-block h2 {
   line-height: 80px;
   margin-left: 20px;
+  font-size: 20px;
 }
-#scrollableContentContainer .admin-content {
-  margin: 15px 15px;
+#scrollableContentContainer .main-content {
+  margin: 15px;
+}
+#scrollableContentContainer .main-content .admin-content {
   box-shadow: 0 0 4px #AAA;
   border-radius: 1px;
   background: #ebebeb;
   padding: 20px 20px 30px 20px;
+  margin-bottom: 30px;
 }
 
 .dropGametypeHint {

@@ -45,3 +45,24 @@
             float: left;
             margin-right: 10px;
         }
+
+
+/* Styles for Blank Tables
+-----------------------------------------------------------*/
+.table-blank {
+    background-color: transparent;
+    border: 0;
+}
+
+    .table-blank td {
+        width: 33%;
+    }
+
+    .table-blank thead th,
+    .table-blank tbody td {
+        border: 0;
+    }
+
+    .table-blank tbody tr:nth-child(even) {
+        background-color: transparent;
+    }

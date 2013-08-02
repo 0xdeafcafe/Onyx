@@ -45,13 +45,22 @@
 			</div>
 		</div>
 	    <div id="scrollableContentContainer" class="layoutFluidRightSection" style="top: 0; left: 280px; right: 0;">
-            <div class="header-block">
-                <h2>@ViewBag.Title</h2>
-            </div>
-	        <div class="admin-content">
-	            @RenderBody()
+	        <div class="header-block">
+	            <h2>@(ViewBag.Header ?? ViewBag.Title)</h2>
 	        </div>
-	    </div>
+	        <div class="main-content">
+	            @if ((ViewBag.HideDefaultContainer ?? false))
+                {
+                    @RenderBody()
+                }
+                else
+                {
+                    <div class="admin-content">
+                        @RenderBody()
+                    </div>
+                }
+	        </div>
+        </div>
 
 		<div id="modalMask"></div>
 		<div id="pendingMask"></div>
