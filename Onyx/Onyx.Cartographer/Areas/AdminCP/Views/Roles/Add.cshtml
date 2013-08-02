@@ -1,0 +1,59 @@
+@using System.Globalization
+@model Onyx.Cartographer.Models.Role
+
+@{
+    ViewBag.Title = "Add New Role";
+    ViewBag.VM_Role = "selected";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        @Html.LabelFor(m => m.Name)
+        <br />
+        @Html.TextBoxFor(m => m.Name)
+        <span class="error">@Html.ValidationMessageFor(m => m.Name)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Description)
+        <br />
+        @Html.TextBoxFor(m => m.Description)
+        <span class="error">@Html.ValidationMessageFor(m => m.Description)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.VisualColour)
+        <br />
+        @Html.TextBoxFor(m => m.VisualColour)
+        <span class="error">@Html.ValidationMessageFor(m => m.VisualColour)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Identifier)
+        <br />
+        @{
+            var roles = new List<SelectListItem>();
+            var index = 0;
+            foreach (Onyx.Cartographer.Models.Roles role in Enum.GetValues(typeof(Onyx.Cartographer.Models.Roles)))
+            {
+                roles.Add(new SelectListItem
+                {
+                    Text = role.ToString(), 
+                    Value = index.ToString(CultureInfo.InvariantCulture)
+                });
+                index++;
+            }
+        }
+        @Html.DropDownListFor(m => m.Identifier, roles)
+        <span class="error">@Html.ValidationMessageFor(m => m.Identifier)</span>
+    </p>
+
+    <input type="submit" />
+
+    <div class="signinValidations">
+        @Html.ValidationSummary(true)
+    </div>
+}
