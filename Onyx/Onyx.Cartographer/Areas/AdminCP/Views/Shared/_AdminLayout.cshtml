@@ -30,9 +30,13 @@
 				        <div class="identicationTag"></div>
 				    </li>
 				    <li>
-				        @Html.ActionLink("User", "Index", "Users", new { }, new { @class = ((string)ViewBag.VM_User ?? ""), id = "nav-feat" })
+				        @Html.ActionLink("Users", "Index", "Users", new { }, new { @class = ((string)ViewBag.VM_User ?? ""), id = "nav-feat" })
 				        <div class="identicationTag"></div>
 				    </li>
+                    <li>
+                        @Html.ActionLink("Roles", "Index", "Roles", new { }, new { @class = ((string)ViewBag.VM_Role ?? ""), id = "nav-feat" })
+                        <div class="identicationTag"></div>
+                    </li>
 				</ul>
 			</div>
 
