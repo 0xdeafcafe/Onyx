@@ -14,35 +14,35 @@
     <p>
         @Html.LabelFor(m => m.Username)
         <br />
-        @Html.TextBoxFor(m => m.Username)
+        @Html.EditorFor(m => m.Username)
         <span class="error">@Html.ValidationMessageFor(m => m.Username)</span>
     </p>
     
     <p>
         @Html.LabelFor(m => m.Email)
         <br />
-        @Html.TextBoxFor(m => m.Email)
+        @Html.EditorFor(m => m.Email)
         <span class="error">@Html.ValidationMessageFor(m => m.Email)</span>
     </p>
     
     <p>
         @Html.LabelFor(m => m.Password)
         <br />
-        @Html.PasswordFor(m => m.Password)
+        @Html.EditorFor(m => m.Password)
         <span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
     </p>
     
     <p>
         @Html.LabelFor(m => m.RegisterDate)
         <br />
-        @Html.TextBoxFor(m => m.RegisterDate)
+        @Html.EditorFor(m => m.RegisterDate)
         <span class="error">@Html.ValidationMessageFor(m => m.RegisterDate)</span>
     </p>
     
     <p>
         @Html.LabelFor(m => m.LastSigninDate)
         <br />
-        @Html.TextBoxFor(m => m.LastSigninDate)
+        @Html.EditorFor(m => m.LastSigninDate)
         <span class="error">@Html.ValidationMessageFor(m => m.LastSigninDate)</span>
     </p>
     
