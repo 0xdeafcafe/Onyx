@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ontx - Admin Control Panel - @ViewBag.Title</title>
+	<title>Onyx - Admin Control Panel - @ViewBag.Title</title>
 	@Styles.Render("~/Content/reset.css")
 	@Styles.Render("~/Content/application.css")
 	@Scripts.Render("~/bundles/modernizr")
@@ -44,11 +44,14 @@
 				<div>Onyx Version: <span>0.1 {pa}</span></div>
 			</div>
 		</div>
-		<div id="scrollableContentContainer" class="layoutFluidRightSection">
-			<div class="mainPageContent">			
-				@RenderBody()
-			</div>
-		</div>
+	    <div id="scrollableContentContainer" class="layoutFluidRightSection" style="top: 0; left: 280px; right: 0;">
+            <div class="header-block">
+                <h2>@ViewBag.Title</h2>
+            </div>
+	        <div class="admin-content">
+	            @RenderBody()
+	        </div>
+	    </div>
 
 		<div id="modalMask"></div>
 		<div id="pendingMask"></div>
