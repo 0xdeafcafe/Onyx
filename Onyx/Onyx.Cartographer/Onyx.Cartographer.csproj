@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminCP\AdminCPAreaRegistration.cs" />
     <Compile Include="Areas\AdminCP\Controllers\HubController.cs" />
+    <Compile Include="Areas\AdminCP\Controllers\RolesController.cs" />
     <Compile Include="Areas\AdminCP\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Areas\AdminCP\Views\Users\Index.cshtml" />
     <Content Include="Areas\AdminCP\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AdminCP\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\AdminCP\Views\Roles\Index.cshtml" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
