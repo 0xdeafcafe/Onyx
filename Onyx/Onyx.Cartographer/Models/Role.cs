@@ -23,6 +23,7 @@ namespace Onyx.Cartographer.Models
     public enum Roles
     {
         Administrator,
-        Moderator
+        Moderator,
+        PrimaryUser
     }
 }
