@@ -21,6 +21,47 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
             return View(_dbContext.Users.ToPagedList(_dbContext.Users.Count(), page ?? 1, 25));
         }
 
+        //
+        // GET: /AdminCP/Users/Add/
+        public ActionResult Add()
+        {
+            ViewData["Roles"] = _dbContext.Roles;
+            return View();
+        }
+
+        //
+        // POST: /AdminCP/Users/Add/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(UserAdminEdit userModel)
+        {
+            if (!ModelState.IsValid)
+                return View(userModel);
+
+            // Validate Password
+            if (userModel.Password == "")
+            {
+                ModelState.AddModelError("Password", "You must enter a password.");
+                return View(userModel);
+            }
+            // Move VM into the User Model Object
+            var user = new User
+            {
+                Username = userModel.Username,
+                Password = Pbkdf2Crypto.ComputeHash(userModel.Password),
+                Email = userModel.Email,
+                RoleId = userModel.RoleId,
+                RegisterDate = userModel.RegisterDate,
+                LastSigninDate = userModel.LastSigninDate
+            };
+
+            // Save to DB
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index", "Users");
+        }
+
         // 
         // GET: /AdminCP/Users/Delete
         public ActionResult Delete(int? id)

@@ -240,6 +240,7 @@
     <Content Include="Areas\AdminCP\Views\Roles\Add.cshtml" />
     <Content Include="Areas\AdminCP\Views\Roles\Edit.cshtml" />
     <Content Include="Content\pages\admincp\_header.scss" />
+    <Content Include="Areas\AdminCP\Views\Users\Add.cshtml" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />

@@ -1,0 +1,69 @@
+﻿@using System.Globalization
+@using Onyx.Cartographer.Models
+@model Onyx.Cartographer.ViewModels.User.UserAdminEdit
+
+@{
+    ViewBag.Title = "Add a new User";
+    ViewBag.VM_User = "selected";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <p>
+        @Html.LabelFor(m => m.Username)
+        <br />
+        @Html.TextBoxFor(m => m.Username)
+        <span class="error">@Html.ValidationMessageFor(m => m.Username)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Email)
+        <br />
+        @Html.TextBoxFor(m => m.Email)
+        <span class="error">@Html.ValidationMessageFor(m => m.Email)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.RegisterDate)
+        <br />
+        @Html.TextBoxFor(m => m.RegisterDate)
+        <span class="error">@Html.ValidationMessageFor(m => m.RegisterDate)</span>
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.LastSigninDate)
+        <br />
+        @Html.TextBoxFor(m => m.LastSigninDate)
+        <span class="error">@Html.ValidationMessageFor(m => m.LastSigninDate)</span>
+    </p>
+
+    <p>
+        @Html.Label("Role")
+        <br />
+        @{
+        var roles = (from role in (IEnumerable<Role>)ViewData["roles"]
+                 select new SelectListItem
+                 {
+                     Text = role.Name,
+                     Value = role.Id.ToString(CultureInfo.InvariantCulture)
+                 }).ToList();
+        }
+        @Html.DropDownListFor(m => m.RoleId, roles)
+        <span class="error">@Html.ValidationMessageFor(m => m.RoleId)</span>
+    </p>
+
+    <input type="submit" />
+
+    <div class="signinValidations">
+        @Html.ValidationSummary(true)
+    </div>
+}
