@@ -176,6 +176,10 @@
     <Compile Include="Migrations\201308011541380_AddedUserLastSigninDate.Designer.cs">
       <DependentUpon>201308011541380_AddedUserLastSigninDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308012332355_AddedFieldsToRequiredInUserModel.cs" />
+    <Compile Include="Migrations\201308012332355_AddedFieldsToRequiredInUserModel.Designer.cs">
+      <DependentUpon>201308012332355_AddedFieldsToRequiredInUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
@@ -364,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308011541380_AddedUserLastSigninDate.resx">
       <DependentUpon>201308011541380_AddedUserLastSigninDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308012332355_AddedFieldsToRequiredInUserModel.resx">
+      <DependentUpon>201308012332355_AddedFieldsToRequiredInUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

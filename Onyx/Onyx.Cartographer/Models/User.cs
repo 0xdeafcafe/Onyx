@@ -26,21 +26,25 @@ namespace Onyx.Cartographer.Models
         /// <summary>
         /// The User's Email Address
         /// </summary>
+        [Required]
         public string Email { get; set; }
 
         /// <summary>
         /// Boolean indicating if the User is an Administrator or not
         /// </summary>
+        [Required]
         public bool IsAdmin { get; set; }
 
         /// <summary>
         /// The time the user registered
         /// </summary>
+        [Required]
         public DateTime RegisterDate { get; set; }
 
         /// <summary>
         /// The time the user last signed in
         /// </summary>
+        [Required]
         public DateTime LastSigninDate { get; set; }
 
         public User()
