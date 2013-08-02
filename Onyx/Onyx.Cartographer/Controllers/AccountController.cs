@@ -38,7 +38,7 @@ namespace Onyx.Cartographer.Controllers
             else
             {
                 var hashedPassword = Pbkdf2Crypto.ComputeHash(userModel.Password);
-                if (String.Equals(user.Password, hashedPassword, StringComparison.InvariantCultureIgnoreCase))
+                if (Pbkdf2Crypto.ValidateHash(hashedPassword, user.Password))
                 {
                     // Create Session
                     var session = new Session { UserId = user.Id };
