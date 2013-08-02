@@ -25,6 +25,10 @@ a:focus {
   cursor: pointer;
 }
 
+p {
+  margin: 15px 0;
+}
+
 .position-relative {
   position: relative;
 }
@@ -69,8 +73,56 @@ input[type="password"].input-validation-error {
   border-left: 4px solid red;
 }
 
+/* Styles for Manage Tables
+-----------------------------------------------------------*/
 .table {
-  max-width: 100%;
+  background: #ebebeb;
+  border: 1px solid #EAEAEA;
+  border-bottom: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table thead {
+  margin-bottom: 10px;
+}
+
+.table thead th,
+.table tbody td {
+  border-bottom: 1px solid #d8d8d8;
+  border-spacing: 0px;
+  display: table-cell;
+  padding: 8px 12px;
+}
+
+.table thead th {
+  background: #d8d8d8;
+  overflow: hidden;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table thead th.actions {
+  width: 115px;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #e2e2e2;
+}
+
+.table tbody td {
+  padding: 10px;
+}
+
+.table tbody td ul {
+  padding: 2px 0 0;
+  margin-left: 10px;
+}
+
+.table tbody td ul li {
+  float: left;
+  margin-right: 10px;
 }
 
 input[type="text"],
@@ -456,6 +508,27 @@ body {
   background-image: -webkit-image-set(url(/img/modal-icons/warning.png) 1x, url(/img/modal-icons/warning@2x.png) 2x);
   background-position: 10px center;
   background-repeat: no-repeat;
+}
+
+.scrollableContentContainer {
+  background: #f3f4f5;
+}
+
+#scrollableContentContainer .header-block {
+  height: 80px;
+  width: 100%;
+  background: white;
+}
+#scrollableContentContainer .header-block h2 {
+  line-height: 80px;
+  margin-left: 20px;
+}
+#scrollableContentContainer .admin-content {
+  margin: 15px 15px;
+  box-shadow: 0 0 4px #AAA;
+  border-radius: 1px;
+  background: #ebebeb;
+  padding: 20px 20px 30px 20px;
 }
 
 .dropGametypeHint {
