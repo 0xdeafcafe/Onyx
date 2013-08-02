@@ -24,7 +24,7 @@ namespace Onyx.Cartographer.Migrations
 
             // Add Test Account
             if (!context.Users.Any())
-                context.Users.Add(new User { Username = "OnyxTest", Password = "fddeca1244a9e26cc1724cb98fdab6556a5d168c", Email = "xerax@xboxchaos.com", RoleId = context.Roles.First(r => r.Identifier == Roles.Administrator).Id });
+                context.Users.Add(new User { Username = "OnyxTest", Password = "1000:c1JY6wtgSaAoIL2b8TDp7MCJeMyDO4A/:fkGpJleo1noIkvhC6gzHM4vNZjPMr0mz", Email = "xerax@xboxchaos.com", RoleId = context.Roles.First(r => r.Identifier == Roles.Administrator).Id });
         }
     }
 }
