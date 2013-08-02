@@ -35,6 +35,8 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(UserAdminEdit userModel)
         {
+            ViewData["Roles"] = _dbContext.Roles;
+
             if (!ModelState.IsValid)
                 return View(userModel);
 
@@ -95,6 +97,8 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserAdminEdit userModel)
         {
+            ViewData["Roles"] = _dbContext.Roles;
+
             if (!ModelState.IsValid)
                 return View(userModel);
 
