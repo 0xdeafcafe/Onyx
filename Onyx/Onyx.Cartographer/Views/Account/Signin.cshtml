@@ -23,13 +23,18 @@
 			    @Html.TextBoxFor(m => m.Username)
 		    </p>
 
-		    <p>
-			    @Html.LabelFor(m => m.Password)
-			    <br />
-			    <span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
-			    <br />
-			    @Html.PasswordFor(m => m.Password)
-		    </p>
+	        <p>
+	            @Html.LabelFor(m => m.Password)
+	            <br />
+	            <span class="error">@Html.ValidationMessageFor(m => m.Password)</span>
+	            <br />
+	            @Html.PasswordFor(m => m.Password)
+	        </p>
+
+	        <p>
+	            @Html.LabelFor(m => m.RememberMe)
+	            @Html.CheckBoxFor(m => m.RememberMe)
+	        </p>
 
 		    <input type="submit" />
 	    </div>
