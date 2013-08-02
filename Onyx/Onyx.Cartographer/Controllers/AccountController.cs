@@ -37,7 +37,7 @@ namespace Onyx.Cartographer.Controllers
                 ModelState.AddModelError("Username", "Invalid Username");
             else
             {
-                var hashedPassword = Sha1Crypto.ComputeHashToString(userModel.Password);
+                var hashedPassword = Pbkdf2Crypto.ComputeHash(userModel.Password);
                 if (String.Equals(user.Password, hashedPassword, StringComparison.InvariantCultureIgnoreCase))
                 {
                     // Create Session
