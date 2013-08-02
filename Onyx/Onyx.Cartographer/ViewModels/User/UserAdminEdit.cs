@@ -6,6 +6,11 @@ namespace Onyx.Cartographer.ViewModels.User
 {
     public class UserAdminEdit
     {
+        public UserAdminEdit()
+        {
+            
+        }
+
         public UserAdminEdit(Models.User user)
         {
             Id = user.Id;
