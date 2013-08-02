@@ -1,3 +1,47 @@
-﻿.table {
-	max-width: 100%;
+﻿/* Styles for Manage Tables
+-----------------------------------------------------------*/
+.table {
+    background: #ebebeb;
+    border: 1px solid #EAEAEA;
+    border-bottom: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
 }
+    .table thead {
+        margin-bottom: 10px;
+    }
+        .table thead th,
+        .table tbody td {
+            border-bottom: 1px solid #d8d8d8;
+            border-spacing: 0px;
+            display: table-cell;
+            padding: 8px 12px;
+        }
+
+        .table thead th {
+            background: #d8d8d8;
+            overflow: hidden;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .table thead th.actions {
+            width: 115px;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #e2e2e2;
+        }
+
+    .table tbody td {
+        padding: 10px;
+    }
+    .table tbody td ul {
+        padding: 2px 0 0;
+        margin-left: 10px;
+    }
+        .table tbody td ul li {
+            float: left;
+            margin-right: 10px;
+        }
