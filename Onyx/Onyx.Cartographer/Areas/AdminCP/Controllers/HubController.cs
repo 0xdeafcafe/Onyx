@@ -19,7 +19,7 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
             ViewData["TotalModeratorUsersCount"] = _dbContext.Users.Count(u => u.Role.Identifier == Roles.Moderator);
             ViewData["TotalAdministratorUsersCount"] = _dbContext.Users.Count(u => u.Role.Identifier == Roles.Administrator);
 
-    return View();
+            return View();
         }
 	}
 }
