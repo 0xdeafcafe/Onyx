@@ -149,6 +149,7 @@
     <Compile Include="Extensions\Attributes\RequireAdminAuthentication.cs" />
     <Compile Include="Extensions\Attributes\RequireAuthentication.cs" />
     <Compile Include="Extensions\Cryptography\Sha1Crypto.cs" />
+    <Compile Include="Extensions\Helpers\ActionLinkButtonHelper .cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
