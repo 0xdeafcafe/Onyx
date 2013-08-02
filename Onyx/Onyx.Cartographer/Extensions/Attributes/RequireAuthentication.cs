@@ -21,7 +21,7 @@ namespace Onyx.Cartographer.Extensions.Attributes
             }
 
             var session = dbContext.Sessions.Find(Guid.Parse(sessionGuid.Value));
-            if (session != null && session.Expires < DateTime.UtcNow) return;
+            if (session != null && session.Expires > DateTime.UtcNow) return;
             HttpContext.Current.Response.RedirectToRoute("WelcomeRoute");
         }
     }
