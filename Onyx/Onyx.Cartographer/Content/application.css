@@ -77,7 +77,7 @@ input[type="password"].input-validation-error {
 -----------------------------------------------------------*/
 .table {
   background: #ebebeb;
-  border: 1px solid #EAEAEA;
+  border: 1px solid #d8d8d8;
   border-bottom: none;
   border-collapse: separate;
   border-spacing: 0;
