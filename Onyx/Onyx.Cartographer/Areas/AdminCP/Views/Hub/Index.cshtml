@@ -1,7 +1,32 @@
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Hub";
     ViewBag.VM_Hub = "selected";
+    ViewBag.HideDefaultContainer = true;
+    ViewBag.Header = "The Onyx Admin Control Panel";
 }
 
-<h2>Hub</h2>
+<h3>Users</h3>
+<div class="admin-content">
+    <table class="table table-blank">
+        <tbody>
+            <tr>
+                <td>
+                    Users Count: @(ViewData["TotalUsersCount"] ?? 0)
+                </td>
+                <td>
+                    Regular Users Count: @(ViewData["TotalPrimaryUsersCount"] ?? 0)
+                </td>
+                <td>
+                    Moderative Users Count: @(ViewData["TotalModeratorUsersCount"] ?? 0)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Administrative Users Count: @(ViewData["TotalAdministratorUsersCount"] ?? 0)
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
