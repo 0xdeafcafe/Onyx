@@ -1,3 +1,4 @@
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using Onyx.Cartographer.Extensions.Attributes;
@@ -16,6 +17,20 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
         public ActionResult Index(int? page)
         {
             return View(_dbContext.Users.ToPagedList(_dbContext.Users.Count(), page ?? 1, 25));
+        }
+
+        //
+        // GET: /AdminCP/Users/Delete
+        public ActionResult Delete(int? id)
+        {
+            if (id == null) return HttpNotFound();
+            var user = _dbContext.Users.Find(id);
+            if (user == null) return HttpNotFound();
+
+            _dbContext.Entry(user).State = EntityState.Deleted;
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index", "Users");
         }
 
         //
