@@ -2,6 +2,7 @@ using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using Onyx.Cartographer.Extensions.Attributes;
+using Onyx.Cartographer.Extensions.Cryptography;
 using Onyx.Cartographer.Models;
 using PagedList;
 using Onyx.Cartographer.ViewModels.User;
@@ -56,7 +57,23 @@ namespace Onyx.Cartographer.Areas.AdminCP.Controllers
             if (!ModelState.IsValid)
                 return View(userModel);
 
+            // Get User
             var user = _dbContext.Users.Find(userModel.Id);
+
+            // Hash new password, if there isn't one, use old pass
+            userModel.Password = userModel.Password == "" ? user.Password : Pbkdf2Crypto.ComputeHash(userModel.Password);
+
+            // Move VM into the User Model Object
+            user.Username = userModel.Username;
+            user.Password = userModel.Password;
+            user.Email = userModel.Email;
+            user.RoleId = userModel.RoleId;
+            user.RegisterDate = userModel.RegisterDate;
+            user.LastSigninDate = userModel.LastSigninDate;
+
+            // Save to DB
+            _dbContext.Entry(user).State = EntityState.Modified;
+            _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Users");
         }
