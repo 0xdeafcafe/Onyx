@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201308020919189_AddedRolesModel.Designer.cs">
       <DependentUpon>201308020919189_AddedRolesModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308021127191_RenamedRoleFields.cs" />
+    <Compile Include="Migrations\201308021127191_RenamedRoleFields.Designer.cs">
+      <DependentUpon>201308021127191_RenamedRoleFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
@@ -383,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308020919189_AddedRolesModel.resx">
       <DependentUpon>201308020919189_AddedRolesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308021127191_RenamedRoleFields.resx">
+      <DependentUpon>201308021127191_RenamedRoleFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

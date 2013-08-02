@@ -8,16 +8,16 @@ namespace Onyx.Cartographer.Models
         public int Id { get; set; }
 
         [Required]
-        public string RoleName { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public string RoleDescription { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public string RoleVisualColour { get; set; }
+        public string VisualColour { get; set; }
 
         [Required]
-        public Roles RoleIdentifier { get; set; }
+        public Roles Identifier { get; set; }
     }
 
     public enum Roles
