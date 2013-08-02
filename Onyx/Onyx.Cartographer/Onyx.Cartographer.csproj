@@ -180,9 +180,14 @@
     <Compile Include="Migrations\201308012332355_AddedFieldsToRequiredInUserModel.Designer.cs">
       <DependentUpon>201308012332355_AddedFieldsToRequiredInUserModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308020919189_AddedRolesModel.cs" />
+    <Compile Include="Migrations\201308020919189_AddedRolesModel.Designer.cs">
+      <DependentUpon>201308020919189_AddedRolesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\DomainConnector.cs" />
@@ -371,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308012332355_AddedFieldsToRequiredInUserModel.resx">
       <DependentUpon>201308012332355_AddedFieldsToRequiredInUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308020919189_AddedRolesModel.resx">
+      <DependentUpon>201308020919189_AddedRolesModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
