@@ -22,31 +22,20 @@ namespace Onyx.Cartographer
 		protected void Application_Error(object sender, EventArgs e)
 		{
 #if !DEBUG
-			Exception lastError = Server.GetLastError();
+			var lastError = Server.GetLastError();
 			Server.ClearError();
 
-			int statusCode = 0;
+		    var statusCode = lastError.GetType() == typeof(HttpException) ? ((HttpException)lastError).GetHttpCode() : 500;
 
-			if (lastError.GetType() == typeof(HttpException))
-			{
-				statusCode = ((HttpException)lastError).GetHttpCode();
-			}
-			else
-			{
-				// Not an HTTP related error so this is a problem in our code, set status to
-				// 500 (internal server error)
-				statusCode = 500;
-			}
-
-			RouteData routeData = new RouteData();
+			var routeData = new RouteData();
 			routeData.Values.Add("controller", "Error");
 			routeData.Values.Add("action", "Index");
 			routeData.Values.Add("statusCode", statusCode);
 			routeData.Values.Add("exception", lastError);
 
-			IController controller = new ErrorController();
+			IController controller = new Controllers.ErrorController();
 
-			RequestContext requestContext = new RequestContext(new HttpContextWrapper(Context), routeData);
+			var requestContext = new RequestContext(new HttpContextWrapper(Context), routeData);
 
 			controller.Execute(requestContext);
 #endif
