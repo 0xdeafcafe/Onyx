@@ -3,7 +3,7 @@ var Onyx;
     var DataStorage = (function () {
         function DataStorage() {
         }
-        DataStorage.Domain = 'http://localhost:1337/';
+        DataStorage.Domain = 'http://localhost:1111/';
         return DataStorage;
     })();
     Onyx.DataStorage = DataStorage;
