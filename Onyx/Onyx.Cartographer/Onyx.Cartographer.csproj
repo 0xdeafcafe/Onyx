@@ -283,6 +283,7 @@
     <Content Include="Global.asax" />
     <Content Include="img\animated\loading-dark.gif" />
     <Content Include="img\animated\loading-white.gif" />
+    <Content Include="img\icons\icons-25-v0.5.png" />
     <Content Include="img\logos\logo-base%402x.png" />
     <Content Include="img\logos\logo-base.png" />
     <Content Include="img\logos\sidebar-logo%402x.png" />
