@@ -368,6 +368,7 @@ body {
 
 .layoutWrapper > #modalMask {
   position: absolute;
+  z-index: 100000;
   display: none;
   opacity: 1.0;
   background-color: #6c6c6c;
@@ -379,6 +380,7 @@ body {
 
 .layoutWrapper > #pendingMask {
   position: absolute;
+  z-index: 100000;
   display: none;
   opacity: 1.0;
   background-color: #6c6c6c;
@@ -392,6 +394,7 @@ body {
 }
 
 .layoutWrapper > .alertPage {
+  z-index: 100000;
   position: absolute;
   background-color: #161616;
   background-image: url("http://i.imgur.com/jYbs6eE.jpg");
@@ -521,6 +524,7 @@ body {
 }
 
 .layoutWrapper > #modal {
+  z-index: 100001;
   display: none;
   position: fixed;
   top: 50%;

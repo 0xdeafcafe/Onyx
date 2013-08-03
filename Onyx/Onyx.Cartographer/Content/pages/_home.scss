@@ -1,5 +1,6 @@
 ﻿.layoutWrapper > #modalMask {
 	position: absolute;
+	z-index: 100000;
 	display: none;
 	opacity: 1.0;
 	background-color: $mask-background-colour;
@@ -12,6 +13,7 @@
 
 .layoutWrapper > #pendingMask {
 	position: absolute;
+	z-index: 100000;
 	display: none;
 	opacity: 1.0;
 
@@ -27,6 +29,7 @@
 }
 
 .layoutWrapper > .alertPage {
+	z-index: 100000;
 	position: absolute;
 
 	background-color: $sidebar-background-colour;
