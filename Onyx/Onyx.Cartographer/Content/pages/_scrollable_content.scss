@@ -31,6 +31,7 @@
         }
 
         .submenu {
+			z-index: 99998;
 			display: none;
             position: absolute;
             right: 0;
