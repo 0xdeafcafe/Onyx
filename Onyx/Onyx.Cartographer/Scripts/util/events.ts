@@ -15,3 +15,8 @@ function reDrawCodeIde() {
 $('.user-header').click(function () {
 	$('.submenu').css('display', 'block');
 });
+$(document).mouseup(function (e) {
+	var container = $(".submenu");
+	if (!container.is(e.target) && container.has(e.target).length === 0)
+		container.hide();
+});
