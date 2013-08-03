@@ -67,7 +67,7 @@
                     </div>
                     <div class="submenu">
                         <ul class="root">
-                            <li>@Html.ActionLink("Sign Out", "Signout", "Account", new { }, new { @class = "blank" })</li>
+                            <li>@Html.ActionLink("Account", "View", "User", new { currentUser.Id }, new { @class = "blank" })</li>
                             <li>@Html.ActionLink("Settings", "Settings", "Account", new { }, new { @class = "blank" })</li>
                             <li>@Html.ActionLink("Send Feedback", "Feedback", "Create", new { }, new { @class = "blank" })</li>
                             
