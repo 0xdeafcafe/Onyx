@@ -140,14 +140,13 @@
     <Compile Include="Areas\AdminCP\Controllers\RolesController.cs" />
     <Compile Include="Areas\AdminCP\Controllers\UsersController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
-    <Compile Include="Areas\Api\Controllers\ValuesController.cs" />
+    <Compile Include="Areas\Api\Controllers\VariantController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FeaturedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\VariantController.cs" />
     <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Extensions\Attributes\AuthenticatedRedirect.cs" />
     <Compile Include="Extensions\Attributes\RequireAdminAuthentication.cs" />
