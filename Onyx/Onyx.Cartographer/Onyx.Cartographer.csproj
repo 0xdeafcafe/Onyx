@@ -141,6 +141,7 @@
     <Compile Include="Areas\AdminCP\Controllers\UsersController.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\VariantController.cs" />
+    <Compile Include="Areas\Models\Response.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
