@@ -73,7 +73,11 @@ namespace Onyx.Cartographer.Controllers
         [RequireAuthentication]
         public ActionResult Signout()
         {
-            Session.Remove("UserId");
+            var myCookie = new HttpCookie("SessionGuid")
+            {
+                Expires = DateTime.UtcNow.AddDays(-69d)
+            };
+            Response.Cookies.Add(myCookie);
             return RedirectToAction("Index", "Welcome");
         }
 	}
