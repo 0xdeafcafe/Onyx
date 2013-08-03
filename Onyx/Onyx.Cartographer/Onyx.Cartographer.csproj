@@ -139,6 +139,8 @@
     <Compile Include="Areas\AdminCP\Controllers\HubController.cs" />
     <Compile Include="Areas\AdminCP\Controllers\RolesController.cs" />
     <Compile Include="Areas\AdminCP\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\ValuesController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
