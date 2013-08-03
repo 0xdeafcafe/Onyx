@@ -16,4 +16,59 @@
 	background-position: center;
 	background-attach: none;
 	background-repeat: no-repeat;
+
+	.user-header {
+		position: absolute;
+		top: 0;
+		font-size: 15px;
+		right: 30px;
+
+		.account {
+            padding: 10px;
+            display: inline-block;
+            z-index: 99999;
+            position: relative;
+        }
+
+        .submenu {
+			display: none;
+            position: absolute;
+            right: 0;
+            top: 48px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 240px;
+			.root {
+				background: white;
+
+				li {
+					padding: 10px 20px;
+					color: #101010;
+				}
+				li.seperator {
+					padding: 0 20px;
+					margin: 8px 20px;
+					color: #101010;
+					border-top: 1px solid #c2c2c2;
+					height: 0;
+				}
+
+				li:hover {
+					background: #c2c2c2;
+				}
+				li:active {
+					background: $secondary-active-colour;
+
+					a {
+						color: #fff;
+					}
+				}
+				li.seperator:active {
+					background: #fff;
+				}
+				li.seperator:hover {
+					background: #fff;
+				}
+			}
+        }
+	}
 }

@@ -25,8 +25,28 @@ a:focus {
   cursor: pointer;
 }
 
+a.blank {
+  color: #101010;
+  text-decoration: none;
+}
+
+a.blank:hover,
+a.blank:focus {
+  color: #101010;
+  cursor: pointer;
+}
+
 p {
   margin: 15px 0;
+}
+
+.dropdown-icon {
+  display: inline-block;
+  margin-bottom: -7px;
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  background-image: url(../img/icons/icons-25-v0.5.png);
 }
 
 .position-relative {
@@ -294,6 +314,55 @@ body {
   background-position: center;
   background-attach: none;
   background-repeat: no-repeat;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header {
+  position: absolute;
+  top: 0;
+  font-size: 15px;
+  right: 30px;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .account {
+  padding: 10px;
+  display: inline-block;
+  z-index: 99999;
+  position: relative;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 48px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 240px;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root {
+  background: white;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li {
+  padding: 10px 20px;
+  color: #101010;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li.seperator {
+  padding: 0 20px;
+  margin: 8px 20px;
+  color: #101010;
+  border-top: 1px solid #c2c2c2;
+  height: 0;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li:hover {
+  background: #c2c2c2;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li:active {
+  background: #22b3ff;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li:active a {
+  color: #fff;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li.seperator:active {
+  background: #fff;
+}
+.layoutWrapper > .layoutFluidRightSection .user-header .submenu .root li.seperator:hover {
+  background: #fff;
 }
 
 .layoutWrapper > #modalMask {

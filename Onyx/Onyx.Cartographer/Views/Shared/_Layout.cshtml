@@ -12,6 +12,10 @@
 	<!-- jquerty -->
 	@Scripts.Render("~/bundles/jquery")
     
+    <style>
+        
+    </style>
+
     @{
         var currentUser = Helpers.GetAuthenticatedUser();
     }
@@ -21,7 +25,7 @@
 	<div id="wrapper" class="layoutWrapper">
 		<div id="leftColumn" class="layoutFixLeftSection">
 			<div class="layoutFixTopLeftSection">
-				<a id="logo" href="/#Features">
+				<a id="logo" href="/">
 					<div id="logo-img"></div>
 				</a>
 			</div>
@@ -56,10 +60,24 @@
 	    <div id="scrollableContentContainer" class="layoutFluidRightSection">
 	        @if (currentUser != null)
 	        {
-	            <div class="user-header">
-	                signed in yo
-	            </div>
-	        }
+                <div class="user-header">
+                    <div class="account">
+                        <span>@currentUser.Username</span>
+                        <span class="dropdown-icon"></span>
+                    </div>
+                    <div class="submenu">
+                        <ul class="root">
+                            <li>@Html.ActionLink("Sign Out", "Signout", "Account", new { }, new { @class = "blank" })</li>
+                            <li>@Html.ActionLink("Settings", "Settings", "Account", new { }, new { @class = "blank" })</li>
+                            <li>@Html.ActionLink("Send Feedback", "Feedback", "Create", new { }, new { @class = "blank" })</li>
+                            
+                            <li class="seperator"></li>
+
+                            <li>@Html.ActionLink("Sign Out", "Signout", "Account", new { }, new { @class = "blank" })</li>
+                        </ul>
+                    </div>
+                </div>
+            }
 
 	        <div class="mainPageContent">			
 	            @RenderBody()
@@ -130,12 +148,13 @@
 
 	<!-- Utilities -->
 	@Scripts.Render("~/Scripts/util/mask_manager.js")
-	@Scripts.Render("~/Scripts/util/modal_manager.js")
+    @Scripts.Render("~/Scripts/util/modal_manager.js")    
+    @Scripts.Render("~/Scripts/util/events.js")
 
 	@RenderSection("scripts", required: false)
 
 	<script>
-		var cartographer;
+	    var cartographer;
 	</script>
 </body>
 </html>

@@ -16,7 +16,25 @@ a {
         color: #2B9646;
         cursor: pointer;
     }
+a.blank {
+    color: #101010;
+    text-decoration: none;
+}
+    a.blank:hover,
+    a.blank:focus {
+        color: #101010;
+        cursor: pointer;
+    }
 
 p {
 	margin: 15px 0;
+}
+
+.dropdown-icon {
+	display: inline-block;
+	margin-bottom: -7px;
+	width: 25px;
+	height: 25px;
+	background-size: 25px;
+	background-image: url(../img/icons/icons-25-v0.5.png);
 }

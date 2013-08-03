@@ -11,4 +11,10 @@ function reDrawCodeIde() {
     console.log($(window).outerHeight());
     $(".CodeMirror").css("height", ($(window).outerHeight() - $(".nav-tabs").outerHeight() - $("#gamesaveModify > h1").outerHeight() - 130));
 }
+
+/* Profile Dropdown
+----------------------------------------------- */
+$('.user-header').click(function () {
+    $('.submenu').css('display', 'block');
+});
 //@ sourceMappingURL=events.js.map
