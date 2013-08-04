@@ -1,4 +1,6 @@
 ﻿@using Onyx.Cartographer.Extensions
+@using Onyx.Cartographer.Models
+@using Roles = Onyx.Cartographer.Models.Roles
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +19,8 @@
     </style>
 
     @{
-        var currentUser = Helpers.GetAuthenticatedUser();
+        ViewBag.CurrentUser = Helpers.GetAuthenticatedUser();
+        var currentUser = ViewBag.CurrentUser as User;
     }
 </head>
 
@@ -69,8 +72,14 @@
                         <ul class="root">
                             <li>@Html.ActionLink("Account", "View", "User", new { currentUser.Id }, new { @class = "blank" })</li>
                             <li>@Html.ActionLink("Settings", "Settings", "Account", new { }, new { @class = "blank" })</li>
-                            <li>@Html.ActionLink("Send Feedback", "Feedback", "Create", new { }, new { @class = "blank" })</li>
+                            <li>@Html.ActionLink("Send Feedback", "New", "Feedback", new { }, new { @class = "blank" })</li>
                             
+                            @if (currentUser.Role.Identifier == Roles.Administrator)
+                            {
+                                <li class="seperator"></li>
+                                <li>@Html.ActionLink("Admin CP", "Index", "Hub", new { area = "AdminCP" }, new { @class = "blank" })</li>
+                            }
+
                             <li class="seperator"></li>
 
                             <li>@Html.ActionLink("Sign Out", "Signout", "Account", new { }, new { @class = "blank" })</li>

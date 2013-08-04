@@ -1,0 +1,18 @@
+﻿.column-container {
+
+	margin: 20px 0 0 0;
+
+	.left-column {
+		float: left;
+		min-width: 400px;
+
+		margin-bottom: 50px;
+	}
+
+	.right-column {
+		float: right;
+		min-width: 400px;
+
+		margin-bottom: 50px;
+	}
+}

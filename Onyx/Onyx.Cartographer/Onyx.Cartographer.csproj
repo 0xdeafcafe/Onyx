@@ -226,6 +226,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\DomainConnector.cs" />
+    <Compile Include="ViewModels\Project\CreateProject.cs" />
     <Compile Include="ViewModels\User\UserAdminEdit.cs" />
     <Compile Include="ViewModels\User\SignIn.cs" />
   </ItemGroup>
@@ -254,6 +255,7 @@
     <Content Include="Areas\AdminCP\Views\Roles\Edit.cshtml" />
     <Content Include="Content\pages\admincp\_header.scss" />
     <Content Include="Areas\AdminCP\Views\Users\Add.cshtml" />
+    <Content Include="Content\pages\_column.scss" />
     <None Include="Content\pages\_home.scss" />
     <Content Include="Content\pages\_scrollable_content.scss" />
     <Content Include="Content\shared\_css_fixes.scss" />
@@ -390,6 +392,7 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Areas\AdminCP\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Properties\PublishProfiles\ProductionDeploy.pubxml" />
+    <Content Include="Views\Create\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\AdminCP\Models\" />

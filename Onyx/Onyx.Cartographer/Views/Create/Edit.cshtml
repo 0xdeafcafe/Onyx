@@ -1,0 +1,11 @@
+@using Onyx.Cartographer.Models
+
+@{
+    var project = ViewData["Project"] as Project;
+    if (project == null) { throw new InvalidOperationException(); }
+
+    ViewBag.Title = "Edit Project - " + project.Name;
+}
+
+<h2>Edit</h2>
+
