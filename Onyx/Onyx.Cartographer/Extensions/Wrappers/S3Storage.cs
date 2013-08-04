@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Onyx.Cartographer.Models;
 
 namespace Onyx.Cartographer.Extensions.Wrappers
 {
@@ -11,16 +13,15 @@ namespace Onyx.Cartographer.Extensions.Wrappers
     {
         private const string Bucket = "onyxapp_storage";
         private readonly AmazonS3 _client;
+        private readonly DatabaseContext _dbContext = new DatabaseContext();
 
         /// <summary>
         /// A Wrapper for the AWS.net SDK
         /// </summary>
         public S3Storage()
         {
-            var accessKeyId = 
-                Environment.GetEnvironmentVariable("Onyx_AccessKeyId");
-            var secretAccessKey =
-                Environment.GetEnvironmentVariable("Onyx_SecretAccessKey");
+            var accessKeyId = _dbContext.Key.SingleOrDefault(k => k.Name == "AccessKeyId").Data;
+            var secretAccessKey = _dbContext.Key.SingleOrDefault(k => k.Name == "SecretAccessKey").Data;
 
             _client = AWSClientFactory.CreateAmazonS3Client(accessKeyId, secretAccessKey, RegionEndpoint.USEast1);
         }
