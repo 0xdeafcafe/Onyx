@@ -1,13 +1,16 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
+using Nitrogen.Content.UserGenerated.Halo4;
 using Onyx.Cartographer.Extensions;
 using Onyx.Cartographer.Extensions.Attributes;
 using Onyx.Cartographer.Extensions.FlashMessages;
 using Onyx.Cartographer.Models;
 using Onyx.Cartographer.ViewModels.Project;
 using System.Web;
+using VelocityNet.Stfs;
+using Onyx.Cartographer.Extensions.Wrappers;
 
 namespace Onyx.Cartographer.Controllers
 {
@@ -57,15 +60,74 @@ namespace Onyx.Cartographer.Controllers
                 return View();
             }
 
-            // Create Project Entry
-            var project = new Project
+            // Do file validation stuff
+            GameType gametype;
+            if (stfsUpload == null)
             {
-                Name = createProject.ProjectName,
-                Description = createProject.ProjectDescription,
-                UserId = user.Id
-            };
-            _dbContext.Projects.Add(project);
-            _dbContext.SaveChanges();
+                ModelState.AddModelError("File", "You must select a Halo 4 Gametype to create a project.");
+                return View();
+            }
+            else
+            {
+                var outputPath = Path.GetTempFileName();
+                var variantExtrated = Path.GetTempFileName();
+                System.IO.File.WriteAllBytes(outputPath, VariousFunctions.StreamToByteArray(stfsUpload.InputStream));
+                try
+                {
+                    var stfsParsed = new StfsPackage(outputPath);
+
+                    // Validate contains variant
+                    if (!stfsParsed.FileExists("variant"))
+                        throw new Exception();
+
+                    // Extract variant
+                    stfsParsed.ExtractFile("variant", variantExtrated);
+
+                    gametype = GameType.Load(variantExtrated);
+
+                    // TODO: seralize gametype data
+                    var seralizedData = "";
+
+                    // Write data to Database
+                    var project = new Project
+                    {
+                        Name = createProject.ProjectName,
+                        Description = createProject.ProjectDescription,
+                        UserId = user.Id
+                    };
+
+                    // Write data to the S3 Bucket
+                    try
+                    {
+                        var s3 = new S3Storage();
+                        s3.WriteObject(VariousFunctions.StreamToByteArray(stfsUpload.InputStream),
+                            S3Storage.StorageLocations.Stfs, project.StfsId);
+                        s3.WriteObject(seralizedData, 
+                            S3Storage.StorageLocations.Solution, project.SolutionId);
+                    }
+                    catch
+                    {
+                        return RedirectToAction("Index").Error("There was an unknown error trying to create the project.");
+                    }
+
+                    // Save project to database
+                    _dbContext.Projects.Add(project);
+                    _dbContext.SaveChanges();
+
+                    // Delete files now we done, yo
+                    System.IO.File.Delete(outputPath);
+                    System.IO.File.Delete(variantExtrated);
+                }
+                catch
+                {
+                    // Uh Oh, NSA - get the fuck out of here, and delete all the evidence.
+                    System.IO.File.Delete(outputPath);
+                    System.IO.File.Delete(variantExtrated);
+
+                    ModelState.AddModelError("File", "Invalid Halo 4 Gametype.");
+                    return View();
+                }
+            }
 
             return RedirectToAction("Edit", new { id = project.Id });
         }
