@@ -9,6 +9,7 @@ namespace Onyx.Cartographer.Models
         {
             UpdatedAt = CreatedAt = DateTime.UtcNow;
             IsDeleted = false;
+            SolutionId = Guid.NewGuid().ToString();
         }
 
         /// <summary>
