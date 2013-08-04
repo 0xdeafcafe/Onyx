@@ -37,6 +37,7 @@ namespace Onyx.Cartographer.Controllers
         //
         // POST: /Create/
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(CreateProject createProject)
         {
             if (!ModelState.IsValid)
