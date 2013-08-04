@@ -154,6 +154,7 @@
     <Compile Include="Extensions\Attributes\RequireAuthentication.cs" />
     <Compile Include="Extensions\Cryptography\Pbkdf2Crypto.cs" />
     <Compile Include="Extensions\Cryptography\Sha1Crypto.cs" />
+    <Compile Include="Extensions\FlashMessages\FlashMessageExtensions.cs" />
     <Compile Include="Extensions\Helpers\ActionLinkButtonHelper .cs" />
     <Compile Include="Extensions\Helpers.cs" />
     <Compile Include="Extensions\VariousFunctions.cs" />
@@ -343,6 +344,8 @@
     <Content Include="Scripts\ide\mode\wumboscript.js" />
     <Content Include="Scripts\jquery-1.8.2.d.ts" />
     <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery.cookie.d.ts" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\libs\xbox_internals\rsa.js" />
     <Content Include="Scripts\util\events.js" />
     <Content Include="Scripts\util\events.ts" />

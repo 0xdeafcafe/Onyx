@@ -45,6 +45,18 @@ function showModal(modalType: ModalTypes, title: string, description: string) {
     $('#modal > p').html(description);
     $('#modal').fadeIn(200);
 }
+function showModalFromString(modalTyle: string, title: string, description: string) {
+	if (modalCount == 0)
+		showModalMask();
+	modalCount++;
+
+	// load modal
+	$('#modal').addClass(modalTyle);
+
+	$('#modal > h1').html(title);
+	$('#modal > p').html(description);
+	$('#modal').fadeIn(200);
+}
 function closeModal() {
     if (modalCount == 0)
         return;
