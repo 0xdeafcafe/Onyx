@@ -10,6 +10,7 @@ namespace Onyx.Cartographer.Models
             UpdatedAt = CreatedAt = DateTime.UtcNow;
             IsDeleted = false;
             SolutionId = Guid.NewGuid().ToString();
+            StfsId = Guid.NewGuid().ToString();
         }
 
         /// <summary>
@@ -38,10 +39,16 @@ namespace Onyx.Cartographer.Models
         public virtual User User { get; set; }
 
         /// <summary>
-        /// The Identifier that specifies which JSON file in the projects repo is the correct solution
+        /// The Identifier that specifies which JSON file in the s3 bucket is the correct solution
         /// </summary>
         [Required]
         public string SolutionId { get; set; }
+
+        /// <summary>
+        /// The Identifier that specifies which STFS file in the s3 bucket is the correct STFS Package
+        /// </summary>
+        [Required]
+        public string StfsId { get; set; }
 
         /// <summary>
         /// Identifies if the Project has been deleted or not (We never actually delete projects, just flag them)

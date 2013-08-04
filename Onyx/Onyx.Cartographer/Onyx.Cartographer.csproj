@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201308031513351_AddedIsDeletedToProjects.Designer.cs">
       <DependentUpon>201308031513351_AddedIsDeletedToProjects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308041219253_AddedSTFSPackageIdToProjectModel.cs" />
+    <Compile Include="Migrations\201308041219253_AddedSTFSPackageIdToProjectModel.Designer.cs">
+      <DependentUpon>201308041219253_AddedSTFSPackageIdToProjectModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
@@ -448,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308031513351_AddedIsDeletedToProjects.resx">
       <DependentUpon>201308031513351_AddedIsDeletedToProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308041219253_AddedSTFSPackageIdToProjectModel.resx">
+      <DependentUpon>201308041219253_AddedSTFSPackageIdToProjectModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
