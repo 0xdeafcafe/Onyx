@@ -225,9 +225,14 @@
     <Compile Include="Migrations\201308041219253_AddedSTFSPackageIdToProjectModel.Designer.cs">
       <DependentUpon>201308041219253_AddedSTFSPackageIdToProjectModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201308041850388_AddedAKeyStore.cs" />
+    <Compile Include="Migrations\201308041850388_AddedAKeyStore.Designer.cs">
+      <DependentUpon>201308041850388_AddedAKeyStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Key.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
@@ -455,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201308041219253_AddedSTFSPackageIdToProjectModel.resx">
       <DependentUpon>201308041219253_AddedSTFSPackageIdToProjectModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308041850388_AddedAKeyStore.resx">
+      <DependentUpon>201308041850388_AddedAKeyStore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

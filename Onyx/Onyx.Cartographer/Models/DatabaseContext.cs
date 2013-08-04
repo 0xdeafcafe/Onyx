@@ -10,5 +10,6 @@ namespace Onyx.Cartographer.Models
         public DbSet<Role> Roles { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Key> Key { get; set; }
     }
 }
