@@ -3,7 +3,6 @@
 // ReSharper disable once CheckNamespace
 namespace System.Web.Mvc.Html
 {
-
     public static class ActionLinkButtonHelper
     {
         public static MvcHtmlString ActionLinkButton(this HtmlHelper htmlHelper, string buttonText, string actionName, string controllerName, string routeName = "default")
