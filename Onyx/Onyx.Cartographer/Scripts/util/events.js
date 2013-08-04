@@ -1,6 +1,38 @@
 ///<reference path="../jquery-1.8.2.d.ts" />
 ///<reference path="../jquery.cookie.d.ts" />
 ///<reference path="modal_manager.ts" />
+/* jQuery file validation
+----------------------------------------------- */
+window.onload = function () {
+    document.getElementById("project-stfs-upload").addEventListener("change", function (event) {
+        var stfsFile = event.target.files[0];
+
+        XboxInternals.IO.FileIO.LoadFromFile(stfsFile, function (io) {
+            try  {
+                var stfs = new XboxInternals.Stfs.StfsPackage(io, 0);
+                var cartographer = new Onyx.Cartographer(stfs);
+
+                // Set Data In Window
+                $("#stfs-preview > #stfs-name").text(cartographer.StfsPackage.metaData.displayName);
+                $("#stfs-preview > #stfs-title").text(cartographer.StfsPackage.metaData.titleName);
+                $("#stfs-preview > #stfs-author").text(cartographer.StfsPackage.metaData.publisherName);
+                $("#stfs-preview > div > #stfs-icon").attr("src", "http://image-origin.xboxlive.com/global/t." + cartographer.StfsPackage.metaData.titleID.toString(16) + "/icon/0/8000");
+            } catch (e) {
+                // Remove File from uploader
+                $("#project-stfs-upload").val("");
+
+                // Remove data from validator
+                $("#stfs-preview > #stfs-name").text("");
+                $("#stfs-preview > #stfs-title").text("");
+                $("#stfs-preview > #stfs-author").text("");
+                $("#stfs-preview > div > #stfs-icon").attr("src", "");
+
+                showModal(ModalTypes.ErrorModal, 'Invalid STFS Package or Gametype', 'The selected file was not a valid STFS Package or Halo 4 Gametype. Raw error is: <br /><br /> ' + e);
+            }
+        });
+    });
+};
+
 /* Redrawing The Code Editor IDE
 ----------------------------------------------- */
 $(document).ready(function () {
@@ -28,16 +60,14 @@ $(document).mouseup(function (e) {
 /* Flash Messages
 ----------------------------------------------- */
 $(document).ready(function () {
-    var flashMessage = "";
-    var flashType = "";
-
     $.each(new Array('Success', 'Error', 'Warning', 'Info'), function (i, alert) {
+        // Get cookie
         var cookie = $.cookie("Flash." + alert);
 
         if (cookie) {
             // get cookie data
-            flashMessage = cookie;
-            flashType = alert.toLocaleLowerCase();
+            var flashMessage = cookie;
+            var flashType = alert.toLocaleLowerCase();
 
             // delete cookie
             $.cookie("Flash." + alert, null, { path: '/' });
@@ -45,6 +75,7 @@ $(document).ready(function () {
             // show modal
             showModalFromString(flashType, "Notification", flashMessage);
 
+            // break out of this jai.. loop
             return;
         }
     });

@@ -8,12 +8,12 @@
 
 module Onyx {
     export class Cartographer {
-        private stfsPackage: XboxInternals.Stfs.StfsPackage;
+		private StfsPackage: XboxInternals.Stfs.StfsPackage;
 
         constructor(stfsPack: XboxInternals.Stfs.StfsPackage) {
-            this.stfsPackage = stfsPack;
+			this.StfsPackage = stfsPack;
             this.Init();
-            this.ValidatePackage();
+			this.ValidatePackage();
         }
 
         private Init() {
@@ -23,63 +23,32 @@ module Onyx {
         private ValidatePackage() {
             var isValid: boolean = true;
 
-            if (this.stfsPackage.metaData.titleID != 1297287449 ||
-                !this.stfsPackage.FileExists('variant'))
+			if (this.StfsPackage.metaData.titleID != 1297287449 ||
+				!this.StfsPackage.FileExists('variant'))
                 isValid = false;
-            
-            if (isValid) {
-                var extracted = this.stfsPackage.ExtractFileFromPath('variant', (p) => { });
+			
+			if (isValid) {
+				var extracted = this.StfsPackage.ExtractFileFromPath('variant', (p) => { });
+				
+				// Check Length
+				if (extracted.buffer.byteLength > 35000)
+					throw 'The selected gametype is not a valid Halo 4 gametype.';
 
-                // File done extracting
-                if (extracted.buffer.byteLength > 35000) {
-                    // show error modal
-                    showModal(ModalTypes.ErrorModal, 'Invalid Halo 4 Gametype', 'The selected gametype is not a valid Halo 4 gametype.');
-                    return;
-                }
-                cartographer = this;
-                this.UploadVariant(extracted);
+				// Check Magic
+				extracted.SetPosition(0x00);
+				if (extracted.ReadString(0x04) != "_blf")
+					throw 'The selected gametype is not a valid Halo 4 gametype.';
+
+				// Check Game Variant Chunk Header
+				extracted.SetPosition(0x2F0);
+				if (extracted.ReadString(0x04) != "mpvr")
+					throw 'The selected gametype is not a valid Halo 4 gametype.';
             }
             else
             {
-                // show error modal
-                showModal(ModalTypes.ErrorModal, 'Invalid Halo 4 Gametype', 'The selected gametype is not a valid Halo 4 gametype.');
+				// show error modal
+				throw 'The selected gametype is not a valid Halo 4 gametype.';
             }
-        }
-
-		private UploadVariant(variant: XboxInternals.IO.FileIO) {
-			showPendingMask();
-            $.ajax({
-				type: 'POST',
-                url: Onyx.DataStorage.Domain + 'api/variant/',
-                data: variant.buffer,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                processData: false,
-				success: function (data) {
-					$('.scriptData > #scriptmod').val(data);
-					$('.dropGametypeHint').css('display', 'none');
-					$('#gamesaveModify').css('display', 'block');
-					var editor = CodeMirror.fromTextArea(document.getElementById("scriptmod"), {
-						lineNumbers: true,
-						styleActiveLine: true,
-						theme: 'onyx',
-						value: data,
-						tabindex: 0,
-						placeholder: '',
-						autofocus: true
-					});
-					hidePendingMask();
-					reDrawCodeIde();
-                }
-            });
         }
     }
 }
-
-var cartographer: Onyx.Cartographer = null;
-
-$(window).on('beforeunload', function () {
-    if (cartographer !== null)
-        return 'Are you sure you want to exit Onyx? Any un-saved data will be lost.';
-});

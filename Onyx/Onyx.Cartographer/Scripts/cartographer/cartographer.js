@@ -9,7 +9,7 @@ var Onyx;
 (function (Onyx) {
     var Cartographer = (function () {
         function Cartographer(stfsPack) {
-            this.stfsPackage = stfsPack;
+            this.StfsPackage = stfsPack;
             this.Init();
             this.ValidatePackage();
         }
@@ -19,64 +19,31 @@ var Onyx;
         Cartographer.prototype.ValidatePackage = function () {
             var isValid = true;
 
-            if (this.stfsPackage.metaData.titleID != 1297287449 || !this.stfsPackage.FileExists('variant'))
+            if (this.StfsPackage.metaData.titleID != 1297287449 || !this.StfsPackage.FileExists('variant'))
                 isValid = false;
 
             if (isValid) {
-                var extracted = this.stfsPackage.ExtractFileFromPath('variant', function (p) {
+                var extracted = this.StfsPackage.ExtractFileFromPath('variant', function (p) {
                 });
 
-                if (extracted.buffer.byteLength > 35000) {
-                    // show error modal
-                    showModal(ModalTypes.ErrorModal, 'Invalid Halo 4 Gametype', 'The selected gametype is not a valid Halo 4 gametype.');
-                    return;
-                }
-                cartographer = this;
-                this.UploadVariant(extracted);
-            } else {
-                // show error modal
-                showModal(ModalTypes.ErrorModal, 'Invalid Halo 4 Gametype', 'The selected gametype is not a valid Halo 4 gametype.');
-            }
-        };
+                if (extracted.buffer.byteLength > 35000)
+                    throw 'The selected gametype is not a valid Halo 4 gametype.';
 
-        Cartographer.prototype.UploadVariant = function (variant) {
-            showPendingMask();
-            $.ajax({
-                type: 'POST',
-                url: Onyx.DataStorage.Domain + 'api/variant/',
-                data: variant.buffer,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                processData: false,
-                success: function (data) {
-                    $('.scriptData > #scriptmod').val(data);
-                    $('.dropGametypeHint').css('display', 'none');
-                    $('#gamesaveModify').css('display', 'block');
-                    var editor = CodeMirror.fromTextArea(document.getElementById("scriptmod"), {
-                        lineNumbers: true,
-                        styleActiveLine: true,
-                        theme: 'onyx',
-                        value: data,
-                        tabindex: 0,
-                        placeholder: '',
-                        autofocus: true,
-                        highlightSelectionMatches: { showToken: /\w/ }
-                    });
-                    hidePendingMask();
-                    reDrawCodeIde();
-                }
-            });
+                // Check Magic
+                extracted.SetPosition(0x00);
+                if (extracted.ReadString(0x04) != "_blf")
+                    throw 'The selected gametype is not a valid Halo 4 gametype.';
+
+                // Check Game Variant Chunk Header
+                extracted.SetPosition(0x2F0);
+                if (extracted.ReadString(0x04) != "mpvr")
+                    throw 'The selected gametype is not a valid Halo 4 gametype.';
+            } else {
+                throw 'The selected gametype is not a valid Halo 4 gametype.';
+            }
         };
         return Cartographer;
     })();
     Onyx.Cartographer = Cartographer;
 })(Onyx || (Onyx = {}));
-
-var cartographer = null;
-
-$(window).on('beforeunload', function () {
-    if (cartographer !== null)
-        return 'Are you sure you want to exit Onyx? Any un-saved data will be lost.';
-});
 //@ sourceMappingURL=cartographer.js.map

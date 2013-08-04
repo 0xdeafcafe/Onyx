@@ -17,7 +17,7 @@
         <div class="left-column">
             <h2>New Project</h2>
             
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Index", "Create", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 
@@ -37,6 +37,15 @@
                     @Html.TextBoxFor(p => p.ProjectDescription)
                 </p>
                 
+                <div id="stfs-preview" style="width: 222px; background-color: #d1d1d1; border: 2px solid #bebebe; padding: 10px; margin-top: 20px;">
+                    <strong>Name: </strong><span id="stfs-name"></span><br />
+                    <strong>Game: </strong><span id="stfs-title"></span><br />
+                    <div style="margin-top: 5px; padding: 2px; background: #fff; border: 1px solid #333; width: 64px; height: 64px;">
+                        <img id="stfs-icon" />
+                    </div>
+                </div>
+                <input type="file" id="project-stfs-upload" name="file" />
+
                 <input type="submit" value="Get Started"/>
             }
         </div>
