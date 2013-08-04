@@ -7,6 +7,7 @@ using Onyx.Cartographer.Extensions.Attributes;
 using Onyx.Cartographer.Extensions.FlashMessages;
 using Onyx.Cartographer.Models;
 using Onyx.Cartographer.ViewModels.Project;
+using System.Web;
 
 namespace Onyx.Cartographer.Controllers
 {
@@ -38,7 +39,7 @@ namespace Onyx.Cartographer.Controllers
         // POST: /Create/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(CreateProject createProject)
+        public ActionResult Index(CreateProject createProject, HttpPostedFileBase stfsUpload)
         {
             if (!ModelState.IsValid)
                 return View();
