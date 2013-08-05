@@ -1,6 +1,7 @@
 ﻿///<reference path="../jquery-1.8.2.d.ts" />
 ///<reference path="../jquery.cookie.d.ts" />
 ///<reference path="modal_manager.ts" />
+///<reference path="../cartographer/cartographer.ts" />
 
 /* jQuery file validation
 ----------------------------------------------- */
