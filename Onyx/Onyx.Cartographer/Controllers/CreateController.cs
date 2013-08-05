@@ -117,6 +117,9 @@ namespace Onyx.Cartographer.Controllers
                     // Delete files now we done, yo
                     System.IO.File.Delete(outputPath);
                     System.IO.File.Delete(variantExtrated);
+
+                    // Redirect outa here
+                    return RedirectToAction("Edit", new { id = project.Id });
                 }
                 catch
                 {
@@ -128,8 +131,6 @@ namespace Onyx.Cartographer.Controllers
                     return View();
                 }
             }
-
-            return RedirectToAction("Edit", new { id = project.Id });
         }
 
         // 
