@@ -61,7 +61,6 @@ namespace Onyx.Cartographer.Controllers
             }
 
             // Do file validation stuff
-            GameType gametype;
             if (stfsUpload == null)
             {
                 ModelState.AddModelError("File", "You must select a Halo 4 Gametype to create a project.");
@@ -83,7 +82,7 @@ namespace Onyx.Cartographer.Controllers
                     // Extract variant
                     stfsParsed.ExtractFile("variant", variantExtrated);
 
-                    gametype = GameType.Load(variantExtrated);
+                    var gametype = GameType.Load(variantExtrated);
 
                     // TODO: seralize gametype data
                     var seralizedData = "";
