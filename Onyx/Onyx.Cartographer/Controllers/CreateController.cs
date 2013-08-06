@@ -54,7 +54,7 @@ namespace Onyx.Cartographer.Controllers
 
             // Check Name is Unique
             if (_dbContext.Projects.Count(p =>
-                p.Name.ToLower() == createProject.ProjectName.ToLower() && !p.IsDeleted) > 0)
+                !p.IsDeleted && p.Name.ToLower().Equals(createProject.ProjectName.ToLower())) > 0)
             {
                 ModelState.AddModelError("ProjectName", "You can't have 2 Projects with the same name.");
                 return View();
